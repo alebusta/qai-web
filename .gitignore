@@ -1,0 +1,99 @@
+# ╔═══════════════════════════════════════════════════════╗
+# ║  THE QAI COMPANY - DIGITAL HQ                        ║
+# ║  .gitignore                                           ║
+# ║  Última actualización: 10-Feb-2026                    ║
+# ╚═══════════════════════════════════════════════════════╝
+
+# === INFORMACIÓN SENSIBLE ===
+# NO commitear datos bancarios, credenciales, o información confidencial
+Empresa/03_ADMINISTRACION/CUENTAS_BANCARIAS.md
+Empresa/03_ADMINISTRACION/CREDENCIALES.md
+Empresa/03_ADMINISTRACION/PASSWORDS.md
+
+# Archivos de configuración con API keys
+.env
+.env.local
+.env.production
+*.key
+*.pem
+
+# OAuth tokens (generados localmente)
+**/token.json
+**/token_*.json
+**/client_secret*.json
+
+# === PRODUCTOS CON REPO PROPIO ===
+# Estos proyectos ya tienen su propio repositorio en GitHub
+# Solo dejamos un README de referencia en cada carpeta
+QaiLabs/PROTOTIPOS/invoiceMatch/
+# QaiLabs/PROTOTIPOS/gestion-zen/    # Descomentar cuando exista
+
+# === DEPENDENCIAS Y ENTORNOS VIRTUALES ===
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+
+# === ARCHIVOS PESADOS / BINARIOS ===
+# Regla: Los documentos generados (PDFs, DOCX, PPTX) van a Google Drive
+# Excepciones: logos de marca y favicons pequeños SÍ se versionan
+*.docx
+*.pptx
+*.xlsx
+*.xls
+*.zip
+*.rar
+*.7z
+
+# PDFs: excluir generados, mantener documentos legales importantes
+# (los legales son pocos y livianos, vale la pena versionarlos)
+# Si un PDF es generado por un workflow → va a Drive, no aquí
+
+# === CARPETAS TEMPORALES ===
+zzz_temporal/
+.tmp/
+temp/
+**/temp_files/
+
+# === IDE ===
+.vscode/
+.idea/
+.cursor/
+.codacy/
+*.swp
+*.swo
+*~
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === BUILD ===
+dist/
+build/
+
+# === LOGS ===
+*.log
+logs/
+
+# === BACKUP ===
+*.bak
+*.backup
+
+# === GEMINI/AI AGENT DATA ===
+# Datos de sesión de agentes AI (locales, no versionables)
+.gemini/
+.agent/

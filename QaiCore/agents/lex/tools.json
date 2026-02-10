@@ -1,0 +1,63 @@
+{
+  "agent_name": "lex",
+  "version": "1.0",
+  "specialization": "Legal - Derecho Comercial y Tributario Chile",
+  
+  "allowed_tools": [
+    "qaicore.tools.extract_content",
+    "qaicore.tools.get_file_info",
+    "view_file (for knowledge_base)",
+    "write_to_file (only in /TorreDeControl/)"
+  ],
+  
+  "knowledge_base_path": "QaiCore/agents/lex/knowledge_base/",
+  
+  "api_keys_required": {
+    "GEMINI_API_KEY": "Opcional - solo si necesita OCR para documentos escaneados"
+  },
+  
+  "recommended_model": "gemini-2.0-flash-exp",
+  
+  "permissions": {
+    "read": [
+      "/TorreDeControl/STATUS.md",
+      "/TorreDeControl/INBOX.md",
+      "/QaiCore/agents/lex/knowledge_base/**",
+      "/Empresa/04_LEGAL/**"
+    ],
+    "write": [
+      "/TorreDeControl/analisis_*.md",
+      "/TorreDeControl/STATUS.md (actualizaciones)",
+      "/TorreDeControl/INBOX.md (marcar tareas)"
+    ],
+    "forbidden": [
+      "/Empresa/03_ADMINISTRACION/FINANZAS/**",
+      "/QaiProd/** (código de producción)",
+      "Firmar documentos legalmente vinculantes"
+    ]
+  },
+  
+  "operational_limits": {
+    "max_document_size_mb": 50,
+    "max_analysis_time_minutes": 15,
+    "escalate_to_human_if": [
+      "Contrato > $50M CLP",
+      "Litigio o demanda",
+      "Interpretación compleja de ley no documentada",
+      "Representación legal formal requerida"
+    ]
+  },
+  
+  "success_metrics": {
+    "response_accuracy": ">90% (fundamentado con citas)",
+    "response_time_avg_minutes": "<5",
+    "self_resolved_queries_percent": ">70%",
+    "false_legal_advice_incidents": "0"
+  },
+  
+  "update_schedule": {
+    "knowledge_base_review": "Trimestral o cuando cambie normativa",
+    "profile_review": "Anual",
+    "system_prompt_tuning": "Según feedback del founder"
+  }
+}

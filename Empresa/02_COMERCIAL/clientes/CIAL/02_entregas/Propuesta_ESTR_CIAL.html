@@ -1,0 +1,727 @@
+﻿<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Propuesta Vigilancia Tecnológica | CIAL Alimentos</title>
+    <style>
+        :root {
+            --qai-ink: #111827;
+            --qai-muted: #6b7280;
+            --qai-line: #e5e7eb;
+            --qai-bg: #f3f4f6;
+            --qai-primary: #1976d2;
+            --qai-accent: #14b8a6;
+            --qai-success: #16a34a;
+            --qai-warning: #f59e0b;
+            --qai-danger: #dc2626;
+            --qai-highlight: #eef2ff;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            counter-reset: page;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .container {
+                width: 210mm !important;
+                max-width: none !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+
+            .page {
+                width: 210mm !important;
+                min-height: 297mm !important;
+                padding: 10mm 20mm 10mm 25mm !important;
+                page-break-after: always !important;
+                box-shadow: none !important;
+                border: none !important;
+                overflow: visible !important;
+                box-sizing: border-box !important;
+                position: relative !important;
+            }
+
+            /* Pagination Logic */
+            .page {
+                counter-increment: page;
+            }
+
+            .page:not(:first-child)::after {
+                content: counter(page);
+                position: absolute;
+                bottom: 10mm;
+                right: 20mm;
+                font-size: 11px;
+                color: var(--qai-muted);
+                font-weight: 600;
+            }
+
+            .cover-frame {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--qai-ink);
+            line-height: 1.6;
+            background: #f1f3f5;
+        }
+
+        .container {
+            width: 210mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm 30mm 20mm 35mm;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-sizing: border-box;
+            page-break-after: always;
+            counter-increment: page;
+        }
+
+        .page:not(:first-child)::after {
+            content: counter(page);
+            position: absolute;
+            bottom: 10mm;
+            right: 25mm;
+            font-size: 11px;
+            color: var(--qai-muted);
+            font-weight: 600;
+        }
+
+        .logo-container {
+            margin-bottom: 60px;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        .cover-frame {
+            border: 1px solid var(--qai-line);
+            border-radius: 24px;
+            padding: 60px;
+            background: linear-gradient(135deg, rgba(25, 118, 210, 0.03), rgba(20, 184, 166, 0.03));
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--qai-ink);
+            color: white;
+            display: inline-block;
+            margin-bottom: 24px;
+            letter-spacing: 0.1em;
+        }
+
+        .h1 {
+            font-size: 52px;
+            margin: 0 0 20px 0;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: var(--qai-muted);
+            font-weight: 400;
+            max-width: 90%;
+        }
+
+        .cover-meta {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .meta-item .label {
+            font-size: 10px;
+            color: var(--qai-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .meta-item .value {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        h2 {
+            font-size: 20px;
+            /* Reduced from 24px */
+            color: var(--qai-primary);
+            margin: 25px 0 15px 0;
+            /* Reduced margins */
+            letter-spacing: -0.01em;
+            border-bottom: 2px solid var(--qai-bg);
+            padding-bottom: 6px;
+            break-after: avoid;
+        }
+
+        .narrative {
+            font-size: 15.5px;
+            /* Reduced from 17px */
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        .callout {
+            background: var(--qai-highlight);
+            border-left: 4px solid var(--qai-primary);
+            border-radius: 0 16px 16px 0;
+            padding: 18px 25px;
+            /* Reduced padding */
+            margin: 20px 0;
+            /* Reduced margin */
+            font-style: italic;
+            break-inside: avoid;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            /* Reduced gap */
+            margin: 20px 0;
+            /* Reduced margin */
+            break-inside: avoid;
+        }
+
+        .value-card {
+            background: white;
+            padding: 20px 15px;
+            /* Reduced padding */
+            border-radius: 20px;
+            border: 1px solid var(--qai-line);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: transform 0.2s;
+            break-inside: avoid;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card .icon-placeholder {
+            width: 48px;
+            height: 48px;
+            background: var(--qai-highlight);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 24px;
+        }
+
+        .value-card h3 {
+            font-size: 16px;
+            margin: 0 0 12px 0;
+            color: var(--qai-primary);
+        }
+
+        .value-card p {
+            font-size: 13.5px;
+            color: var(--qai-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            /* Reduced from 30px */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--qai-line);
+            break-inside: avoid;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            /* Reduced from 16/20 */
+            text-align: left;
+            border-bottom: 1px solid var(--qai-line);
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--qai-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-container {
+            margin: 25px 0;
+            /* Reduced from 40px */
+            break-inside: avoid;
+        }
+
+        .gantt-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            height: 36px;
+        }
+
+        .gantt-label {
+            width: 140px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .gantt-track {
+            flex: 1;
+            background: var(--qai-bg);
+            height: 12px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .gantt-bar {
+            position: absolute;
+            height: 100%;
+            border-radius: 6px;
+            background: var(--qai-primary);
+        }
+
+        .gantt-header {
+            display: flex;
+            margin-left: 140px;
+            margin-bottom: 10px;
+        }
+
+        .gantt-week {
+            flex: 1;
+            text-align: center;
+            font-size: 11px;
+            color: var(--qai-muted);
+            text-transform: uppercase;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--qai-line);
+            text-align: center;
+            font-size: 12px;
+            color: var(--qai-muted);
+        }
+
+        .highlight-text {
+            color: var(--qai-primary);
+            font-weight: 700;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .page {
+                box-shadow: none;
+                border: none;
+            }
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-slogan {
+            font-size: 14px;
+            color: var(--qai-muted);
+            border-left: 1px solid var(--qai-line);
+            padding-left: 20px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .icon-box {
+            font-family: 'Material Icons';
+            font-size: 32px;
+            color: var(--qai-primary);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Investment Table Styles */
+        .investment-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 25px 30px;
+            /* Reduced padding */
+            margin: 20px 0;
+            /* Reduced margin */
+            border: 1px solid var(--qai-line);
+            break-inside: avoid;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-table th {
+            background: transparent;
+            border-bottom: 2px solid var(--qai-line);
+            padding: 15px;
+            color: var(--qai-ink);
+            font-size: 14px;
+        }
+
+        .comparison-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--qai-line);
+            vertical-align: top;
+        }
+
+        .price-tag {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--qai-primary);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list .li-icon {
+            color: var(--qai-success);
+            font-size: 18px;
+            font-family: 'Material Icons';
+        }
+
+        .competitor-price {
+            text-decoration: line-through;
+            color: var(--qai-muted);
+            font-size: 14px;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- PAGE 1: COVER -->
+        <div class="page">
+            <div class="logo-container">
+                <div class="logo-row">
+                    <img class="logo-img"
+                        src="http://localhost:8585/Empresa/01_ESTRATEGIA/IDENTIDAD_VISUAL/logoQAI_transparent.png"
+                        alt="QAI Logo" />
+                    <div class="logo-slogan">Soluciones de impacto para el mundo real basadas en <br>Inteligencia
+                        Artificial.</div>
+                </div>
+            </div>
+
+            <div class="cover-frame">
+                <div class="badge">Propuesta Estratégica</div>
+                <h1 class="h1">Sistema de Vigilancia Tecnológica (VT)</h1>
+                <p class="subtitle">Anticipación inteligente, decisiones informadas y ventaja competitiva sostenida para
+                    <b>CIAL Alimentos</b>.
+                </p>
+
+                <div class="cover-meta">
+                    <div class="meta-item">
+                        <div class="label">Cliente</div>
+                        <div class="value">CIAL Alimentos S.A.</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Versión</div>
+                        <div class="value">v0.1 (23 de enero de 2026)</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Consultora</div>
+                        <div class="value">The QAI Company</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p><b>Confidencial</b> | Preparado para CIAL Alimentos por The QAI Company SpA</p>
+            </div>
+        </div>
+
+        <!-- PAGE 2: NARRATIVE -->
+        <div class="page">
+            <h2>1. El Radar de Vigilancia: Un Faro Estratégico</h2>
+
+            <p class="narrative">
+                Un <b>Radar de Vigilancia Tecnológica</b> es mucho más que una herramienta de búsqueda; es un sistema
+                robusto que permite a la empresa estar conectada con los principales fenómenos externos que pueden <span
+                    class="highlight-text">afectar, impulsar o amenazar</span> su desarrollo competitivo.
+            </p>
+
+            <p class="narrative">
+                A diferencia de los informes tradicionales que capturan una imagen estática del pasado, nuestro enfoque
+                permite a <b>CIAL Alimentos</b> anticipar riesgos regulatorios y detectar
+                oportunidades tecnológicas antes de que se conviertan en estándares de la industria.
+            </p>
+
+            <div class="callout">
+                "Nuestra misión es transformar el ruido masivo de datos globales en señales precisas y accionables para
+                su negocio."
+            </div>
+
+            <p class="narrative">
+                Nuestra metodología se basa en la selección de temas críticos junto al cliente:
+                <b>negocio, producto, procesos, industria y otros contextos relevantes</b>. A través de la captura
+                masiva de fuentes diversas (noticias, patentes, startups, academia y mercados), implementamos luego una
+                clasificación asistida por IA que luego pasa por un proceso de <span class="highlight-text">Validación
+                    Humana de Expertos de Dominio</span> (<i>Human-in-the-loop</i>)
+                para filtrar solo aquello que realmente tiene impacto en su operación.
+            </p>
+
+            <div class="value-grid">
+                <!-- Decisiones -->
+                <div class="value-card">
+                    <span class="material-icons icon-box">bolt</span>
+                    <h3>Decisiones en días</h3>
+                    <p>Alertas activas ante cambios normativos o lanzamientos de competidores globales.</p>
+                </div>
+                <!-- Memoria -->
+                <div class="value-card">
+                    <span class="material-icons icon-box">psychology</span>
+                    <h3>Memoria Central</h3>
+                    <p>Un buscador inteligente que rescata el historial de evaluaciones para evitar duplicar esfuerzos.
+                    </p>
+                </div>
+                <!-- Operativo -->
+                <div class="value-card">
+                    <span class="material-icons icon-box">settings_suggest</span>
+                    <h3>Foco Operativo</h3>
+                    <p>Fichas técnicas de proveedores con análisis de madurez, precios y compatibilidad directa.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: AXES & PLAN -->
+        <div class="page">
+            <h2>2. Ejes de Monitoreo Propuestos</h2>
+            <p class="narrative" style="font-size: 15px; margin-top: -10px; color: var(--qai-muted);">
+                <i>Ejemplos de ejes estratégicos iniciales, sujetos a validación y ajuste con el equipo de CIAL.</i>
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Eje Estratégico</th>
+                        <th style="width: 40%;">Foco de Vigilancia</th>
+                        <th style="width: 35%;">Impacto Esperado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Operaciones y Planta</b></td>
+                        <td>Automatización, Exoesqueletos, Seguridad asistida por IA.</td>
+                        <td>Eficiencia productiva y salud ocupacional.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Logística Inteligente</b></td>
+                        <td>Optimización de última milla, Trazabilidad IoT, Almacenamiento.</td>
+                        <td>Reducción de costos de distribución y mermas.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Producto y Mercado</b></td>
+                        <td>Snacks proteicos, Lácteos, Tendencias FoodTech.</td>
+                        <td>Anticipación de nuevos hábitos de consumo.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Sostenibilidad</b></td>
+                        <td>Ley REP, Envases Biodegradables, Eficiencia Energética.</td>
+                        <td>Cumclimiento normativo y reputación de marca.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Plan de Implementación (MVP 6 Semanas)</h2>
+            <p class="narrative">
+                Estructuramos un proceso ágil para que el sistema esté operativo y entregando valor en menos de dos
+                meses.
+            </p>
+
+            <div class="timeline-container">
+                <div class="gantt-header">
+                    <div class="gantt-week">Semana 1</div>
+                    <div class="gantt-week">Semana 2</div>
+                    <div class="gantt-week">Semana 3</div>
+                    <div class="gantt-week">Semana 4</div>
+                    <div class="gantt-week">Semana 5</div>
+                    <div class="gantt-week">Semana 6</div>
+                </div>
+
+                <!-- Row 1 -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Kickoff & Taxonomía</div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar" style="width: 16.6%; left: 0;"></div>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Ingesta de Fuentes</div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar" style="width: 33.3%; left: 8.3%; opacity: 0.8;"></div>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Entrenamiento de IA</div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar" style="width: 33.3%; left: 33.3%; opacity: 0.6;"></div>
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Despliegue Hub</div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar" style="width: 25%; left: 66.6%; opacity: 0.4;"></div>
+                    </div>
+                </div>
+                <!-- Row 5 -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Go-Live & Reporte</div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar" style="width: 16.6%; left: 83.3%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: INVESTMENT -->
+        <div class="page">
+            <h2>4. Inversión Estratégica: El Valor de la Inteligencia</h2>
+            <p class="narrative">
+                Nuestra propuesta rompe el esquema de "consultoría estática". Mientras otros entregan PDFs trimestrales,
+                QAI entrega un <b>Radar Vivo con acceso 24/7</b> y actualizaciones quincenales de alto valor.
+            </p>
+
+            <div class="investment-card">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Concepto de Servicio</th>
+                            <th style="text-align: center;">Vigilancia QAI (Recomendado)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>Setup & "Radar Cero" (Inauguración)</b><br>
+                                <span style="font-size: 12px; color: var(--qai-muted);">Duración: 6 semanas de
+                                    implementación intensiva.</span>
+                            </td>
+                            <td style="text-align: center;">
+                                <div class="price-tag">CLP 4.500.000</div>
+                                <span class="competitor-price">Mercado: 4.7M</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Actualización de Radar Anual</b><br>
+                                <span style="font-size: 12px; color: var(--qai-muted);">Suscripción anual con Radar Vivo
+                                    24/7 y Memoria Institucional.</span>
+                            </td>
+                            <td style="text-align: center;">
+                                <div class="price-tag">CLP 4.500.000</div>
+                                <span class="competitor-price">Mercado: 8.1M</span>
+                            </td>
+                        </tr>
+                        <tr style="background: var(--qai-highlight);">
+                            <td>
+                                <b>INVERSIÓN TOTAL ANUAL</b>
+                            </td>
+                            <td style="text-align: center;">
+                                <div class="price-tag" style="color: var(--qai-ink);">CLP 9.000.000</div>
+                                <div style="font-size: 11px; color: var(--qai-success); font-weight: 700;">Ahorro del
+                                    30% vs Competencia</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 30px;">
+                    <ul class="feature-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <li><span class="li-icon">radar</span> Acceso 24/7 a Intelligence Hub</li>
+                        <li><span class="li-icon">update</span> Actualizaciones quincenales</li>
+                        <li><span class="li-icon">notifications_active</span> Alertas vía Correo/WhatsApp</li>
+                        <li><span class="li-icon">history_edu</span> Consultas a la Memoria del Proyecto</li>
+                        <li><span class="li-icon">description</span> Fichas técnicas de proveedores</li>
+                        <li><span class="li-icon">summarize</span> Resúmenes ejecutivos mensuales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="font-size: 13px; color: var(--qai-muted); text-align: center; font-style: italic;">
+                * Valores netos. Facturación según hitos de implementación y recurrencia anual.
+            </p>
+
+            <div class="footer">
+                <p><b>The QAI Company SpA</b><br />www.qai.cl | Bucarest 17 Dp 58, Providencia, Santiago, RM.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

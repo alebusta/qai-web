@@ -1,0 +1,343 @@
+Contexto: Reunión del 22 de diciembre de 2025, respecto al desarrollo de GestiónZen. Esta primera parte de la reunión mostramos a Anabel el sistema y discutimos en detalle el módulo de gastos que es principalmente su labor en la administradora SWS (Administradora que será nuestro socion de 1/3 en la app).
+Asistentes: {Anabel: empleada de SWS, asistente encargada de registrar gastos de comunidades a cargo de la empresa y otros asuntos administrativos; Gerardo: Socio de SWS, futuro socio de gestiónzen; Sandra: esposa de Gerardo y socia de SWS, tambíen futura socia de gestiónzen dentreo de ese 1/3; Ramón: Economista, el otro socio de gestión zen, dedicado a ver temas estratégicos, pricing, marketing, entro otros; Alejandro: Yo, cabeza de QAI}.
+
+
+Anabel: Cuando tú te emites en tu gasto común y si yo los tengo así en un solo documento, te va a salir Aguas Andina y tú le das allí y vas a ver todo el documento que yo escaneé con las 16. Pero si las metiera una a una, tendrías que ir uno, uno con el.
+Sandra: Total y todas las boletas.
+Ramon: Pero lo estoy pensando es por lo siguiente, o sea, el tema es una de las cosas por las cuales los residentes no ven este que es un cacho. Imagínense, si yo tengo que ver 15 boletas para ver cuánto es la cuenta del agua, ni cagando, o sea, no.
+Gerardo: Lo va a hacer.
+Ramon: Entonces lo que te digo es que esto ya te dice a ti que tú tienes que preparar, si tienes tantas comunidades así, hay un reporte particular para el agua donde tú ves todo el proceso, todo el escaneo, todo ese proceso tiene que ser transparente para comunidades.
+Alejandro: Ahí ya hay una variante que uno tiene que diseñar que no está no, que es cargar todas las facturas, que te las cargue todas una a una. Está bien, pero la forma como que como te reporta, te debería reportar un solo gasto. No necesariamente, sino que un solo gasto de ese servicio, o tú dices lo.
+Ramon: Que tú dices, reporto el total y luego pongo la subcuenta, digo, por ejemplo, el total del agua, el agua se pagó, fue, el total fue tanto y se pagó en tantas boletas, por ejemplo. Entonces, y las boletas, usted quiere ver cuántas boletas son tantas listas. ¿Por qué? Porque entonces, por ejemplo, yo cuando le diga a la comunidad, señores, cuando ustedes quieren saber reporte del agua, el agua aquí en esta comunidad, por la forma como establecido, se paga en 15 boletas. Entonces la cuenta grande es esta que está acá, pero las demás que son la conexión A de no sé qué cosa, ejemplo, la conexión B, que es esta que está acá. Entonces el tema es que eso ya te está ordenando a ti el proceso de reporte, pero también el proceso de chequeo. Sesenta y tres, los huesos no son igual. Entonces, pero el tema es ese y está buenísimo que nos contara eso ahí. Entonces no sé si hacemos primero búscate una comunidad que tengas cualquiera con las 15 boletas que tú necesitas y se la vamos a pasar a Alejandro y empecemos por ahí.
+Alejandro: Ahorita dice tú.
+Ramon: Claro, para que vaya viendo cómo es el proceso.
+Gerardo: ¿Pero cómo podemos escanear eso?
+Alejandro: Con teléfono o sea tienes la. ¿Pero no tienes algo que esté digitalizado ya como una carpeta?
+Anabel: No, tengo ya el archivo este que yo hice un solo archivo con las 15 cuentas, pero no las tengo individual porque las voy borrando.
+Alejandro: ¿Ok.
+Sandra: Pero tienes algunas ya por ejemplo que estén en papel como listas para hacer las que salieron ahora?
+Anabel: No, es que no han salido, tengo algunas que no han salido y el.
+Gerardo: Mes pasado último, 
+Anabel: Pero es que las borro, o sea, ellos quieren.
+Gerardo: ¿Pero puedes imprimir lo que está en el sistema, por qué van a ser 10 páginas? Para que podamos escanear las 10 páginas.
+Ramon: Pero el archivo que ya tiene, tiene todo eso ya de una vez, entonces.
+Alejandro: Es un solo archivo, habría que dividirlas las.
+Ramon: Pero agarra, haz el ejemplo con ese archivo completo.
+Alejandro: Lo que pasa es que te va a tomar. Solo tienen que ser los archivos separados como lo tenemos configurado, o sea, uno lo podría hacer de hecho que te lo picara, pero no es necesario, la idea es que estén todos los archivos en una sola.
+Ramon: Imprimamos uno que tenga para que lo pongas en una carpeta.
+Alejandro: La idea es tener. Exacto, tener varias de la misma comunidad separadas como tú las recibes. Tal cual como tú las recibes y tú después que las procesas las escaneas y te quedan todas juntas en un PDF.
+Anabel: Claro, yo las voy bajando, voy imprimiendo, imprimiendo, imprimiendo, hasta juntar las 15.
+Sandra: Pero consulta, tenemos el archivo con algunos egresos acá, Ahí tienen que estar las cuentas, Las que están pagas ya, las que están pagas, debería estar el egreso con el pago, pero debería estar aunque sean tres para ver el ejercicio.
+Anabel: ¿No es que nos podemos meter en el Golf, porque en el Golf si las hago separadas, pues son 5, entonces podríamos guardarla y si lo puedo hacer en el gol, sí, 5 las guardamos y ahí sí son separadas, 
+Alejandro: Eso, porque lo que queremos ver es cómo adaptar lo que estamos haciendo al trabajo este tan tedioso que te toca hacer a ti y ver la forma como si escaneamos todas después se agrupan por algún ítem o cómo queda el detalle? Porque ahora lo tenemos tal cual como lo tiene Edifico. Según entiendo tú le podrías pasar las 20 cuentas separadas y te las va a subir.
+Ramon: Las cuentas tienen que poner nombre a.
+Alejandro: Cada una por una y el sistema te lee el PDF y te saca los datos del PDF, haz a mano. Ah, yo pensé que era. OK, te deja meter una y una metiéndose a mano.
+Anabel: Claro, a mano una, después la otra, por eso es que yo las escaneo y las hago así porque primero el gasto común de esa comunidad como son 15 de agua, 15 de luz entonces eso va a ser muy grande porque.
+Alejandro: Yo te quiero mostrar entonces lo que. Mira esta es una de prueba, La idea de nosotros que te queremos dar un acceso a esto para que tú la puedas echar un vistazo verdad, y vamos a darle a guardar y acá básicamente es muy parecido a lo que podría ser Comunidad Feliz o edifito en cuanto a las funcionalidades que tiene, lleva los registros de un gasto común pero la novedad es que tú puedes ir navegando de la forma tradicional verdad, o hacerle preguntas estilo chatgpt, ¿Ha usado chatgpt? Chatgpt es una especie de chat donde tienes la información donde puedes hacer consultas aquí en esta comunidad tres cosas bien básicas, una, el uso de la plataforma, le puede hacer preguntas cómo hago tal cosa, como tal otra cosa. Dos, a datos que tienes en la plataforma, tú preguntas ahí cuánto fue el último pago de agua que hice o el gasto común y te va a responder aquí de tu cliente, tu arriba tienes tus propiedades, esta es una de prueba con el mail que yo puse y yo administro sólo esa propiedad, propiedad de prueba.
+Ramon: Esto es como las ventanitas estas que te aparecen cuando te metes en la página de ENEL o de cualquier compañía que te aparece una ventanita abajo tienes alguna consulta, esto es como los agentes estos que te responden preguntas típicas.
+Alejandro: Como los agentes virtuales.
+Ramon: Funciona igualito, tú le vas a preguntar qué es lo que tú necesitas pero.
+Alejandro: Antes de irnos a ese chat, entonces básicamente tienes aquí y tú que ya has visto el de Comunidad Feliz me dices qué tan parecido, qué tan fácil, difícil o distinto es. Acá tenemos las comunidades, verdad, yo sólo tengo una, pero tu Anabel podrías tener todas las comunidades que tú tienes, que tú administras y aquí te da el detalle de la comunidad, los datos que uno tiene que llenar de la información ahí una foto de la descripción, quién es el administrador, cuáles son las características que eso tenemos que definir también qué cosas deben ir o no de esas amenidades o qué sé yo, el detalle de las unidades verdad, aquí creé una prueba con la información que me habían dado ellos, súper importante.
+Gerardo: Ahí lo ideal es que las unidades tengan su propia alícuota pero además la alícuota de los estacionamientos.
+Alejandro: Eso ya está. Mira aquí, si te fijas, aquí están agrupadas, pero si yo le quito la vista agrupada, ahí está. Departamento. Lo podríamos ordenar por la persona, por ejemplo, tiene su departamento y su estacionamiento, y ahí está la persona. Pero para verlo más cómodo, tú la puedes ver agrupada.
+Gerardo: Eso es fantástico.
+Alejandro: Y ahí te va sumando. Fíjate tú.
+Gerardo: Eso es muy inteligente.
+Alejandro: Ahí está lo de la alícuota, que es 20 suma en total.
+Gerardo: Porque si tú le vendiste tu entretenimiento a Ramón, tú lo transfieres aquí, y entonces, por lo tanto, Ramón paga la cuota grande. A ti se le chica.
+Alejandro: Exacto. Entonces esa es la parte de comunidades y unidades. Ahí está clarito. Luego, en la parte de finanzas, teníamos esto que bueno, hay que ordenar un poquito. Bueno, esta es la parte más gruesa de gastos, ¿Verdad? Aquí tenemos. Bueno, acá no tenemos ningún gasto registrado, pero la idea es que tú puedas registrar gastos de tres maneras. La tradicional como la haces tú, que metes el proveedor, el monto. Imagino que es más o menos parecido a lo que tú haces con los detalles adicionales donde asignas.
+Anabel: Claro, porque ahí sería bueno que uno pusiera el rut y él bajara toda la información.
+Alejandro: Ya lo tiene aquí.
+Gerardo: Pero tú tenías una comunidad ya que era.
+Alejandro: Pero tiene datos de prueba. Cargué como tres meses de prueba y aquí uno adjunta el comprobante. Esta es la forma tradicional de hacerlo, ¿Verdad?
+Gerardo: Lo que hacemos nosotros hoy día.
+Alejandro: Exacto. ¿Cuál es la magia? Aquí le agregué dos cosas. Un gasto diferido, es decir, si usted, por ejemplo, vi una que tiene una compra de uniformes, ¿Verdad? Que costó un millón, y se lo mandan a prorratear a la comunidad en tres cuotas. Uno le pone ahí las tres cuotas y automáticamente te va a registrar el gasto de ese periodo y te va a dejar registrado los demás. Esta es la división, que se lo muestro después en detalle. Cómo divides una cuenta, como el gas de Si es mitad paga la comunidad, mitad la otra. Le pones aquí, ahora se lo hago con un dato y te lo lleva a cobros individuales.
+Gerardo: ¿Y si yo quiero pagar en tres.
+Anabel: Cuotas, es el de arriba, no?
+Gerardo: El de arriba es cobrar tres cuotas.
+Ramon: No, no, no, no.
+Gerardo: Si yo le quiero pagar al proveedor, yo quiero pagar, por ejemplo, la luz en tres cuotas?
+Alejandro: O sea, tenemos que pensar la vuelta porque no serviría el.
+Ramon: Mismo.
+Gerardo: Porque las tres cuotas no, porque yo puedo cobrarte a ti de una.
+Ramon: Pero yo pago en tres cuotas.
+Alejandro: Acá falta algo que ya está como implícito acá está asumiendo que el gasto que se está haciendo es el gasto que se está pagando. No, pero espérate que es un tema importante y vamos a agregar una pestaña aquí que la información del pago. Ahí la información del pago tú vas a poner si se pagó con cheque, transferencia, lo que sea o. Y ahí, ahí se puede agregar.
+Ramon: Se paga en cuotas porque ahí te va a generar una cuenta lo que estás mostrando acá.
+Alejandro: Para no marear, ¿No?
+Ramon: Sí, si, si. Vamos acá, vamos de nuevo. El tema acá es el siguiente, Vamos a empezar, o sea, la primera actividad que tú tienes que hacer acá es la selección o creación de la comunidad.
+Alejandro: ¿Ya? Pero antes, solo para decirte que ahora te vamos a mostrar esto así como sin ningún dato, ¿Verdad? Para explicarte lo que tiene. ¿Tú ya viste esta pestaña, ¿Se te hace familiar? Y luego vamos a ir viendo estos detallitos de los que estamos hablando con Gerardo. Por eso tú eres tan importante que todo el mundo te dice Anabel, Anabel, porque tú vas a revisar estas cosas y vas a ay, si pudiera tener esto, probablemente lo va a poder tener y esa es la magia que tenemos aquí que aprovechar.
+Ramon: Pero el tema acá es precisamente para. Como para guiar el proceso. A mí lo que me gustaría es que nosotros siguiéramos la secuencia lógica de ella en un proceso administrativo normal para que primero ella vea qué paso no está incluido acá o que sí está incluido. Entonces arranquemos con la primera actividad que ella nos describió que era lo que tenía que ver con. Tenemos una comunidad creada X, entonces empiezas a cargar tú la información con la que vas a ir creando tú el gasto.
+Alejandro: Se ganaron un cliente ayer y empiezan a registrarlo y les dicen van a usar esta plataforma. El paso 0 es crear la comunidad, lo que te enseñamos. Paso 1 crear las unidades. Y ahí sería ¿Que viene después? Porque eso se hace una sola vez y allá vendría el trabajo recurrente.
+Ramon: Ahí como en el proceso de creación y de registro. La primera cosa que deberías tener tú es el reglamento propiedad te carga automáticamente mucha información. En vez de tener que cargarlo manual o enviárselos a ellos para que lo carguen, ya tú lo vas a poder tener una predefinición con la información que tengas del documento de propiedad.
+Alejandro: Y esa era la tercera cosa que te iba a ofrecer. Esto no sólo lo que te dije al principio, cómo navegar en la plataforma, tú le haces preguntas, te dice eso, preguntas datos concretos también. Y el tercero, preguntas datos de cosas que estén relacionadas con la ley de copropiedad, la general o cosas asociadas a la comunidad. Es decir, el documento copropiedad. ¿Qué dice el documento copropiedad de tal cosa? No sé si te toca ver mucho esa parte. Bueno, pero eso es útil para ustedes. Entonces, volviendo al tema de navegar, si uno ve el orden que te dijimos, bueno, está lo de comunidades y unidades, que eso casi no le vas a. Se toca solo la primera vez, ¿Verdad? No vas a tocar nada. Y el fuerte viene en esta parte que hay que reordenar. Exacto, gastos, ¿Verdad? Aquí a lo mejor hay que reordenar el de los pasos, porque se supone que vienen los gastos también registra los fondos y los cobros individuales. Fondos de reserva y cobros individuales, las remuneraciones también. Y después se hace el prorrateo, ¿Verdad? Tú metes gastos, metes la nómina, metes el fondo de reserva. No sé si eso queda más o menos fijo.
+Gerardo: Si hay un fondo especial, eso te.
+Alejandro: Lo da al final, pero no hay mucha variación. No es muy común que una comunidad diga vamos a crear un fondo nuevo para tal cosa. También tenemos esa opción. Va a tener el fondo del reglamento. Y si un día a la comunidad se le ocurre, bueno, vamos a hacer un fondo para arreglar los ascensores, uno va creando muchos fondos. Te voy a mostrar ahora también esa parte. Y también hay cobros individuales que le hacen a la unidad, ¿Verdad? Por una multa, por un arriendo del salón de fiesta, por. A los individuales. Exacto, de gas. Entonces ese es el menú. Que es este, fondos y cobro individuales. Pero para seguir por parte, que veo que el grueso tuyo aquí en gasto, volvemos a gastos, ¿Verdad? Aquí te debe salir el mes en curso en diciembre. No tengo mi comunidad de mentira gastos, pero la última que tenía registrada era en mayo y verías algo así. Te sale todos los gastos que hemos registrado, solo dos. Algo que tenía más, creo que lo tengo en otro, ahorita se lo muestro. Pero bueno, aquí es como que vas a ver los gastos que tienes, que vas registrando y si están prorrateados, que ya los procesaste deberían salir pendiente. Ahora te muestro, pero para no confundir, estábamos ahorita lo que hacen habitualmente manual. Entonces, ¿Cuál es la idea ahora? Que tú nada más vas a poner tu gasto en una carpetita en tu computador y vas jalar todos esos archivos PDF y te los va a leer automático y te lo va a clasificar automáticamente. Es decir, tú vas a encontrarte, o.
+Anabel: Sea, yo en una carpetica coloco por ejemplo, todas las mantenciones, gimnasio, jardín, piscina.
+Alejandro: Ni siquiera eso. Tú vas a poner tus facturas por esto y las facturas las vamos a tener este tiempo, vamos a tenerlas pre entrenada. Es decir, el sistema va a saber que cuando vea la factura de gimnasio, sabe qué clasificación va a tener, que va a ser, qué categoría se llama, cómo se llama esa categoría.
+Anabel: Eso es mantención.
+Alejandro: Mantención. Gimnasio va a ir a mantención. Las cuentas de luz, de agua, etc. Van automáticamente a servicio. Tú solo vas a cargar y vas a chequear que el sistema no se haya equivocado.
+Gerardo: Ahora, hay un plan de vuelta generado por la ley.
+Alejandro: Bueno, lo podríamos hacer con eso ahora. Ahora sí me di cuenta que necesitaba mi computador o un pendrive para tener facturas, para mostrarte un poco cómo es la dinámica.
+Anabel: Entonces yo tengo la carpetica y pongo todas esas facturas allí.
+Gerardo: Como PDF.
+Alejandro: Es que si te quiero mostrar también como foto. La idea es mostrar. Es mejor mostrar.
+Ramon: Saca tu computador.
+Alejandro: No voy a mandarme.
+Ramon: Mándalo para acá.
+Alejandro: ¿No tienen una aquí, una factura cualquiera de esa, Ve agua aquí en este.
+Sandra: Computador Si, tiene que estar?
+Gerardo: Bueno, ahí estamos.
+Alejandro: Mira cómo lo haríamos. Uno podría registrar una sola factura. ¿Como lo haces? ¿Una a una o un lote de factura? Vamos a ver con una sola. Entonces yo me meto aquí y busco el archivo en mi computador. Tendríamos que tener alguna aquí.
+Gerardo: No son factura. No, yo no tengo así factura.
+Anabel: Pero en Comunidad Feliz si se mete por Comunidad Feliz.
+Gerardo: Sí, por meter por Comunidad Feliz o Edifito.
+Alejandro: Toma, si quieres métete tú aquí está en esta pantalla. ¿Estás viendo?
+Gerardo: Ah, bueno, saca ahí tú las facturas. ¿Una factura?
+Alejandro: Sí, una. Un pa.
+Anabel: Si.
+Alejandro: Sacate una.
+Ramon: ¿Por qué no le sacas una foto a esa y la mandas a ese computador para que vea el proceso completo del inicio También es mejor para que ella vea como incluso teniendo la boleta tú creas el archivo desde el comienzo y te lo mandas a ese computador solo cómo me lo manda el correo Gerardo?
+Alejandro: Incluso estaba viendo que podemos tener la aplicación. Mira, esas aplicaciones cuando uno se registra, está haciendo algo en el computador, escanear tu cédula o algo así y te dice ¿Quieres pasarlo a tu teléfono para tomar la foto? Le podemos agregar eso.
+Ramon: Gerardo, ¿Cuál es el correo tuyo?
+Gerardo: Igual que. admin@SWS, tú imagínate todo ese tipo.
+Alejandro: En eso es lo que tenemos que ir interactuando porque se las podemos ir adaptando. Vamos a tener una comunidad de prueba donde vamos a ir probando esos campos y tú vas a poder hacer para que hagas todo ese tipo de cosas.
+Ramon: Te voy a mandar una ahí para que no tengas ni siquiera que anda bajando nada. De hecho vamos a mandar tres.
+Alejandro: Ahora. No había probado con foto, había probado con puro PDF, pero es un buen momento para probar.
+Gerardo: Jpg en la foto.
+Alejandro: Foto y png como imágenes.
+Gerardo: Incluso la puedes fotografiar con tu celular.
+Alejandro: Claro, que eso es lo que yo te decía, que si tú estás trabajando en tu computador y le dices ¿Quieres conectarte al teléfono para tomar la foto? Imagínate que lo que estamos haciendo, pero que la misma plataforma toma la foto y te la pasa la carga al sistema.
+Gerardo: Espectacular.
+Ramon: Vamos a ver si salió. Te la mandé ya al correo.
+Gerardo: ¿Al mío?
+Alejandro: Sí.
+Gerardo: Métete mi correo canal. Ah, pero muy enredado porque tengo unos pineados al principio y al final de los pineos empiezan los llegados recién. Aquí tiene varias facturas que me estaba falta. Hay cuatro.
+Alejandro: ¿Las tienes en descarga? No, está bien ¿En que descarga sirve también Entonces Mira, vamos a probar una? Seleccionamos el archivo, ¿Verdad? Descargas.
+Anabel: En escritorio.
+Alejandro: Ah, pero la vi. Vamos a probar esta. Prueba de fuego. ¿Ah, pero tú no factura, no? No, pero necesitamos como una boleta como esta el problema.
+Gerardo: Pero espera. Es que el problema con los servicios muchas veces pasa que no nos llega la boleta y no tenemos cómo obtenerla y no vamos a hacer impacto.
+Alejandro: OK, esto lo podemos adaptar, pero para ejemplo en este no, pero lo podemos hacer sin problema.
+Ramon: Ya, pero yo te mandé una.
+Gerardo: Te mando una factura a mi correo.
+Alejandro: Dale, si quieres buscar aquí entonces. Bueno, eso lo podríamos.
+Gerardo: Ninguna de estas facturas entonces Sí hay.
+Anabel: Una que es de ENEL.
+Alejandro: Ah, si había, si había. Veamos a ver qué hay más. Hay la primera no nos sirve en este minuto. Ah, pero podemos ver aquí no prevista antes de abrir. Bueno, vamos a abrirla nomás. Factura 2. Esta es una factura, OK. Ah, ya eso te Después podemos agrandar, pero mira, uno le da aqui. Extraer datos. Extraemos el dato aquí. Y ahí te lo extrajo, ¿Ves? Te pone el RUT, el nombre del proveedor, el número de la factura, el monto, y aquí está los detalles adicionales donde tú. A esta todavía no la hemos entrenado, pero vamos a entrenar para qué categoría es. Las categorías tenemos que crearlas también y ya vas a ver. Proveedor a qué categoría va automáticamente y por default de poner mes en curso, que es este mes que estamos trabajando, ¿Verdad?
+Gerardo: Este sistema viene con un traje color plateado para que pueda entrar así.
+Ramon: No, no, no, no, no, al revés. Tengo que entrenar a este vendedor.
+Gerardo: Tuve cuatro días, tenemos mucha confianza.
+Ramon: No, no, no, no. Pero el tema es el siguiente, ¿No? Porque de verdad que me metí en. Me puse a trabajar.
+Alejandro: Ahi esta el jefe marketing.
+Ramon: Me puse a trabajar en serio y el cuento es al revés.
+Alejandro: Esto es gestión humana para facilitarte a lo humano.
+Ramon: Esto no es nada de robots. El trabajo lo va a hacer esta cosa y tu vas a vivir mejor
+Alejandro: Anabel. La clave de esto es que te quite todo este trabajo aburrido de andar.
+Sandra: Si, gracias a esto vas a tener tiempo libre.
+Anabel: Y lo bueno es que los montos son exactos, o sea, uno se puede equivocar en y ahí no.
+Alejandro: Ahora, en teoría esto tiene un 99,99% de que son exactos, ¿Verdad? Ahora, la fase esta que vamos a probar nosotros es precisamente para eso. No debería haber ninguna diferencia en los montos ni nada, pero estamos en este periodo de test donde vamos a ir probando ese tipo de cosas. Entonces aquí tú tienes tu factura. Vamos a suponer que iba cargada y a mantenimiento, si quisiéramos. Esta la queremos pagar en varias cuotas.
+Gerardo: ¿Pagar o cobrar?
+Alejandro: Cobrar, perdón, cobrar. Ahí está por default 2. Y ya sabes que te va a cobrar una en enero, una de diciembre, un enero y no podría mover los numeritos, ¿O si? La vamos a dividir con gasto común o individual y le pones el porcentaje y eso te lo va a tirar después a los cobros individuales, que después hay otro tratamiento de eso que tenemos que ver cómo lo. Pero en el escenario normal sería hasta ahí. Y tú ya cargaste en.
+Anabel: ¿Y por qué ahí de una vez no se divide en el? Por ejemplo, en los cobros individuales por lo menos tenemos que si, un porcentaje en el Metrogás más que todo, que es el 60% al gasto común y el otro 40% que es al cobro individual. Pero cuando es invierno, entonces son tres. ¿Por qué no de una vez ahí.
+Alejandro: Para que quede, anótate? Eso está en el reglamento de los propietarios.
+Sandra: No te van a llevar a la inspección.
+Alejandro: ¿Eso está en el reglamento de propietarios o como te llega a ti la info esa?
+Anabel: No, no, eso está en el reglamento.
+Alejandro: Bueno, eso es muy importante porque entonces podríamos definir una pantallita donde dejamos predefinido eso, que en invierno es tanto y en verano es tanto. Entonces cuando esté el periodo, automáticamente te va a hacer la división de este.
+Anabel: Mes a este mes, ¿No?
+Alejandro: Y lo va a detectar automáticamente. Como es diciembre, al darle a dividir ya lo va, Ya va a saber cuál es la división.
+Gerardo: En todos los contadores. Lo mismo es desde mayo hasta septiembre, esos son los meses de invierno que hay tres, y luego de octubre a abril son dos.
+Alejandro: Bueno, eso es muy fácil, es muy fácil predefinir el sistema. No lo tenemos hecho, pero es una de las funcionalidades que le podemos poner sin ningún problema.
+Anabel: Pero claro, en este mismo paso, para tener que ir a saltar en otro lado.
+Alejandro: Perfecto. Incluso se podría quedar preconfigurado para que no lo tengas que hacer todos los meses. Ya te queda hecho.
+Gerardo: Otra cosa importante es que ahora cómo trabaja eso que efectivamente tú hiciste la edición, OK, dijiste ya esto es para gasto común, esto para agua caliente.
+Alejandro: No, ya les voy a mostrar. No, pero dale, termina tú.
+Gerardo: No, no, en el sentido que no, que pensé que era. Bueno, pero tú tienes agua, ahora ¿Cómo trato el agua caliente? ¿Tengo que ingresar la mano?
+Alejandro: Es que eso es lo que tenemos que decidir nosotros.
+Gerardo: No necesariamente ahí deberíamos poder también tener.
+Alejandro: Lo mismo que esta cuestión es que.
+Anabel: Se puede, un archivo como un Excel se arrastra donde yo suba el Excel con esos departamentos.
+Gerardo: Yo creo que lo más fácil, lo más fácil, perdón, lo más fácil es tener un formato que nosotros podamos imprimir, se lo entregamos al mayordomo y le decimos, señor, llene con lápiz los números.
+Alejandro: No hay una cosa más fácil.
+Ramon: No, No, no, no.
+Gerardo: ¿Por qué, por qué te digo? Porque después agarro eso, los careo, los subo.
+Ramon: No, no, es que precisamente eso es nuevamente foto.
+Gerardo: No, no, hay un trabajo que no se puede evitar, que es que el mayordomo tiene que ir a mirar los medidores.
+Alejandro: Eso lo hemos todavía implementado acá, pero es la idea que tenemos, Si el mayordomo quien se va y toma la foto, la foto te captura la fecha que la tomó y el número del medidor.
+Anabel: Sí, pero el número del medidor o el número del consumo, todo no lo.
+Alejandro: Que te dio la medida, esa fecha tendrías que tener dos periodos para saber el consumo.
+Ramon: No, pero tú agarras, tú agarras, tú le sacas una foto a la pantalla y la pantalla tiene que estar porque aparece cuál es el número del medidor, el número del medidor ya lo tiene.
+Alejandro: Asociado y el teléfono te sale la fecha.
+Anabel: Eso, exactamente a eso iba, porque tendríamos que ponerle, registrar el número del medidor a la unidad.
+Ramon: Pero es que es lo mismo, o sea, lo que yo te digo es que si tú tienes, cuando cada unidad tiene un medidor asociado.
+Anabel: Sí, pero no lo hacemos así, bueno, acá es así todo, pero yo creo.
+Gerardo: Que deberíamos tener las dos opciones. Mira, el truco, una opción, perdón, es tener un formato en el que aquello anote a mano con números bien claritos y nosotros lo subimos aquí, este autor lo lee. Mira, yo creo que me pasa por ejemplo en el caso de tu mayordomo, ¿Cómo se llama este? ¿Cómo se llama el mayordomo de Antonio? Antonio tiene un celular que es como el orto, entonces saca la foto por.
+Ramon: LA comunidad tiene que comprar un celular.
+Alejandro: No, perdón, pero la foto no la vamos a leer nosotros, la va leer la máquina.
+Gerardo: Pero eso son malísimas las fotos.
+Alejandro: Sí, pero ahí vamos a ir probando cuando las fotos son o no podemos.
+Gerardo: Pedirle porque además tienes poca luz para sacar la foto, o sea, puede ser.
+Ramon: También problema de ese tipo, pero imagínate si tienes poca luz por una foto, imagínate para anotar el número, o sea, lo que te quiero decir es que el tema aquí es el siguiente, nosotros no vamos a sustituir a los humanos, la idea no es esa, pero los humanos van a hacer lo que hace mejor que gestión ya vaya, lo que nosotros podamos agarrar, que sea digital, que provenga de fotos escaneo o de cualquier cosa que venga que se baje ya pre configurado es mucho mejor porque reduce el error humano, Lo que sí vas a hacer tú o cualquiera que le toque eso es agarrar y decir, mira, si efectivamente lo que me dijo la foto está bien registrado y lo puedes hacer, no tienes que hacerlo por cada unidad, sino puedes hacerlo aleatorio. Hay que establecer criterios para revisión. Pero es distinto eso a tener que. Porque imagínante, ya tienes que te lo mande la mano luego que tú lo transcribas.
+Alejandro: Yo quiero hacer un punto de orden nada más. Hoy la idea es ir de una transición de algo que baja pie, como dijiste tú, a irte en un Ferrari, ¿Verdad?
+Ramon: Una micro primero.
+Alejandro: Bueno, por eso, pero de ir al a pie al Ferrari hay pasos. Entonces nosotros vamos a ir pasos evolutivos. Y al principio uno tiene que no irse de una a lo más moderno que podemos. Están las capacidades, pero hay que ofrecer que sea primero idéntico, por eso dejé este formulario manual. Después lo idéntico más un pasito ya es el Twingo de Shakira, ¿Verdad? Después van pasando, qué sé yo, pero de ahí van pasando poco a poco. Y entonces llegar a lo de la foto y lo que el conserje solamente haga un vídeo y después del vídeo ya tienes todo pre registrado. Nosotros vamos a habilitar la forma de que eso pase. Pero en principio si hay que empezar con el Excel, que la gente pueda subir el Excel, pero que no sea la cosa que deben estar haciendo ahora, que es uno a uno.
+Gerardo: Es factible algo escrito a mano, pero.
+Ramon: Si pero el margen de error ahí es más grande. Depende de la letra de la persona.
+Alejandro: Pero sí, pero sí.
+Gerardo: Es que revisar foto a foto me volver loco. Pero igual para que la máquina no se equivoque.
+Alejandro: Ahí lo que hace es auditoría Gerardo, más bien selecciona la teoría un 20% y si no hay margen, o sea, si hay mucho error, ya no.
+Ramon: La pregunta es la siguiente, nosotros tenemos que tener, o sea, por ejemplo, pero.
+Alejandro: Insisto que Nos fuimos como 10 pueblos más adelante.
+Ramon: No, no, no hemos ido ningún pueblo más allá. Porque es que el tema para mí es el siguiente, o sea, el tema es el proceso de alimentar la información al sistema puede venir de distintas variables, muchas variables. Ahora, lo que yo digo es que si bien es cierto que tú lo puedes hacer como lo hacen los demás, yo lo que creo que nosotros lo que tenemos que decir es cómo lo podemos empezar a hacer ya con lo que tenemos y olvidarnos de cómo lo hacen los demás.
+Alejandro: ¿No? Sí, pero las dos cosas, porque lo.
+Ramon: Que yo te quiero decir es que no, si tú lo quieres hacer manual porque no tengo la información, por ejemplo, lo hace manual. Si tú lo quieres hacer digital porque.
+Alejandro: Tienes la información, tenerle todas las alternativas.
+Ramon: Te llamen por teléfono y te digan ¿Sabes que?
+Alejandro: La comunidad que te mande una nota de voz con todos los medidores y también puedes reconocer. Eso es la otra cosa, puedes reconocer, puedes convertir audio en registro.
+Gerardo: Podemos grabar realmente.
+Alejandro: Los medidores en vez de verlos, dice medidor 345 348, medidor tal, hablando. Y nosotros después solo se procesa automáticamente y se pone en el Excel y el Excel lo sube.
+Gerardo: Eso sí. Que.
+Ramon: Pero entonces. Pero ahí es donde yo voy, o sea, el tema es, todo eso está, o sea, ahí lo que tenemos que nosotros ponerlo para que tú puedas ver cómo se.
+Alejandro: Y probarlo en el mundo real y que afinar.
+Ramon: Claro, pero el tema para mí es, en la medida que nosotros, no importa la calidad del teléfono, si la calidad es tan mala, un problema de inversión que tienes, que tú como administradores, uno.
+Alejandro: Le puede poner un prefiltro que te haga una. Y dice la imagen no es no elegible.
+Gerardo: No, pero eso va a pasar con una persona como Antonio, no con una persona como el comité que teníamos con ustedes, digamos que había una persona que más o menos que el sistema era pelota, que lo sacaron, no sé qué, no quiero que haya, ¿Cómo se llama? Oposición al sistema, que me digan no sé que está guay, que sacar fotos no, chao.
+Anabel: No, claro.
+Gerardo: Oye, puedes sacar fotos, lo que tú quieras.
+Sandra: Parte solamente compete a la administración, a.
+Ramon: Nadie más le compete.
+Gerardo: ¿Pero puedo decirlo?
+Ramon: No, dilo, dilo, dilo, dilo, dilo.
+Gerardo: Pero tú estás obligando a la comunidad a comprar un celular.
+Alejandro: No, mira, mira, mira. Ya va, ya va. Perdón. Hay un tema que es importante que he estado averiguando muchísimo y cada vez me hace más sentido, cómo este avance tecnológico ofrece mucha oportunidad. Una de las grandes trabas que tienen los sistemas hoy, y sobre todo en empresas grandes, llámense los famosos ERP de Oracle, SAP y todo eso, que obligan a la empresa donde uno trabaja a adaptarse a un sistema y eso ya te genera una fricción. Cuando la gente cambia algo así, la gente se siente y la odia y la hace la guerra. Mi trabajo, hicieron eso hace unos años, se tardaron como 4 o 5 años para poder adaptarse a eso. Y el sistema lo enseñan esta gente de computación que dice esto tiene que hacerse así, por acá, por allá, obligatorio La ventaja que tenemos con estas herramientas es que es al revés, es un sistema que se adapta a lo que tú haces. Por eso es importante que nosotros estamos en esta conversación donde el sistema tiene que hacer lo que tú quieres que haga, no que tú ahora tengas unos pasos adicionales, que tengas comprar un teléfono, un tablet vergatrónico o un sensor de no sé qué cosa, no, con lo que tiene. Y ahí estoy de acuerdo con Gerardo, si es a mano, es a mano, si es hablando, es hablando, si es con foto, es con fotos, si es tradicional, tradicional.
+Gerardo: Claro.
+Alejandro: Y después cuando la gente ve esa transición, uno puede ir monitoreando lo que tiene menos uso. Esta que la estamos dejando así a mano, seguro no se va a usar. ¿Después.
+Ramon: Cuando tú vas a una comunidad, tú le dices cómo tú te lo registras? No, a mí nunca me lo dijiste.
+Gerardo: No, a ti no.
+Ramon: Pero vamos a ir nuevamente, o sea, el tema es el siguiente. El tema es que nosotros lo que estamos diciendo es ella sabe cómo hacer su pega (trabajo), ya tú sabes cómo se tu pega, el mayordomo sabe cómo se.
+Alejandro: Pega, se llega al mejor acuerdo, pongámosela más fácil funcionamiento.
+Ramon: Y lo que yo digo es, la pega de ella es recibir información, garantizar la integridad de la información, hacer los asientos contables apropiados, generar el gasto común apropiado. Lo tuyo es agarrar la información que ya tiene y hacer gestión. El mayordomo tiene que dar insumos para ti. ¿Para ti para cual? Para el sistema en general. Entonces lo que yo digo es que en este momento nosotros estamos viendo, más bien es el trabajo de ella, a ti te va a llegar la información sea como sea. La pregunta es como tú rescatas esa información para poder crear tu gasto común. Entonces lo que nosotros necesitamos que tú.
+Gerardo: Nos digas.
+Ramon: Ahorita en este momento, yo agarro, me llega un listado a mano o en Excel de los medidores y yo uso esa información, yo cada una de esa información la paso a cada unidad y voy haciendo eso. Si nosotros agarramos y partimos como están haciendo ustedes ahorita, con el informe a mano y ese informe ya se lee, ya el trabajo tuyo de la posibilidad que tú te equivoques interpretando el número. El problema de hacerlo a mano es que hay margen de error grande. Una persona con dislexia, cagaste. Una persona zurdo como yo, no me entiendo ni yo una persona que no sepa escribir. Chao. Entonces, lo que yo digo, por eso te digo, independientemente de que la calidad sea, no sea mala, es muy probable que la imagen sea mejor que lo que sea la escritura.
+Gerardo: Una de las cosas que yo hacía, no sé si lo está diciendo ahora Anabel, porque yo no he chequeado el trabajo, Anabel, pero una de las cosas que yo hacía y me parecía muy bueno era pedirle a las personas que transcribieran todos los datos del mes anterior, pusiera los datos del mes actual e hiciera la suma para ver cuánto es lo que consumiendo cada departamento. ¿Por qué? Porque así la persona que lee el medidor, si leyó un medidor en el cual tu departamento está consumiendo 50 metros cúbicos de agua caliente, diga, no, pues eso es imposible, yo creo que leí mal.
+Alejandro: Te lo va a poder dar sistema automático, automáticamente.
+Gerardo: Vamos a tener que poner dos cosas. Uno, en el tema del agua caliente, obviamente es más fácil, porque si tú tienes más de 10 metros cúbicos en el mes, existe una alta probabilidad de error. Y en el caso de la calefacción, si tú tienes un consumo que es mayor al 10% del condominio, o sea, el condominio gastó 2 millones y tú tenís más de 200 lucas es esta al.
+Alejandro: Esos son parámetros que se insertan al sistema. No, no, está bien, porque cuando tú estás midiendo. No, pero son parámetros que le metes al sistema.
+Gerardo: Cuando iba a sacar el gasto común, el sistema tiene que decirme, oye compadre, tenéis tres departamentos y tenés más de 10 metros cúbicos.
+Ramon: Es ahí donde sí estamos saltando cinco pueblos más. Lo que yo digo es, estamos en el proceso de alimentar un gasto normal y nos fuimos para los gastos más estamos haciendo, alimentando.
+Alejandro: No, no, pero es que está bien lo que dice Gerardo, porque no estoy.
+Ramon: No estoy diciendo que este mal.
+Alejandro: No es que tú lo pones el sistema, cuando la persona va a cargar el agua, el sistema te hace un warning, una alerta amarilla, ojo, porque habitualmente no puede ser más de 10 y te está dando más de 10. Eso es sencillo, implementable y simple. Ya, como que, che.
+Gerardo: Y en el caso de.
+Alejandro: Porque cuando a ella le sale esa señal, dice ahí lo que yo digo.
+Ramon: Es como que tú me digas a mí el tipo, o sea, tú tienes los números, los alimentaste, luego viene una parce que es analizar su número.
+Alejandro: ¿No, no, es que no es analizar, es cuando lo estás cargando, Ramón?
+Ramon: Lo estoy cargando, o sea, cuando estoy cargando no me va a salir nada.
+Anabel: Es que lo que pasa es que como dice Ramón, el tema es de que la persona que lo tomó, que hizo la lectura, se equivocó. Por ejemplo, No era un 8. No era, no sé, un 8.
+Ramon: Era un 5.
+Anabel: Un 8, un 5. Exacto. Entonces obviamente eso se va a disparar, como me ha pasado, como nos pasó una vez con Asturias cuando la cesia, que se equivocaba tanto en esas tomas y yo tenía que estar pendiente. Mira, ¿Me puedes pasar la foto del medidor?
+Alejandro: Eso. Pero hablemoslo con este ejemplo específico para no hablar tan abstracto. Vamos a suponer que este gasto es de una cosa que tú ya tienes identificado que te dice en el sistema este gasto no puede ser más de 50 mil pesos. Si es más de 50 mil, cuando yo le voy a guardar cambio me tiene que dar una alerta.
+Gerardo: Exacto.
+Alejandro: Es una especie de preauditoría y eso uno lo puede configurar. Mi punto es que lo podemos configurar aquí. ¿Estamos claros?
+Ramon: Lo tengo claro, pero lo que yo te estoy diciendo es que validemos la información después. Primero es carguemos, veamos cómo cargamos, porque si no le estamos metiendo cinco minutos.
+Alejandro: Bueno, yo dije de principio, nos fuimos más allá.
+Anabel: Lo que quiero tratar de decir es tratar de poner la información ahí, que se vea lo más clara posible y.
+Ramon: Después vemos y después la vamos evaluando.
+Anabel: Ya si eso tira la alerta es porque en verdad la comunidad, o sea, o el departamento tomó más medición de lo que era. Pero no que sea por un error humano de un número mal puesto.
+Ramon: ¿El tema es nuevamente, o sea, que sea cual sea el método, como captamos? Primero tenemos que captar, luego vamos a evaluar la calidad de lo que capta.
+Alejandro: En el momento, después, antes, durante. OK, está bien, perfecto.
+Gerardo: Porque cuando se captura mal...
+Alejandro: Claro, es que es el tema.
+Ramon: Los reclamos son terribles 
+Alejandro: Hoy,si eso se captura mal tanto así como está con los que trabajan con Excel, con los que trabajan con Edifito, comunidad Feliz, nosotros queremos reducir esos errores.
+Ramon: Pero la pregunta es, lo que estamos mostrándole a ella ahorita es una boleta cómo la carga al sistema.
+Alejandro: Exacto. Sigamos.
+Ramon: Vamos a ver si la boleta está bien captada o el número mal. Es un salto, una fuga o lo que sea.
+Alejandro: Por eso sigamos acá. Sí acá no captó el tema de mi teléfono porque probablemente la factura no la tenía. La idea es que lo capte, si uno después lo carga para las próximas facturas, si las quieres alimentar manuales o de esta forma, tú tipeando el RUT ya te va a aparecer todos los datos, no tiene que estar metiéndolos todos. Entonces aquí registraste, verificaste, viste que era este periodo y le das guardar cambio. Y ahí ya te van a quedar todos tus gastos y fíjate que te sale en prorrateo pendiente porque. Porque ahí van a quedar todos los que. Mientras no cierres el período.
+Anabel: Mientras no le saque pago.
+Alejandro: Mientras no emita el gasto común, que esa es otra cosa. Las terminologías hay que ver que sean claras también, porque yo puse prorrateo, pero no sé si es lo que se.
+Gerardo: Si, es es entendible.
+Alejandro: No, pero que no tiene que ser entendible, tiene que ser lo que usan ustedes en.
+Gerardo: No se prorratea su factura porque no haber gastado un todavía. Exacto.
+Alejandro: OK, aca puedes volver a verla, ¿Verdad? Si tienes que cambiar cosas, las va a poder cambiar mientras no hayas generado el gasto común y acá la puedes borrar, siempre y cuando no haya sido generada mucho la factura. Aquí le das doble clic y aquí la puedes ver, o sea, aquí hay una parte para ver la mas grande.
+Anabel: Y para sacar el pago?
+Ramon: Eso es otra cosa.
+Alejandro: OK, eso lo vamos a poner. Eso lo vamos a poner y por eso yo quería entender con ustedes cómo se hace para yo hacerlo a la medida. Mi idea era que también aquí tengas esta calculadora, hacerle el pago, cuando abres, ahí te va a salir la ventanita pagado con transferencia, cheque, tiene que ser.
+Gerardo: Tiene que ser un egreso, eso tiene que ser un egreso para que quede con un número correlativo, si no todo.
+Alejandro: Todo queda registrado y después, ahora registramos todo, después la contabilidad, eso se va a hacer a la medida, porque van a quedar todas las cositas en una tablita bien identificada. Cada vez que se haga genera un pago, ahí te va a quedar en tu cuenta de gastos.
+Anabel: Claro, porque puede haber un botón de pagar.
+Gerardo: Déjeme entendamos el tema, cómo funcionamos hoy, que tal vez no es lo más inteligente, pero hasta hoy día la manera es cuando se emiten cheques o cuando se emiten, cuando se sube la nómina para hacer la transferencia electrónica a los proveedores, uno emite, tiene la factura por un lado impresa y por otro lado tiene el comprobante de egreso y el comprobante de egreso le asegura al señor que está pagando que eso está ingresado en el sistema y que va a ser cobrado en el siguiente gasto común. Porque una de las cosas importantes es que si yo gasto 100, yo tengo que cobrar 100, eso el sistema tiene que dármelo todo, te lo como seguridad.
+Alejandro: Eso ya es tema de la reportería que vamos a generar. Si tú quieres hacerle. 
+Gerardo: No, no, es que es más que eso
+Alejandro: Osea, piensa una cosa, cuando nosotros estamos haciendo este registro, está llegando toda una tabla o a varias tablas, las que uno quiera, Esto de la contabilidad tradicional donde hacían partida doble de debe y haber, estos sistemas ahora se manejan distinto, la información va quedando registrada en. ¿Uno puede reconstruir eso? No, ya, un segundo que yo entendí lo que tú quieres decir. Luego cuando uno genera el gasto, el egreso, puedes ponerle lo que tú quieras, la portadita que quieres, el voucher de egreso, le puedes llamar como quiera, eso lo configuramos a medida y que se genere un PDF y que se mande por WhatsApp y ustedes me van a decir, esto quiero que sea de esta forma, quiero que sea como las boletitas a mano, quiero. Eso da un poco lo mismo.
+Anabel: ¿Si le ponemos el botón, verdad? Para dar apago. Cuando nosotros le ponemos ese botón, ahí vamos a registrar la forma, por ejemplo, si es transferencia, ponemos transferencia, número tal, de la fecha tal, queda guardado y va a generar un egreso, que ese egreso viene con uno número también de comprobante.
+Gerardo: Además tenemos que también archivarlo, dejarlo registrado.
+Alejandro: Exacto, te va a generar. Podemos diseñar esta misma portada.
+Gerardo: Escúchame, pero esa portada a ti te da la seguridad de que está.
+Ramon: El tema es el siguiente, o sea, ustedes van haciendo, tú vas haciendo cada cosa, todo el mismo.
+Anabel: Por ejemplo.
+Ramon: Eso lo puedes hacer tú porque eres tú solo haciendo todo, pero si tuvieras una persona yo cargo las boletas, tú haces el gasto común, procesos procesos independientes que lo hacemos así, porque.
+Gerardo: Ella carga la boleta, yo hago el gasto común.
+Ramon: Bueno, a eso me refiero. Entonces lo que está planteando este sistema es encárguese primero de hacer los registros. Listo. Luego viene el proceso de elaboración de gasto común.
+Anabel: Pasa es que Comunidad Feliz, Edifito, yo voy cargando el gasto y abajo hay como una pestañita que si yo no tiene, por ejemplo, si son dos boletas de selectro supongamos, ya yo ahí no lo. Y las quiero pagar las dos juntas, me tengo que ir a otro lado para jalar ese pago, pero si es una sola y le quiero sacar el pago de una vez yo lo ticleo y de una vez en el mismo procedimiento sin tener que guardar y después ir y venir, no sé qué, sino que yo coloco el número de cheque, tal, tal, lleno mi cheque, le doy a guardar, me emite el egreso, le pongo mi cheque tal y ya yo me olvido de esto.
+Ramon: Claro, pero la pregunta mía es eso, o sea, el tema es para ustedes, la forma como funciona así es la correcta, pero imagínante que ustedes ahora son cuatro veces lo que son ahora, no es factible que tú tengas que la persona que esté cargando, que es la que escanea nada más lo tira a una carpeta. Lo que yo digo es que veamos esto como procesos, porque en la medida que lo vemos como procesos nosotros podemos integrarlo o separarlo, pero lo que tenemos que estar seguro es que el proceso de alimentar está hecho.
+Alejandro: Por eso a mí me interesa, a mí me interesa dejar claro en esto que estamos acá como el paso a paso, registraste este pago, ¿Verdad? Tú podrías eventualmente dejarlo así y esperar a que pague, o si en el minuto está registrando un pago, un gasto que ya se pagó también puede ser, nunca se ha pagado el gasto, que.
+Anabel: Eso también va a depender de la persona.
+Alejandro: Pero pongámosos en todas las situaciones, pensemos que este gasto está pago, yo quiero dejarlo pagado de una vez. Claro, debería traer una pestañita que te diga se pagó, ya está pagado, está listo, con transferencia, la fecha tal, puede ser, esa es una opción. ¿Cuál es la otra opción? Que tú lo guardaste y después vienes otro día y lo vas a pagar y ahí le das a pagar y te sale también la opción generar pago, no sé qué.
+Anabel: Claro, es que por eso te digo, porque por ejemplo, cuando yo trabajo acá, porque nosotros trabajamos tres días acá y dos días de la casa, entonces cuando yo trabajo acá, yo hago el proceso completo, o sea, a mí me llega la factura, yo registro todo y le saco de una vez el cheque, pero cuando estoy en mi casa hago el otro proceso, yo registro todo y guardo y cuando yo llego, empiezo a hacer los cheques.
+Ramon: Tu tienes que tener la posibilidad hacerla de las dos maneras. Pero lo que yo digo es que imaginémonos precisamente este es un estupendo ejemplo donde lo que tú dices, dependiendo la compañía, administrador, el método contable, todo, vas a utilizar distintas cosas. Lo que es importante es que tengamos conciencia de que no importa como tú lo hagas, vas a tener todos los registros que tú necesitas para hacerlo el proceso completo.
+Alejandro: Pero ahora sí me interesa entender bien ese proceso porque lo vamos a adaptar a la forma como hace. Entonces, cuando luego tú generas el egreso, como le dicen ustedes, haces el pago con cheque, pones el número de cheque, te hace lo del cheque y ahí ya queda como pagado o el cheque ¿Qué hace después con ese comprobante de egreso? Lo que quiera firmar alguien del comité. ¿Qué es lo que pasa después?
+Anabel: Cuando es con cheque, yo lleno todo el cheque, se lo grabo y ya, por ejemplo, tenemos fechas 15 y último que se envía el lote al condominio. Tenemos un condominio en específico que son transferencia. Entonces, ¿Qué pasa con esas transferencias? Cuando trabajamos con transferencia, esto queda así tal cual como lo acabas de hacer ahí cuando yo subo las cosas al banco y me lo pagan, ahí es donde yo voy a bajar el egreso, porque ya está pagado en banco.
+Alejandro: Que lo ideal sería que la conciliación bancaria automática te hiciera el check, esto está pagado y no tengas que hacer nada más y te registre automáticamente el pago, ¿Verdad?
+Anabel: Si es con transferencia, exacto.
+Alejandro: Si fuera cheque, tú agarras todos los cheques y se los llevas al comité y entonces ahí tiene que haber un estatus que debe ser en tránsito, hay que cambiar el estatus
+Gerardo: Eso es muy bueno, porque hoy dia no sabemos donde el cheque en el proceso
+Alejandro: Entonces cuando tú lo emites está en proceso, luego cuando te llegó el cheque está aprobado y después en conciliación cobrado. Entonces son tres estados, si no me equivoco, estamos grabando y eso lo vamos a tener que diseñar aquí.
+Gerardo: Esta parte nos ha pasado que no sabemos dónde están, pasa de repente un tiempo y el comité no lo ha firmado, uno de los gallos del comité se lo guardó porque le pareció raro, no sé qué y perdemos la trazabilidad.
+Alejandro: Y en el estado lo ideal sería que tuviera una notita que dice se envió tal día al comité para que firme, por ejemplo, tú le pones una notita de lo que tú quieras para hacerle el seguimiento después a dónde están los cheques. Sí. OK. OK, entonces perfecto. Entonces aquí estamos claros que la parte pago. 
+Gerardo: Otra cosa importante es que los pagos, los pagos deben salir desde aquí, o sea, no se puede pagar alguien que no está ingresado en el sistema.
+Alejandro: Perfecto, porque es cosa de organización de ustedes.
+Ramon: Pero sí un tema que estuve dándole mucha cabeza ahorita y tiene que ver con todas estas cosas. Nosotros no vamos a poder resolver todos los problemas, tenemos que resolver los problemas que generen conflicto y lo que genera conflicto es el trabajo hacia afuera, el trabajo hacia adentro, son distintas escalas de conflicto. Pero si nosotros pretendemos resolver todos los problemas, no vamos a salir nunca. No, no, si no son todos, a qué me refiero, o sea, estamos anotando todas las cosas que quisiéramos hacer, pero la pregunta es con lo que ya tenemos ¿Podemos salir o no podemos salir?
+Gerardo: No podemos.
+Ramon: ¿Por qué?
+Gerardo: Porque me falta un sistema de pago.
+Ramon: Es que un sistema de pago.
+Gerardo: No, pero yo tengo que pagar porque.
+Anabel: Es importante que nosotros cuando emitimos ese cheque, ese documento que registrado, el soporte.
+Alejandro: No, pero eso está, eso está considerado. Eso es, eso se mueve dos cosas y ya está.
+Gerardo: A mí que me interesa ingresar la factura, los cuatro pasos, lo que acabamos de decir.
+Ramon: Bueno, pero eso está pues.
+Alejandro: Pues es que es parte de lo que estamos, el trabajo que estamos haciendo ahora había una cosa que yo había escrito por aquí que es importante para. Bueno, podemos hablar luego, era de las cosas que van a estar, que es parte de lo que va a estar, es eso. Sí, pero no sé si la hablamos, Espérate que no sé donde lo dejé.
+Ramon: Sigamos aquí con Anabel y después nos sentamos nosotros a hablar de las otras cosas, porque hay varias cosas que tenemos. Nosotros tenemos que saber qué es lo mínimo que necesitamos.
+Alejandro: Mira, aquí está, es que yo quiero. Esto es parte de esta conversación. Lo que va a estar en esta, cuando digamos que estamos listos y no vamos a estar en la calle a un cliente si no está, es lo de las comunidades y unidades, que eso ya está, ¿Verdad? Registro de gastos. En registro de gastos yo entiendo que va lo del pago también lo estamos considerando. El egreso. El egreso para hablar el mismo idioma. Todo, todo, que tú llegaste al pago, que se emitió y salió, que lo firmaron todo, todo ese cuento del que hablamos ahorita. Nómina básica, la que vimos ahora vamos a cargar las nóminas.
+Ramon: Agí hay un tema, no es nómina nosotros lo que vamos a cargar los registros, nosotros no hacemos nóminas con este sistema.
+Alejandro: Ahora está para hacerlo.
+Ramon: Queremos hacerlo? o sea, porque ese es un tema legal que genera más complicaciones que otras cosas.
+Gerardo: No estoy entendiendo.
+Ramon: ¿El tema es el siguiente, no?
+Alejandro:  El tema es que tú registres el gasto como remuneración total y lo metes como un gasto más, se acabó.
+Ramon: Lo otro es sacar la nómina tú por este sistema y ahí es más complicado.
+Anabel: pero eso es importante.
+Alejandro: Pero hemos avanzado bastante.
+Ramon: No sé, pero lo que te digo es, la consulta que yo estuve haciendo es que ahí tienes consecuencias legales mucho mayores que cualquier otra cosa. Una cosa es registrar mal y una cosa es equivocarte haciendo los pagos tú.
+Gerardo: No estoy entendiendo.
+Ramon: ¿El tema es el siguiente, no?
+Alejandro:  El tema es que tú registres el gasto como remuneración total y lo metes como un gasto más, se acabó.
+Ramon: Lo otro es sacar la nómina tú por este sistema y ahí es más complicado.
+Anabel: pero eso es importante.
+Alejandro: Pero hemos avanzado bastante.
+Ramon: No sé, pero lo que te digo es, la consulta que yo estuve haciendo es que ahí tienes consecuencias legales mucho mayores que cualquier otra cosa. Una cosa es registrar mal y una cosa es equivocarte haciendo los pagos tú.
+Alejandro: No, aquí lo que va a quedar es registrado la nómina y la liquidación de cada individuo y lo que los.
+Ramon: Registros de lo que.
+Gerardo: Eso veámoslo porque eso no lo ve Anabel, eso lo vemos después con Katerine.
+Alejandro: Va a quedar hasta ahí.
+Ramon: Pero es que no hacer la nómina es otra cosa.
+Alejandro: Pero es que no veo que otra cosa es.
+Ramon: No, no hacer la nómina, o sea, porque estoy hablando con gente que hace recursos humanos y me dice no hacer la nómina es saca el cheque, entrega el cheque, hacer los depósitos, todo eso y eso no, nosotros que estamos aquí es haciendo la parte de registro de la nómina.
+Alejandro: Bueno, yo no veo mayor complejidad en eso.
+Ramon: Pero lo que me gijeron a mí es que las consecuencias legales de eso te puede meter, tiene un problema como elaborador de eso porque se exonera la persona, el administrador y quedas tu responsable de eso.
+Alejandro: Pero es que ellos hacen nómina.
+Ramon: No hace nómina. En el fondo cuando haces eso te metes en un tema no menor, lo que me dijeron a mí.
+Alejandro: No importa, veámoslo. ¿Sí, acuérdate que también la gente siempre necesita mostrar que es útil para algo.
+Ramon: No, este es un abogado que le pregunté cuáles son las posibles fallas que nosotros podemos tener acá, no?
+Alejandro: Sí, puede ser.
+Ramon: Y lo que me dijo es evita cualquier vaina que tenga que ver con trabajadores, que tú como plataforma te hagas responsable de eso.

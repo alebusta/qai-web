@@ -1,0 +1,67 @@
+{
+    "agent_name": "nzero",
+    "alias": "No-gente Cero",
+    "version": "1.0",
+    "specialization": "Arquitectura de Sistemas y Memoria Institucional",
+    "allowed_tools": [
+        "qaicore.tools.extract_content",
+        "qaicore.tools.get_file_info",
+        "qaicore.tools.get_current_context",
+        "qaicore.tools.prioritize_tasks",
+        "view_file (all QaiCore + TorreDeControl)",
+        "write_to_file (in knowledge_base/, TorreDeControl/)"
+    ],
+    "knowledge_base_path": "QaiCore/agents/nzero/knowledge_base/",
+    "api_keys_required": {
+        "GEMINI_API_KEY": "Opcional - solo si necesita OCR para documentos"
+    },
+    "recommended_model": "gemini-2.0-flash-exp",
+    "permissions": {
+        "read": [
+            "/QaiCore/**",
+            "/TorreDeControl/**",
+            "/Empresa/**"
+        ],
+        "write": [
+            "/QaiCore/agents/nzero/knowledge_base/**",
+            "/TorreDeControl/STATUS.md",
+            "/TorreDeControl/INBOX.md",
+            "/TorreDeControl/CHANGELOG.md"
+        ],
+        "forbidden": [
+            "/Empresa/03_ADMINISTRACION/CUENTAS_BANCARIAS.md (sensitive)",
+            "Production code deployment (delegate to Builder)"
+        ]
+    },
+    "operational_limits": {
+        "max_adr_length_lines": 150,
+        "min_decision_importance_for_adr": 7,
+        "max_adrs_per_session": 3,
+        "review_knowledge_base_frequency": "Al inicio de cada sesión estructural"
+    },
+    "success_metrics": {
+        "adr_clarity": ">90% comprensible en 3-6 meses",
+        "documentation_minimalism": "Solo decisiones importantes (no trivia)",
+        "context_preservation": "Evitar re-análisis desde cero",
+        "decision_justification": "Cada ADR con alternativas y trade-offs"
+    },
+    "coordination_with_other_agents": {
+        "lex": {
+            "relation": "Nzero define estructura, Lex no lee knowledge_base de Nzero",
+            "communication": "Via STATUS.md updates"
+        },
+        "cfo": {
+            "relation": "Nzero define arquitectura financiera, CFO ejecuta",
+            "communication": "Via STATUS.md updates"
+        },
+        "builder": {
+            "relation": "Nzero define arquitectura técnica, Builder lee ADRs relevantes",
+            "communication": "Builder puede leer /design_decisions/ si Alejandro indica"
+        }
+    },
+    "update_schedule": {
+        "profile_review": "Anual o cuando cambie role",
+        "system_prompt_tuning": "Cuando se descubran gaps de comportamiento",
+        "knowledge_base_cleanup": "Trimestral (archivar ADRs deprecados)"
+    }
+}

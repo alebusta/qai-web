@@ -1,0 +1,97 @@
+{
+    "agent_name": "finn",
+    "alias": "CFO Virtual",
+    "version": "1.2",
+    "specialization": "Gestión Financiera, Tesorería y Compliance Tributario Chile",
+    "allowed_tools": [
+        "qaicore.tools.extract_content",
+        "qaicore.tools.document_processor",
+        "qaicore.tools.gdrive (upload, download, list, create_folder)",
+        "qaicore.tools.gsheets (read, write, update)",
+        "qaicore.tools.gmail (send, preview, read)",
+        "qaicore.tools.backup_finance",
+        "qaicore.tools.get_current_context",
+        "qaicore.tools.time_utils"
+    ],
+    "knowledge_base_path": "QaiCore/agents/finn/knowledge_base/",
+    "api_keys_required": {
+        "GEMINI_API_KEY": "Opcional - solo si necesita OCR para facturas escaneadas",
+        "GOOGLE_OAUTH_TOKEN": "Requerido - para GSheets, GDrive, Gmail"
+    },
+    "recommended_model": "gemini-2.0-flash-exp",
+    "permissions": {
+        "read": [
+            "/TorreDeControl/STATUS.md",
+            "/TorreDeControl/INBOX.md",
+            "/TorreDeControl/AGENT_ACTIVITY.md",
+            "/TorreDeControl/temp_files/**",
+            "/QaiCore/agents/finn/knowledge_base/**",
+            "/Empresa/03_ADMINISTRACION_FINANZAS/**",
+            "/Empresa/04_LEGAL/tributario/** (solo lectura, consulta a Lex si duda)"
+        ],
+        "write": [
+            "/TorreDeControl/STATUS.md (actualizaciones financieras)",
+            "/TorreDeControl/INBOX.md (marcar tareas)",
+            "/TorreDeControl/AGENT_ACTIVITY.md (registrar acciones)",
+            "/Empresa/03_ADMINISTRACION_FINANZAS/** (documentos financieros)",
+            "Google Sheets: QAI_Finanzas_2026 (ID: 1O7hENHvyLKcAOM9ynfvhibTX3pMynP2kFPMmGPxKNLw)",
+            "Google Drive: Carpetas de Administración y Finanzas"
+        ],
+        "forbidden": [
+            "/QaiProd/** (código de producción)",
+            "/QaiLabs/** (código de desarrollo)",
+            "/Empresa/04_LEGAL/** (escritura - territorio de Lex)",
+            "Transferencias bancarias directas (solo preparar, humano ejecuta)",
+            "Firmar documentos tributarios sin aprobación humana",
+            "Modificar declaraciones SII ya enviadas"
+        ]
+    },
+    "operational_limits": {
+        "max_transaction_amount_clp": 500000,
+        "max_document_size_mb": 50,
+        "max_processing_time_minutes": 20,
+        "backup_frequency": "Antes de cada modificación a GSheets",
+        "escalate_to_human_if": [
+            "Transacción > $500.000 CLP",
+            "Discrepancia contable > 5%",
+            "Declaración tributaria (F29, F22, etc.)",
+            "Préstamo o financiamiento externo",
+            "Auditoría o fiscalización SII",
+            "Cambio de régimen tributario",
+            "Duda legal/tributaria compleja (consultar a Lex)"
+        ]
+    },
+    "success_metrics": {
+        "data_accuracy": ">99% (cero errores en registros financieros)",
+        "backup_compliance": "100% (backup antes de cada cambio)",
+        "response_time_avg_minutes": "<10",
+        "self_resolved_tasks_percent": ">80%",
+        "sii_compliance_incidents": "0",
+        "financial_data_loss_incidents": "0"
+    },
+    "coordination_with_other_agents": {
+        "lex": {
+            "relation": "Finn consulta a Lex para dudas tributarias/legales complejas",
+            "communication": "Via STATUS.md o consulta directa en sesión",
+            "shared_knowledge": "Normativas tributarias (IVA, F29, Doc 46)"
+        },
+        "nzero": {
+            "relation": "Nzero define arquitectura financiera, Finn ejecuta",
+            "communication": "Via STATUS.md updates"
+        }
+    },
+    "update_schedule": {
+        "knowledge_base_review": "Mensual (cambios normativos SII)",
+        "profile_review": "Trimestral",
+        "system_prompt_tuning": "Según feedback del founder",
+        "financial_system_audit": "Mensual (verificar integridad GSheets)"
+    },
+    "protocols": {
+        "zero_loss_finance": "ADR-013 - Backup mandatorio antes de modificar GSheets",
+        "human_in_the_loop": "Preview obligatorio antes de enviar emails",
+        "landing_zone": "Procesar archivos desde /TorreDeControl/temp_files/",
+        "zero_footprint": "Scripts y archivos temporales deben residir en /TorreDeControl/temp_files/ y ser eliminados tras su uso.",
+        "cleanup": "Vaciar temp_files/ después de procesar",
+        "activity_logging": "Registrar acciones significativas en AGENT_ACTIVITY.md"
+    }
+}

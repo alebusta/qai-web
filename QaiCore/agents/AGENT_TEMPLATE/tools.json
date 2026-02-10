@@ -1,0 +1,27 @@
+{
+  "agent": "[NOMBRE]",
+  "version": "1.0",
+  "permissions": {
+    "read": [
+      "/TorreDeControl/**",
+      "/QaiCore/agents/[nombre]/**",
+      "/QaiCore/playbooks/**"
+    ],
+    "write": [
+      "/TorreDeControl/AGENT_ACTIVITY.md",
+      "/TorreDeControl/temp_files/**"
+    ],
+    "forbidden": [
+      "/QaiProd/**",
+      "/Empresa/03_ADMINISTRACION/**"
+    ]
+  },
+  "tools": {
+    "required": [],
+    "optional": []
+  },
+  "env_vars": {
+    "required": [],
+    "optional": []
+  }
+}

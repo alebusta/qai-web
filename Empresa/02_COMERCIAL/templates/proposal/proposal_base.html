@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}}</title>
+  <style>
+    /* {{CSS}} */
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="content">
+      <!-- Cover (page 1) -->
+      <section class="cover-page">
+        <div class="cover-frame">
+          <div class="cover-top">
+            <img class="logo" src="{{LOGO_URI}}" alt="The QAI Company" />
+            <div class="cover-date">{{DATE}}</div>
+          </div>
+
+          <div class="cover-center">
+            <div class="kicker">Propuesta</div>
+            <h1 class="h1">{{TITLE}}</h1>
+            <div class="subtitle">{{SUBTITLE}}</div>
+          </div>
+
+          <div class="cover-bottom">
+            <div class="cover-grid">
+              <div class="cover-item">
+                <div class="label">Cliente</div>
+                <div class="value">{{CLIENT}}</div>
+              </div>
+              <div class="cover-item">
+                <div class="label">Contacto</div>
+                <div class="value">{{CONTACT}}</div>
+              </div>
+              <div class="cover-item">
+                <div class="label">Versión</div>
+                <div class="value">{{VERSION}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Document (page 2+) -->
+      <section class="doc-page">
+        <header class="header">
+          <div class="brand">
+            <img class="logo logo-small" src="{{LOGO_URI}}" alt="The QAI Company" />
+          </div>
+          <div class="meta">
+            <div class="meta-title">Propuesta</div>
+            <div class="meta-sub">{{CLIENT}} · {{DATE}}</div>
+          </div>
+        </header>
+
+        <section class="doc">
+          {{CONTENT_HTML}}
+        </section>
+
+        <footer class="footer">
+          <div class="footer-line"></div>
+          <div class="footer-text"><strong>The QAI Company SpA</strong> | Bucarest 17 Dp 58, Providencia, Santiago, RM.</div>
+        </footer>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

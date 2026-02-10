@@ -1,0 +1,51 @@
+# QaiCore - Dependencias para herramientas compartidas
+
+# ===== Extractores de Documentos =====
+# PDF
+pypdf>=3.0.0
+pypdf2>=3.0.1
+
+# Word (DOCX)
+python-docx>=1.1.0
+
+# PowerPoint (PPTX)
+python-pptx>=0.6.23
+
+# Excel
+openpyxl>=3.1.2
+xlrd>=2.0.1  # Para archivos .xls antiguos
+
+# ===== OCR y Procesamiento de Imágenes =====
+# Gemini API (versión actualizada)
+google-genai>=0.2.0
+
+# Procesamiento de imágenes
+pillow>=10.0.0
+
+# Conversión PDF a imágenes (para OCR)
+pdf2image>=1.16.3
+pytesseract>=0.3.10
+
+# ===== Google Workspace (Drive, Sheets) =====
+google-api-python-client>=2.100.0
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.0
+
+# ===== Utilidades =====
+# Path handling mejorado (ya viene con Python 3.4+, pero por si acaso)
+pathlib2>=2.3.7; python_version < '3.4'
+
+# ===== Propuestas (HTML/CSS -> PDF) =====
+markdown>=3.10
+playwright>=1.57.0
+
+# ===== Notas de Instalación =====
+# 
+# Para OCR completo (PDFs escaneados), necesitas Tesseract:
+# Windows: https://github.com/UB-Mannheim/tesseract/wiki
+# Linux: sudo apt-get install tesseract-ocr
+# macOS: brew install tesseract
+#
+# Para pdf2image en Windows, necesitas Poppler:
+# Descargar de: https://github.com/oschwartz10612/poppler-windows/releases/
+# Agregar a PATH

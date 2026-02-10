@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Executive Deck | Sistema de Vigilancia Tecnológica</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-white: #ffffff;
+      --text-dark: #1e293b;
+      --text-white: #ffffff;
+      --primary: #0284c7;
+      /* Blue for headers */
+      --accent: #14b8a6;
+      /* Teal for highlights */
+      --muted: #64748b;
+      --card-bg: #f8fafc;
+      --slide-width: 1280px;
+      --slide-height: 720px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #333;
+      /* Dark bg for viewer context */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    /* Print / PDF Configuration */
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        gap: 0;
+        display: block;
+      }
+
+      .slide {
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        margin: 0 !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+      }
+    }
+
+    /* Slide Base Styles */
+    .slide {
+      width: var(--slide-width);
+      height: var(--slide-height);
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Common Elements */
+    .slide-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .slide-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .qai-logo-corner {
+      height: 30px;
+      opacity: 0.8;
+    }
+
+    /* Typography */
+    .hero-text {
+      font-size: 38px;
+      line-height: 1.4;
+      color: var(--text-dark);
+      max-width: 1000px;
+    }
+
+    .hero-text b {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .sub-hero {
+      font-size: 28px;
+      color: var(--muted);
+      margin-top: 40px;
+      line-height: 1.4;
+      max-width: 950px;
+    }
+
+    /* SLIDE 1: COVER (Dark) */
+    .slide.cover {
+      background: var(--bg-dark);
+      color: var(--text-white);
+      justify-content: center;
+      padding-left: 100px;
+    }
+
+    .cover-pretitle {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .cover-title {
+      font-size: 82px;
+      line-height: 0.95;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-white);
+      margin-bottom: 60px;
+    }
+
+    .cover-footer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .cover-logo {
+      height: 40px;
+      filter: brightness(0) invert(1);
+      /* Make logo white */
+    }
+
+    .cover-client {
+      font-size: 16px;
+      color: var(--muted);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      padding-left: 20px;
+    }
+
+    /* SLIDE 3: GRID CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .card-item {
+      background: var(--bg-white);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-icon {
+      font-size: 40px;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .card-text {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* SLIDE 4: SPLIT LAYOUT */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      height: 100%;
+    }
+
+    .split-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .list-item {
+      background: var(--card-bg);
+      border: 1px solid #e2e8f0;
+      padding: 24px 30px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .list-item .material-icons {
+      font-size: 20px;
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide cover">
+    <div class="cover-pretitle">Propuesta Estratégica</div>
+    <div class="cover-title">
+      Sistema de<br>
+      Vigilancia<br>
+      Tecnológica
+    </div>
+
+    <div class="cover-footer">
+      <img src="http://localhost:8585/Empresa/01_ESTRATEGIA/IDENTIDAD_VISUAL/logoQAI_transparent.png" class="cover-logo"
+        alt="QAI">
+      <div class="cover-client">CIAL Alimentos | 2026</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: LIDERAZGO -->
+  <div class="slide">
+    <div class="slide-topbar">
+      <div class="slide-title">01. Liderazgo bajo presión</div>
+      <img src="http://localhost:8585/Empresa/01_ESTRATEGIA/IDENTIDAD_VISUAL/logoQAI_transparent.png"
+        class="qai-logo-corner" alt="QAI">
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="hero-text">
+        CIAL ya invierte en el futuro: <b>automatización, nuevas categorías y logística 4.0.</b>
+      </div>
+      <div class="sub-hero">
+        El riesgo actual no es la inacción. El riesgo real es <b>decidir tarde</b> o basarse en información fragmentada
+        y estática.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: PROBLEMA -->
+  <div class="slide">
+    <div class="slide-topbar">
+      <div class="slide-title">02. El Problema: Inteligencia Estática</div>
+      <img src="http://localhost:8585/Empresa/01_ESTRATEGIA/IDENTIDAD_VISUAL/logoQAI_transparent.png"
+        class="qai-logo-corner" alt="QAI">
+    </div>
+
+    <div class="cards-grid">
+      <!-- Card 1 -->
+      <div class="card-item">
+        <span class="material-icons card-icon">history_toggle_off</span>
+        <div class="card-title">Es Lento</div>
+        <div class="card-text">
+          Los informes PDF trimestrales son autopsias, no radares. Llegan 8 semanas tarde.
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card-item">
+        <span class="material-icons card-icon">visibility_off</span>
+        <div class="card-title">Es Pasivo</div>
+        <div class="card-text">
+          Obliga a sus líderes a leer 80 páginas para extraer un solo insight accionable.
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card-item">
+        <span class="material-icons card-icon">cloud_off</span>
+        <div class="card-title">Sin Memoria</div>
+        <div class="card-text">
+          El conocimiento se pierde en hilos de correo. No hay un buscador central de señales.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: SOLUCION -->
+  <div class="slide">
+    <div class="slide-topbar">
+      <div class="slide-title">03. La Solución QAI: El "Radar Vivo"</div>
+      <img src="http://localhost:8585/Empresa/01_ESTRATEGIA/IDENTIDAD_VISUAL/logoQAI_transparent.png"
+        class="qai-logo-corner" alt="QAI">
+    </div>
+
+    <div class="split-layout">
+      <!-- Left Content -->
+      <div>
+        <div class="hero-text" style="font-size: 32px;">
+          Transformamos el ruido masivo en un <b>Intelligence Hub</b> 24/7.
+        </div>
+        <div class="sub-hero" style="font-size: 24px; margin-top: 30px;">
+          Un sistema dinámico que captura, filtra y alerta sobre lo que realmente mueve la aguja en CIAL.
+        </div>
+      </div>
+
+      <!-- Right List -->
+      <div class="split-list">
+        <div class="list-item">
+          <span class="material-icons">radar</span>
+          Radar Continuo de patentes y startups.
+        </div>
+        <div class="list-item">
+          <span class="material-icons">notifications_active</span>
+          Alertas Activas vía WhatsApp/Teams.
+        </div>
+        <div class="list-item">
+          <span class="material-icons">history_edu</span>
+          Memoria Histórica searchable.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: 4 PILARES STRATEGIC -->
+  <div class="slide">
+    <div class="slide-topbar">
+      <div class="slide-title">04. Los 4 Pilares Estratégicos</div>
+      <img src="http://localhost:8585/Empresa/01_ESTRATEGIA/IDENTIDAD_VISUAL/logoQAI_transparent.png"
+        class="qai-logo-corner" alt="QAI">
+    </div>
+
+    <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px;">
+      <div class="card-item">
+        <span class="material-icons card-icon">factory</span>
+        <div class="card-title">Operaciones & Planta</div>
+        <div class="card-text">Vigilancia sobre robótica, seguridad aumentada y eficiencia energética.</div>
+      </div>
+      <div class="card-item">
+        <span class="material-icons card-icon">local_shipping</span>
+        <div class="card-title">Logística Inteligente</div>
+        <div class="card-text">Optimización de última milla, trazabilidad IoT y nuevos materiales de embalaje.</div>
+      </div>
+      <div class="card-item">
+        <span class="material-icons card-icon">storefront</span>
+        <div class="card-title">Producto & Mercado</div>
+        <div class="card-text">Tendencias en snacks saludables, proteínas alternativas y cambios en el consumidor.</div>
+      </div>
+      <div class="card-item">
+        <span class="material-icons card-icon">eco</span>
+        <div class="card-title">Sostenibilidad & Normativa</div>
+        <div class="card-text">Monitoreo de Ley REP, reducción de huella de carbono y regulaciones sanitarias.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: CLOSING -->
+  <div class="slide cover">
+    <div class="cover-title" style="font-size: 54px; text-align: center;">
+      Hagamos que el futuro<br>trabaje para CIAL.
+    </div>
+    <div class="cover-footer" style="flex-direction: column; gap: 10px; margin-top: 60px;">
+      <div style="font-size: 24px; font-weight: 700; color: var(--accent);">Próximos Pasos</div>
+      <div style="font-size: 18px; color: var(--muted);">Validación de Ejes &rarr; Activación de Credenciales &rarr;
+        Kickoff</div>
+    </div>
+  </div>
+
+</body>
+
+</html>
