@@ -50,28 +50,127 @@
 - Gratis con autenticación (5,000 req/hora)
 - Sin costo adicional
 
----
+## 📋 Guía de Seguimiento Detallado de Costos
 
-## 🔗 Links de Monitoreo
-
-| Qué monitorear | Link |
-|:---|:---|
-| **Billing Dashboard** | [console.cloud.google.com/billing](https://console.cloud.google.com/billing) |
-| **Cloud Functions Métricas** | [console.cloud.google.com/functions](https://console.cloud.google.com/functions/details/us-central1/qai-hq-bot?project=qai-agents) |
-| **Créditos restantes** | [console.cloud.google.com/billing](https://console.cloud.google.com/billing) → pestaña "Credits" |
-| **Gemini API usage** | [aistudio.google.com](https://aistudio.google.com/apikey) → tu API key → "View metrics" |
-| **Alertas de billing** | [console.cloud.google.com/billing/budgets](https://console.cloud.google.com/billing/budgets?project=qai-agents) |
-
----
-
-## ⚠️ Recomendación: Crear Alerta de Billing
-
-Para que nunca te sorprendan cargos, configura una alerta:
+### Paso 1: Configurar Alerta de Billing (hacer una vez)
 
 1. Ve a [Billing → Budgets & alerts](https://console.cloud.google.com/billing/budgets?project=qai-agents)
 2. Click **"Create Budget"**
-3. Budget: **$5 USD/mes** (muy por encima del uso esperado)
-4. Alertas al **50%, 90%, 100%** del budget
-5. Email: tu correo personal
+3. **Nombre:** `QAI Bot - Alerta mensual`
+4. **Projects:** Selecciona `qai-agents`
+5. **Amount:** `$5 USD` (muy por encima del uso esperado)
+6. **Threshold rules:** `50%`, `90%`, `100%`
+7. **Notifications:** Tu email personal + email QAI
+8. **Guardar**
 
-Así recibes aviso si algo se dispara antes de que cueste.
+> 💡 Esto te envía un email automático si tus costos se acercan a $5 en cualquier mes.
+
+---
+
+### Paso 2: Revisión Semanal (~5 min)
+
+Abre estos 3 links y verifica que todo esté en $0:
+
+**1️⃣ Google Cloud — Billing overview**
+- Link: [Billing Dashboard](https://console.cloud.google.com/billing?project=qai-agents)
+- Qué buscar: El gráfico de "Cost this month" debería mostrar **$0.00**
+- Si ves algún costo > $0, revisa qué servicio lo genera
+
+**2️⃣ Cloud Functions — Métricas de uso**
+- Link: [Cloud Functions Metrics](https://console.cloud.google.com/functions/details/us-central1/qai-hq-bot?project=qai-agents&tab=metrics)
+- Qué buscar:
+  - **Invocations/sec**: cuántas veces se llama al bot
+  - **Execution time**: cuánto tarda cada ejecución (debería ser <5 seg)
+  - **Memory usage**: cuánta RAM usa (configuramos 256MB)
+  - **Active instances**: cuántas instancias se crean (normalmente 0-1)
+
+**3️⃣ Gemini API — Consumo de tokens**
+- Link: [Google AI Studio](https://aistudio.google.com/apikey)
+- Click en tu API key → **"View metrics"**
+- Qué buscar:
+  - **Requests per day**: debería ser <100 para uso normal
+  - **Tokens consumed**: input + output tokens usados
+  - **Error rate**: si hay fallos (quota exceeded = llegaste al límite free)
+
+---
+
+### Paso 3: Revisión Mensual (~15 min)
+
+Al cierre de cada mes, completa esta tabla en el registro:
+
+**Checklist mensual:**
+- [ ] Revisar billing total del mes
+- [ ] Anotar invocaciones totales del bot
+- [ ] Verificar créditos GCP restantes ($300 iniciales)
+- [ ] Verificar que no haya servicios huérfanos (Cloud Run, Cloud Build, etc.)
+- [ ] Actualizar tabla de registro (abajo)
+
+**¿Dónde revisar créditos restantes?**
+1. [Billing Dashboard](https://console.cloud.google.com/billing?project=qai-agents)
+2. Click en tu cuenta de billing
+3. Pestaña **"Credits"**
+4. Verás: créditos totales, usados, y fecha de vencimiento
+
+---
+
+### Paso 4: Limpieza de Servicios Fantasma
+
+Google Cloud puede crear servicios auxiliares durante el deploy. Verifica que solo existan los necesarios:
+
+**Servicios que SÍ deben estar activos:**
+- `Cloud Functions` (el bot)
+- `Cloud Run` (backing de Gen2)
+- `Cloud Build` (builds del deploy)
+- `Artifact Registry` (containers)
+
+**Servicios que NO deberían tener costo:**
+- Si ves cargos de `Cloud Storage`, `Compute Engine`, `Cloud SQL` → algo se creó de más
+- Acción: desactivar o eliminar el recurso
+
+**Cómo revisar servicios activos:**
+1. [APIs & Services](https://console.cloud.google.com/apis/dashboard?project=qai-agents)
+2. Revisa la lista de APIs habilitadas
+3. Si hay algo que no reconoces, desactívalo
+
+---
+
+## 🔗 Links de Monitoreo Rápido
+
+| Qué monitorear | Link | Frecuencia |
+|:---|:---|:---|
+| **Billing total** | [Billing Dashboard](https://console.cloud.google.com/billing?project=qai-agents) | Semanal |
+| **Cloud Function métricas** | [Function Details](https://console.cloud.google.com/functions/details/us-central1/qai-hq-bot?project=qai-agents&tab=metrics) | Semanal |
+| **Créditos restantes** | [Credits](https://console.cloud.google.com/billing?project=qai-agents) → Credits tab | Mensual |
+| **Gemini API usage** | [AI Studio Keys](https://aistudio.google.com/apikey) → View metrics | Semanal |
+| **Alertas configuradas** | [Budgets & Alerts](https://console.cloud.google.com/billing/budgets?project=qai-agents) | Una vez |
+| **Servicios activos** | [APIs Dashboard](https://console.cloud.google.com/apis/dashboard?project=qai-agents) | Mensual |
+| **Logs del bot** | [Cloud Logging](https://console.cloud.google.com/logs?project=qai-agents) | Si hay problemas |
+
+---
+
+## 📊 Registro de Costos Mensual
+
+| Mes | Invocaciones | Costo GCF | Costo Gemini | Costo Total | Créditos Restantes | Notas |
+|:---|:---|:---|:---|:---|:---|:---|
+| Feb-2026 | — | $0 | $0 | **$0** | ~$300 | Lanzamiento, solo Founder |
+| Mar-2026 | | | | | | |
+| Abr-2026 | | | | | | |
+| May-2026 | | | | | | |
+| Jun-2026 | | | | | | |
+
+> 📝 **Instrucción para Finn:** Al cierre de cada mes, completar esta tabla con los datos reales del billing dashboard. Esto alimenta el reporte financiero mensual.
+
+---
+
+## 🚨 ¿Qué hacer si aparece un costo inesperado?
+
+1. **No entres en pánico** — Los créditos de $300 absorben cualquier error
+2. Revisa [Billing Reports](https://console.cloud.google.com/billing/reports?project=qai-agents) → filtra por servicio
+3. Identifica qué servicio genera el costo
+4. Si es Cloud Functions: revisa si hay un loop o error que dispara invocaciones masivas
+5. Si es otro servicio: probablemente se creó durante el deploy y puede eliminarse
+6. **Acción inmediata:** Puedes pausar el bot con:
+   ```
+   gcloud functions delete qai-hq-bot --region us-central1 --project qai-agents
+   ```
+   (Esto no borra el código, solo detiene la ejecución)
