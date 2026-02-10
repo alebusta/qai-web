@@ -22,6 +22,8 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [x] **Mover código de Invoice-Match** a `/QaiLabs/PROTOTIPOS/invoice-match/` (Confirmado en CHANGELOG 26-Dic) ✅
 - [ ] **Mover código de Gestión Zen** a `/QaiLabs/PROTOTIPOS/gestion-zen/` (estructura corporativa)
 - [ ] **Crear GitHub Organization** "The QAI Company" (migrar repos personales)
+- [ ] **Configurar alerta de billing GCP** ($5 USD/mes) → ver `QaiLabs/AREA_51/mision_salida/COSTOS.md`
+- [ ] **Rotar tokens del bot** (Telegram, GitHub PAT, Gemini API Key) — expuestos durante setup
 
 ### FedEx - Invoice Matcher
 - [x] **Procesar ejemplos de PDFs** que envió Eduardo (facturas + POs reales) ✅ 26-Dic-2025
