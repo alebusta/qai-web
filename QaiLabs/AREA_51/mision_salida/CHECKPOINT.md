@@ -1,6 +1,9 @@
 # 🧠 Checkpoint — Misión Salida: QAI al Ciberespacio
 
-> **Fecha:** 10-Feb-2026 | **Estado:** ✅ Todas las decisiones tomadas — Listo para Fase 1
+> **Fecha:** 10-Feb-2026 | **Estado:** ✅ Fase 1 completada — Bot Telegram OPERATIVO
+>
+> **URL Cloud Function:** `https://us-central1-qai-agents.cloudfunctions.net/qai-hq-bot`
+> **Proyecto GCP:** `qai-agents` | **Runtime:** Python 3.12 | **Region:** us-central1
 
 ---
 
