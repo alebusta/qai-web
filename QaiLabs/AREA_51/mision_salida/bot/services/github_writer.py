@@ -68,12 +68,16 @@ class GitHubWriter:
             return True
 
         except requests.exceptions.HTTPError as e:
-            if e.response.status_code == 409:
-                logger.error("❌ Conflicto al escribir %s (archivo cambió)", path)
-            elif e.response.status_code == 403:
-                logger.error("❌ Sin permisos de escritura para %s", path)
+            status_code = e.response.status_code
+            body = e.response.text
+            if status_code == 409:
+                logger.error("❌ Conflicto al escribir %s (archivo cambió). Body: %s", path, body)
+            elif status_code == 403:
+                logger.error("❌ Sin permisos de escritura para %s (Forbidden). Token puede ser inválido o sin scopes. Body: %s", path, body)
+            elif status_code == 404:
+                logger.error("❌ Archivo/Repo no encontrado: %s. Body: %s", path, body)
             else:
-                logger.error("❌ Error HTTP al escribir %s: %s", path, e)
+                logger.error("❌ Error HTTP %s al escribir %s: %s. Body: %s", status_code, path, e, body)
             return False
         except requests.exceptions.RequestException as e:
             logger.error("❌ Error de red al escribir %s: %s", path, e)

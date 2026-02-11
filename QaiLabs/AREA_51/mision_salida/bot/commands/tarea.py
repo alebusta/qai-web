@@ -4,6 +4,7 @@ Gestión de tareas en INBOX.md desde Telegram.
 """
 import re
 import logging
+from datetime import datetime
 from services.github_reader import github_reader
 from services.github_writer import github_writer
 
@@ -107,25 +108,39 @@ def _complete_task(search_text: str) -> str:
 
     # Buscar tarea que contenga el texto
     search_lower = search_text.lower()
+    # Limpieza de palabras de ruido
+    garbage = ["punto", "tarea", "hecha", "hecho", "completar", "completado", "marcar", "como", "lixto", "listo", "ok"]
+    search_words = [w.strip("(),.[]") for w in search_lower.split() if w not in garbage and len(w) > 2]
+    
+    if not search_words:
+        search_words = [w.strip("(),.[]") for w in search_lower.split() if len(w) > 1]
+
     lines = content.split("\n")
     found = False
     new_lines = []
+    task_description = ""
 
     for line in lines:
-        if (
-            not found
-            and re.match(r"^-\s*\[\s*\]", line.strip())
-            and search_lower in line.lower()
-        ):
-            # Marcar como completada
-            new_line = line.replace("[ ]", "[x]")
-            if "✅" not in new_line:
-                new_line = new_line.rstrip() + f" ✅ _(completado vía Telegram, {_today()})_"
-            new_lines.append(new_line)
-            found = True
-            logger.info("✅ Tarea completada: %s", line.strip()[:60])
-        else:
-            new_lines.append(line)
+        # Solo buscar en líneas que son tareas pendientes: - [ ]
+        if not found and re.match(r"^-\s*\[\s*\]", line.strip()):
+            line_lower = line.lower()
+            matches = sum(1 for word in search_words if word in line_lower)
+            
+            # Umbral de coincidencia: al menos el 50% de las palabras o al menos 2 si hay varias
+            threshold = max(1, len(search_words) // 2)
+            if matches >= threshold and matches > 0:
+                # Marcar como hecha: [x] + ✅ fecha
+                task_description = line.strip().replace("- [ ]", "").strip()
+                today = datetime.now().strftime("%d-%b")
+                new_line = line.replace("[ ]", "[x]")
+                if "✅" not in new_line:
+                    new_line = new_line.strip() + f" ✅ {today}\n"
+                new_lines.append(new_line)
+                found = True
+                logger.info("✅ Tarea encontrada y completada: %s", task_description)
+                continue
+        
+        new_lines.append(line)
 
     if not found:
         return f"❌ No encontré tarea pendiente que contenga \"{search_text}\""
