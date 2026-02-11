@@ -21,6 +21,7 @@
 | **Libro de Actas Digital** | ✅ | **09-Feb-2026** | **Acta N°1 firmada y respaldada**. Estructura completa operativa. [Ver índice](../Empresa/04_LEGAL/actas/INDICE.md) |
 | **Registro de Accionistas (RES)** | ✅ | **09-Feb-2026** | **Libro abierto oficialmente**. CVE: RA1UcsKaOvrD. Composición 50/50 registrada. [Ver comprobante](../Empresa/04_LEGAL/registros_oficiales/2026-02-09_APERTURA_REGISTRO_ACCIONISTAS_RES.md) |
 | **Repositorio Legal Digital** | ✅ | **10-Feb-2026** | Estructura completa con respaldo en Drive. Checklist operativo creado. [Ver README](../Empresa/04_LEGAL/README.md) |
+| **Protocolo Drive Comercial** | ✅ | **11-Feb-2026** | Estructura de Clientes Estandarizada (`01_insumos`, `02_entregas`...). FedEx y CIAL migrados via **QaiCore Tools** (Standardizer). [Ver Discovery](../TorreDeControl/DISCOVERY_LOG.md) |
 | Firma Electrónica (FEA) | ✅ | | Founder tiene FEA activa. Certificado renovado (E-Cert 04-Feb). |
 | Registro Google Cloud / APIs | ✅ | 28-Dic-2025 | Billing & Tax Info configurado (RUT, IVA, IA Exento) |
 | └─ Método de Pago | ✅ | 29-Dic-2025 | **Banco Chile (Débito)** afiliado. $300 USD Free Tier activo (Vence en 90 días o consumo total). |

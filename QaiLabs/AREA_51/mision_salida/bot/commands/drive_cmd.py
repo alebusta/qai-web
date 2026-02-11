@@ -4,6 +4,7 @@ Busca y lista archivos de Google Drive desde Telegram.
 """
 import logging
 from services.gdrive_service import get_gdrive
+from services.doc_intelligence_service import get_doc_intelligence
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +17,7 @@ def handle_drive(args: str, chat_id: int) -> str:
         /drive buscar [término]    → busca archivos por nombre
         /drive carpeta [nombre]    → lista archivos de una carpeta conocida
         /drive carpetas            → muestra carpetas disponibles
+        /drive leer [id]           → descarga y analiza un archivo con IA
     """
     logger.info("📁 Comando /drive ejecutado (args=%s)", args)
 
@@ -36,12 +38,18 @@ def handle_drive(args: str, chat_id: int) -> str:
     elif subcommand in ("carpetas", "folders"):
         return _handle_list_folders()
 
+    elif subcommand in ("leer", "read", "analizar"):
+        if not detail:
+            return "📁 Uso: `/drive leer [file_id]`\nConsigue el ID con `/drive buscar` o `/drive carpeta`."
+        return _handle_read_file(detail)
+
     else:
         return (
             "📁 *Drive* — Subcomandos:\n\n"
             "• `/drive buscar [término]` — Buscar archivos\n"
             "• `/drive carpeta [nombre]` — Ver contenido de carpeta\n"
-            "• `/drive carpetas` — Ver carpetas disponibles"
+            "• `/drive carpetas` — Ver carpetas disponibles\n"
+            "• `/drive leer [id]` — Leer y analizar archivo con IA"
         )
 
 
@@ -59,12 +67,13 @@ def _handle_search(query: str) -> str:
             name = f["name"]
             link = f["link"]
             ftype = f["type"]
+            fid = f["id"]
             if link:
-                lines.append(f"• {ftype} [{name}]({link})")
+                lines.append(f"• {ftype} [{name}]({link})\n  ID: `{fid}`")
             else:
-                lines.append(f"• {ftype} {name}")
+                lines.append(f"• {ftype} {name}\n  ID: `{fid}`")
 
-        return "\n".join(lines)
+        return "\n".join(lines) + "\n\nUsa `/drive leer [ID]` para analizar."
     except Exception as e:
         logger.error("❌ Error buscando en Drive: %s", e)
         return f"❌ Error al buscar en Drive: {str(e)[:100]}"
@@ -88,12 +97,13 @@ def _handle_list_folder(folder_name: str) -> str:
             name = f["name"]
             link = f.get("link", "")
             ftype = f["type"]
+            fid = f["id"]
             if link:
-                lines.append(f"• {ftype} [{name}]({link})")
+                lines.append(f"• {ftype} [{name}]({link})\n  ID: `{fid}`")
             else:
-                lines.append(f"• {ftype} {name}")
+                lines.append(f"• {ftype} {name}\n  ID: `{fid}`")
 
-        return "\n".join(lines)
+        return "\n".join(lines) + "\n\nUsa `/drive leer [ID]` para analizar."
     except Exception as e:
         logger.error("❌ Error listando carpeta: %s", e)
         return f"❌ Error al listar carpeta: {str(e)[:100]}"
@@ -114,3 +124,14 @@ def _handle_list_folders() -> str:
     except Exception as e:
         logger.error("❌ Error: %s", e)
         return f"❌ Error: {str(e)[:100]}"
+
+
+def _handle_read_file(file_id: str) -> str:
+    """Lee y analiza un archivo de Drive."""
+    try:
+        doc_int = get_doc_intelligence()
+        # Nzero informa que está trabajando
+        return doc_int.analyze_drive_file(file_id)
+    except Exception as e:
+        logger.error("❌ Error leyendo archivo: %s", e)
+        return f"❌ Error al leer el archivo: {str(e)[:100]}"

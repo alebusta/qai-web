@@ -223,6 +223,7 @@ Mensaje del usuario: "{text}"
                 "tarea_hecha": lambda: handle_tarea(f"hecha {extra}", chat_id),
                 "drive_buscar": lambda: handle_drive(f"buscar {extra}", chat_id),
                 "drive_carpeta": lambda: handle_drive(f"carpeta {extra}", chat_id),
+                "drive_leer": lambda: handle_drive(f"leer {extra}", chat_id),
             }
 
             handler = cmd_map.get(cmd)

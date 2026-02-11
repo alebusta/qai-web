@@ -57,6 +57,7 @@ Responde SOLO con el CMD si se requiere una de estas acciones:
 - Confirmar envío de borrador o decir que sí a una acción pendiente (ej: "envíalo", "sí", "dale", "perfecto") → CMD:email_confirmar
 - Buscar archivos en Google Drive → CMD:drive_buscar [nombre del archivo]
 - Ver contenido de carpeta de Drive → CMD:drive_carpeta [nombre: contabilidad, legales, tributario, etc.]
+- Leer y analizar un archivo específico por ID → CMD:drive_leer [ID]
 
 Para cualquier otra cosa (preguntas sobre el RUT, banco, quién eres, saludos, comentarios generales), NO uses comandos. Responde directamente con tu personalidad de Nzero usando los datos que ya conoces.
 """

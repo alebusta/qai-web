@@ -2,22 +2,26 @@
 
 Para asegurar la consistencia operativa y facilitar el trabajo de los agentes (Nzero, Finn, etc.), se establece el siguiente estándar para todas las carpetas dentro de `Empresa/02_COMERCIAL/clientes/`.
 
-## 1. Estructura de Directorios
+## 1. Estructura Híbrida (Local + Cloud)
 
-Cada cliente debe tener al menos las siguientes tres subcarpetas:
+Cada cliente debe existir simultáneamente en el repositorio local (`Empresa/02_COMERCIAL/clientes/`) y en Google Drive (`Clientes/`). Ambas estructuras deben ser espejos exactos.
 
-- `01_insumos/`: Archivos recibidos del cliente, notas de reuniones, capturas de requerimientos, y cualquier material "crudo" que sirva de base para el trabajo.
-- `02_entregas/`: Versiones finales y definitivas de los productos (PDFs de cotizaciones, reportes certificados, presentaciones finales).
-- `03_gestion/`: Documentación del proceso, análisis de costos, registros de hitos (Memoria del Hito), y borradores internos.
+## 2. Subdirectorios Obligatorios (Protocolo 01-02-03)
 
-## 2. Convención de Nombres de Archivos
+- `01_insumos/`: Material base, requerimientos, datos del cliente.
+- `02_entregas/`: **SSOT de Productos**. Solo archivos finales enviados (PDFs certificados).
+- `03_gestion/`: Bitácoras, costos, Hitos de Memoria, y coordinación.
 
-- **Versiones**: Usar sufijos `_v1`, `_v2`, etc. La versión en la carpeta `02_entregas` debe ser siempre la más reciente enviada al cliente.
-- **Fechas**: Usar formato `YYYY-MM-DD` al inicio del nombre para archivos históricos (ej: `2026-02-06_COTIZACION_FEDEX.pdf`).
+## 3. Automatización y Mantenimiento
 
-## 3. Implementación Inmediata
+- **Creación de Clientes**: Se debe ejecutar `python QaiCore/scripts/standardize_clients.py` para crear la estructura automáticamente en Drive y asegurar el cumplimiento del protocolo.
+- **Autenticación**: Las credenciales se gestionan centralmente via `python QaiCore/scripts/auth_unified.py`.
+- **Mirroring**: Los agentes deben asegurar que cualquier archivo en `02_entregas` local sea subido inmediatamente a Drive para visibilidad del usuario.
 
-Este estándar se aplicará retroactivamente a los proyectos actuales (FedEx, CIAL) para validar su efectividad.
+## 4. Convención de Nombres
+
+- Formato: `YYYY-MM-DD_TIPO_CLIENTE_vX.pdf` (ej: `2026-02-11_PROPUESTA_CIAL_v2.pdf`).
+
 
 ---
 *Este protocolo es parte del ADN operativo de QAI y debe ser respetado por todos los agentes y colaboradores.*
