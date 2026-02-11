@@ -43,6 +43,13 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 11-Feb 13:10 | Nzero | Resolución Conflicto GitHub Accounts | .gitconfig, .gitconfig-qai | ✅ Implementada lógica condicional `includeIf` para separar identidad personal (`alebusta`) de corporativa (`qai-labs`) según el directorio de trabajo. |
+| 11-Feb 13:00 | Nzero | Actualización Seguimiento FedEx | INBOX.md, STATUS.md | ✅ Marcada tarea de contacto a Eduardo como hecha. Creado recordatorio para el Lunes 16-Feb por seguimiento de OC Sempere. |
+| 11-Feb 12:45 | Lex | Nuevo Seguimiento Patente Providencia | Email ID: 19c4d66aae7aafa0, temp_files/seguimiento_patente_rentas_web.txt | ✅ Email enviado a rentas.web@providencia.cl (canal específico para problemas patentes). |
+
+| 11-Feb 12:30 | Lex | Consulta Legal Post-Constitución | INBOX.md, STATUS.md | ✅ Análisis completado. Pendientes: Activación facturación SII (depende OC FedEx), Patente Municipal (seguimiento), Junta Ordinaria 2025 (antes de feb-28). |
+
+| 11-Feb 02:00 | Nzero | Certificación Bot Telegram Fase 2 (Gmail + Drive) | services/google_auth.py, gmail_service.py, gdrive_service.py, commands/drive_cmd.py, email_cmd.py, persona.py, main.py, config.py, scripts/auth_google_bot.py, CHECKPOINT.md | ✅ Gmail API operativo (leer/buscar/enviar). Drive API operativo (buscar/listar carpetas). OAuth refresh token configurado. Deploy GCP exitoso. Probado en vivo desde Telegram. |
 | 11-Feb 00:15 | Nzero | Certificación Bot Telegram v1.5 (Fase 1.5) | bot/commands/tarea.py, bot/services/github_writer.py, STATUS.md, INBOX.md | ✅ Bot operativo con personalidad Nzero, gestión de tareas fuzzy y buscador de rutas. Deploy en GCP sincronizado. |
 | 10-Feb 10:20 | Nzero | Auditoría de Codebase & Limpieza Radical | root/temp_files/, TorreDeControl/temp_files/fill_nda_fedex.py | ✅ Eliminada carpeta temporal del root. Eliminado script `fill_nda_fedex.py` tras confirmación de tarea completada. HQ 100% limpio. |
 | 10-Feb 10:15 | Nzero | Blindaje de Protocolo Zero Footprint | TorreDeControl/README.md, agents/lex/profile.md, agents/nzero/system_prompt.md | ✅ Inyectada prohibición de carpetas temporales fuera de Torre de Control y obligación de limpieza de scripts en perfiles de agentes. |

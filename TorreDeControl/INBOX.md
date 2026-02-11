@@ -60,15 +60,15 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [x] **Consultar con Lex**: ¿Cuándo debo hacer primera declaración IVA? (Confirmado: enero 2026 mensual)
 - [x] **Activar Digipass Banco Chile** (Digipass activado 30-Dic) ✅
 - [x] **Declarar IVA (F29) - Sin Movimiento DIC 2025** (Completado 15-Ene - Archivado en Drive) ✅
-- [x] **🔥 Seguimiento Patente Providencia**: PLAZO VENCIDO (04-Feb). Seguimiento enviado (07-Feb). Respuesta pendiente.
+- [x] **🔥 Seguimiento Patente Providencia**: PLAZO VENCIDO (04-Feb). Seguimiento enviado (07-Feb). Nuevo seguimiento enviado a rentas.web@providencia.cl (11-Feb). ✅
 - [ ] **Esperar respuesta Municipalidad Providencia** (Solicitud #1126-2026)
-- [ ] **Junta Ordinaria 2025 (Expedita)** - Antes de fin de febrero. Aprobación EEFF sin movimiento + ratificación administradores.
+- [ ] **Junta Ordinaria 2025 (Expedita)** - Semana del 16-Feb. Aprobación EEFF sin movimiento + ratificación administradores.
 - [x] **Apertura de Registro de Accionistas Digital**: Portal RES - Completado 09-Feb. CVE: RA1UcsKaOvrD ✅
 - [x] **Implementar Libro de Actas Digital**: ✅ 09-10-Feb
   - [x] Redactar Acta N°1 (Constitución y Adopción de Libros Electrónicos). ✅ 07-Feb
   - [x] Firmar con firma simple y archivar (Firmada por ambos socios, respaldada en Drive). ✅ 10-Feb
   - [x] Crear repositorio digital completo (índices, checklist, respaldo Drive). ✅ 10-Feb
-- [ ] **Consultar con Lex**: ¿Qué otros trámites faltan post-constitución? (Ver checklist en AGENT_ACTIVITY)
+- [x] **Consultar con Lex**: ¿Qué otros trámites faltan post-constitución? (Ver checklist en AGENT_ACTIVITY) ✅ 11-Feb-2026
 - [x] **Renovación Certificado Firma Electrónica**: Recibida factura E-Cert Folio 3286323 (04-Feb). ✅ 05-Feb-2026
 
 ---
@@ -76,7 +76,8 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 ## 📋 IMPORTANTE (Este Mes)
 
 ### Prioridades (próximas acciones)
-- [ ] **Escribirle a Eduardo mañana por OC de Sempere** _(vía Telegram, 11-Feb-2026)_
+- [x] **Escribirle a Eduardo por OC de Sempere** (Hablado hoy 11-Feb) ✅
+- [ ] **Seguimiento OC FedEx/Sempere** (Si no llega, contactar a Eduardo) _(Lunes 16-Feb)_
 - [ ] **Sistema de Propuestas vNext: “evento” por manifest** (1 comando)
   - Objetivo: `proposal_manifest.(yml|json)` + orquestador que genere según modo: `pdf`, `deck`, `both`, `both+mock`.
   - Contexto: priorización definida 21-Ene (Nzero). Mantenerlo visible.
@@ -102,6 +103,7 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
   - [x] **Email Engine High-Fidelity**: Renderizado Markdown + Logo inline (Multipart/Related). ✅ 24-Ene
 
 ### Tech Debt (QaiCore)
+- [ ] **Auditoría de Alineación de Agentes**: Verificar que Lex y Finn estén usando el motor de templates HTML correctamente en sus próximas tareas.
 - [ ] Barrido final: eliminar rutas absolutas / comandos legacy en docs/knowledge_base
 
 ### Finanzas
