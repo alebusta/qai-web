@@ -1,6 +1,7 @@
 """
 QAI HQ Bot — Main Entry Point
 Google Cloud Function que recibe webhooks de Telegram.
+Fase 1.5: Nzero persona + empresa + tareas + rutas
 """
 import json
 import logging
@@ -19,6 +20,9 @@ from commands.status import handle_status
 from commands.inbox import handle_inbox
 from commands.pendientes import handle_pendientes
 from commands.email_cmd import handle_email, handle_confirm
+from commands.empresa import handle_empresa
+from commands.tarea import handle_tarea
+from commands.ruta import handle_ruta
 
 # Configurar logging
 logging.basicConfig(
@@ -43,6 +47,9 @@ COMMANDS = {
     "/pendientes": lambda args, cid: handle_pendientes(),
     "/email": lambda args, cid: handle_email(args, cid),
     "/confirmar": lambda args, cid: handle_confirm(cid),
+    "/empresa": lambda args, cid: handle_empresa(args),
+    "/tarea": lambda args, cid: handle_tarea(args, cid),
+    "/ruta": lambda args, cid: handle_ruta(args),
 }
 
 
@@ -118,46 +125,58 @@ def _process_message(text: str, chat_id: int) -> str:
         else:
             return f"❓ Comando `{command}` no reconocido. Escribe /help para ver opciones."
 
-    # Mensaje de texto libre → interpretar con LLM
+    # Mensaje de texto libre → interpretar con Nzero
     return _handle_natural_language(text, chat_id)
 
 
 def _handle_natural_language(text: str, chat_id: int) -> str:
-    """Interpreta mensajes en lenguaje natural."""
+    """Interpreta mensajes en lenguaje natural con personalidad Nzero."""
     from services.llm_provider import get_llm
+    from persona import NZERO_IDENTITY, NZERO_NLP_ROUTER
 
     llm = get_llm()
 
-    prompt = f"""El usuario envió este mensaje desde Telegram:
-"{text}"
+    # Paso 1: Determinar intención
+    router_prompt = f"""{NZERO_NLP_ROUTER}
 
-Determina qué acción quiere realizar. Las opciones son:
-1. Ver STATUS del HQ → responde exactamente: CMD:status
-2. Ver INBOX/pendientes → responde exactamente: CMD:inbox
-3. Ver pendientes urgentes → responde exactamente: CMD:pendientes
-4. Leer emails → responde exactamente: CMD:email_leer
-5. Enviar email → responde exactamente: CMD:email_enviar
-6. Otra cosa → responde directamente al usuario de forma breve y útil
-
-Solo responde con el CMD si es claro. Si no, responde naturalmente."""
+Mensaje del usuario: "{text}"
+"""
 
     try:
-        result = llm.chat(prompt).strip()
+        result = llm.chat(router_prompt).strip()
 
         # Mapear resultado del LLM a comandos
-        cmd_map = {
-            "CMD:status": lambda: handle_status(),
-            "CMD:inbox": lambda: handle_inbox(""),
-            "CMD:pendientes": lambda: handle_pendientes(),
-            "CMD:email_leer": lambda: handle_email("leer", chat_id),
-            "CMD:email_enviar": lambda: handle_email("enviar", chat_id),
-        }
+        if result.startswith("CMD:"):
+            cmd = result.split("CMD:")[1].strip().split()[0]
+            extra = result.split(cmd, 1)[-1].strip() if len(result.split(cmd, 1)) > 1 else ""
 
-        if result in cmd_map:
-            return cmd_map[result]()
+            cmd_map = {
+                "status": lambda: handle_status(),
+                "inbox": lambda: handle_inbox(""),
+                "pendientes": lambda: handle_pendientes(),
+                "email_leer": lambda: handle_email("leer", chat_id),
+                "email_enviar": lambda: handle_email("enviar", chat_id),
+                "empresa": lambda: handle_empresa(extra),
+                "ruta": lambda: handle_ruta(extra),
+                "tarea_nueva": lambda: handle_tarea(f"nueva {extra}", chat_id),
+                "tarea_hecha": lambda: handle_tarea(f"hecha {extra}", chat_id),
+            }
 
-        # Si no es un comando, el LLM respondió directamente
-        return result
+            handler = cmd_map.get(cmd)
+            if handler:
+                return handler()
+
+        # Paso 2: Si no es un comando, responder como Nzero
+        # Usar system prompt completo solo para respuestas conversacionales
+        persona_prompt = f"""{NZERO_IDENTITY}
+
+El Founder te escribió por Telegram:
+"{text}"
+
+Responde como Nzero. Sé conciso (máx 5-8 líneas)."""
+
+        response = llm.chat(persona_prompt).strip()
+        return response
 
     except Exception as e:
         logger.error("❌ Error en NL processing: %s", e)

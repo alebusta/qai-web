@@ -6,16 +6,23 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-HELP_TEXT = """🤖 *QAI HQ Bot* — Comandos disponibles
+HELP_TEXT = """🤖 *Nzero — QAI HQ Bot*
 
 📊 `/status` — Resumen del estado del HQ
 📥 `/inbox` — Tareas pendientes del INBOX
-🔥 `/pendientes` — Solo tareas urgentes e importantes
-📧 `/email leer` — Últimos emails no leídos
-📧 `/email enviar [dest] [asunto]` — Crear borrador de email
+🔥 `/pendientes` — Priorización urgente con IA
+
+🏢 `/empresa rut` — RUT, dirección, socios, banco
+📝 `/tarea nueva [texto]` — Agregar tarea al INBOX
+📝 `/tarea urgente [texto]` — Agregar tarea urgente
+✅ `/tarea hecha [texto]` — Marcar tarea completada
+📂 `/ruta [búsqueda]` — Buscar archivos en el repo
+
+📧 `/email leer` — Emails no leídos _(próximamente)_
 ❓ `/help` — Este menú
 
-💡 También puedes escribir en *lenguage natural* y el bot interpretará tu intención.
+💡 También puedes escribir en *lenguaje natural*:
+_"¿Cómo van los clientes?" — "Dame el RUT" — "¿Quién eres?"_
 
 🔒 _Bot protegido — Solo usuarios autorizados_
 """
