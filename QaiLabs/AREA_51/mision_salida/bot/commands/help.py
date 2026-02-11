@@ -18,11 +18,19 @@ HELP_TEXT = """🤖 *Nzero — QAI HQ Bot*
 ✅ `/tarea hecha [texto]` — Marcar tarea completada
 📂 `/ruta [búsqueda]` — Buscar archivos en el repo
 
-📧 `/email leer` — Emails no leídos _(próximamente)_
+📧 `/email leer` — Emails no leídos
+📧 `/email buscar [query]` — Buscar emails
+📧 `/email enviar [dest] [asunto]` — Crear borrador
+✉️ `/confirmar` — Enviar borrador pendiente
+
+📁 `/drive buscar [término]` — Buscar archivos en Drive
+📁 `/drive carpeta [nombre]` — Ver carpeta (contabilidad, legales...)
+📁 `/drive carpetas` — Carpetas disponibles
+
 ❓ `/help` — Este menú
 
 💡 También puedes escribir en *lenguaje natural*:
-_"¿Cómo van los clientes?" — "Dame el RUT" — "¿Quién eres?"_
+_"¿Qué emails tengo?" — "Busca el PDF del contrato" — "Dame el RUT"_
 
 🔒 _Bot protegido — Solo usuarios autorizados_
 """

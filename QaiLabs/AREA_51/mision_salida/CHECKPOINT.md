@@ -1,39 +1,47 @@
 # 🧠 Checkpoint — Misión Salida: QAI al Ciberespacio
 
-> **Fecha:** 11-Feb-2026 | **Estado:** ✅ Fase 1.5 CERTIFICADA — Bot Inteligente (Nzero) Operacional
+> **Fecha:** 11-Feb-2026 | **Estado:** ✅ Fase 2 CERTIFICADA — Gmail + Drive Operacional
 >
 > **URL Cloud Function:** `https://us-central1-qai-agents.cloudfunctions.net/qai-hq-bot`
 > **Proyecto GCP:** `qai-agents` | **Runtime:** Python 3.12 | **Region:** us-central1
 
 ---
 
-## 🟢 Hito Alcanzado: Fase 1.5 (Bot Nzero)
+## 🟢 Hito Alcanzado: Fase 2 (Gmail + Drive)
 
-El bot ha dejado de ser un simple webhook para convertirse en un **Agente Arquitecto (Nzero)** capaz de:
-1. **Personalidad Nzero:** Identidad de COO Digital / Arquitecto.
-2. **Tareas con NLP:** Comando `/tarea` inteligente (agrega tareas a INBOX.md y las marca como completadas con búsqueda difusa).
-3. **Consulta de Datos:** Entrega RUT, datos bancarios y dirección de la empresa mediante lenguaje natural.
-4. **Localización de Archivos:** Busca rutas de archivos en el HQ.
-5. **Estabilidad:** Solucionados problemas de permisos de GitHub (scopes) y crashes de sistema (`datetime`).
+El bot Nzero ahora tiene **acceso completo a Gmail y Google Drive**, consolidándose como un verdadero agente ejecutivo:
+
+### Gmail (alebusta@qai.cl)
+1. **Leer emails** no leídos (`/email leer`) con lectura individual por número (`/email leer N`).
+2. **Buscar emails** con queries estilo Gmail (`/email buscar from:banco`).
+3. **Enviar emails** con human-in-the-loop (`/email enviar` → `/confirmar`).
+4. **Acceso conversacional:** "léeme el email 2", "¿qué emails tengo sin leer?".
+
+### Google Drive (Carpetas corporativas)
+5. **Buscar archivos** en todo el Drive (`/drive buscar contrato`).
+6. **Listar carpetas** conocidas: Contabilidad, Legales, Tributario, etc. (`/drive carpeta legales`).
+7. **Ver carpetas disponibles** (`/drive carpetas`).
+
+### Arquitectura
+- **OAuth persistente** vía refresh token en env var (compatible con Google One).
+- **Servicio centralizado** (`google_auth.py`) con auto-refresh de tokens.
+- **NLP Router** extendido para Gmail y Drive en lenguaje natural.
 
 ---
 
-## 🚀 Próxima Frontera: Fase 2 (Gmail + Drive)
+## 🔧 Mejoras Pendientes (Fase 2.5)
 
-Para la siguiente sesión limpia, los objetivos son:
+- **Redacción IA:** Que Nzero redacte el cuerpo del email con Gemini.
+- **Memoria corta:** Cache persistente entre invocaciones (actualmente stateless).
+- **Menor fricción:** Ajustes de interacción para flujos más intuitivos.
 
-### 1. Integración Gmail (Lectura/Escritura)
-- Configurar OAuth para que el Bot lea el Inbox de `alebusta@qai.cl`.
-- Notificaciones inteligentes de emails importantes en Telegram.
-- **Landing Zone Automática:** Adjuntos detectados en email se guardan en `TorreDeControl/temp_files/`.
+---
 
-### 2. Integración Google Drive (Archivos Pesados)
-- Acceso a carpetas de Contabilidad, Legal y Comercial.
-- Nzero puede enviar links a documentos PDF/Excel almacenados en Drive.
+## 🚀 Próxima Frontera: Fase 3 (Infraestructura Final)
 
-### 3. Infraestructura Final
-- Transición del webhook al subdominio `bot.qai.cl`.
-- Persistencia de memoria entre turnos de conversación (memoria corta).
+1. **Memoria entre turnos:** Persistencia de conversación (Firestore/Redis).
+2. **Subdominio:** Transición webhook a `bot.qai.cl`.
+3. **Auth avanzada:** PIN o segundo factor para operaciones sensibles.
 
 ---
 
@@ -43,10 +51,12 @@ Para la siguiente sesión limpia, los objetivos son:
 |:---|:---|:---|
 | Fase 0 | GitHub Setup | ✅ |
 | Fase 1 | Telegram MVP | ✅ |
-| **Fase 1.5** | **Bot Nzero (NLP + Tareas)** | ✅ **CERTIFICADA** |
-| **Fase 2** | **Gmail + Drive (Puente de Datos)** | 🔜 **PRÓXIMO PASO** |
-| Fase 3 | Fortress Protocol (Auth + PIN) | ⏳ |
+| Fase 1.5 | Bot Nzero (NLP + Tareas) | ✅ |
+| **Fase 2** | **Gmail + Drive (Puente de Datos)** | ✅ **CERTIFICADA** |
+| Fase 2.5 | Redacción IA + Memoria corta | 🔜 **PRÓXIMO** |
+| Fase 3 | Fortress Protocol (Auth + Memoria) | ⏳ |
 | Fase 4 | SaaS / Multi-User Support | ⏳ |
 
 ---
-*Nota: Para retomar, ver `WALKTHROUGH.md` en Torre de Control para contexto histórico o el historial de esta sesión.*
+*Nota: Token OAuth generado 11-Feb-2026 con scopes gmail.modify, gmail.send, drive.readonly.*
+*Backup: `~/.qai/gmail/bot_token.json` | Config: `env.yaml` (gitignored)*

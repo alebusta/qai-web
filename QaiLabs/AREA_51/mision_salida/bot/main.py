@@ -1,7 +1,7 @@
 """
 QAI HQ Bot — Main Entry Point
 Google Cloud Function que recibe webhooks de Telegram.
-Fase 1.5: Nzero persona + empresa + tareas + rutas
+Fase 2: Nzero + Gmail + Drive
 """
 import json
 import logging
@@ -23,6 +23,7 @@ from commands.email_cmd import handle_email, handle_confirm
 from commands.empresa import handle_empresa
 from commands.tarea import handle_tarea
 from commands.ruta import handle_ruta
+from commands.drive_cmd import handle_drive
 
 # Configurar logging
 logging.basicConfig(
@@ -50,6 +51,7 @@ COMMANDS = {
     "/empresa": lambda args, cid: handle_empresa(args),
     "/tarea": lambda args, cid: handle_tarea(args, cid),
     "/ruta": lambda args, cid: handle_ruta(args),
+    "/drive": lambda args, cid: handle_drive(args, cid),
 }
 
 
@@ -154,12 +156,15 @@ Mensaje del usuario: "{text}"
                 "status": lambda: handle_status(),
                 "inbox": lambda: handle_inbox(""),
                 "pendientes": lambda: handle_pendientes(),
-                "email_leer": lambda: handle_email("leer", chat_id),
+                "email_leer": lambda: handle_email(f"leer {extra}".strip(), chat_id),
+                "email_buscar": lambda: handle_email(f"buscar {extra}", chat_id),
                 "email_enviar": lambda: handle_email("enviar", chat_id),
                 "empresa": lambda: handle_empresa(extra),
                 "ruta": lambda: handle_ruta(extra),
                 "tarea_nueva": lambda: handle_tarea(f"nueva {extra}", chat_id),
                 "tarea_hecha": lambda: handle_tarea(f"hecha {extra}", chat_id),
+                "drive_buscar": lambda: handle_drive(f"buscar {extra}", chat_id),
+                "drive_carpeta": lambda: handle_drive(f"carpeta {extra}", chat_id),
             }
 
             handler = cmd_map.get(cmd)

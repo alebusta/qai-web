@@ -23,6 +23,13 @@ class Config:
         self.GITHUB_REPO = os.environ.get("GITHUB_REPO", "qai-labs/TheQaiCo")
         self.GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "master")
 
+        # === Google APIs (Gmail + Drive) ===
+        self.GOOGLE_OAUTH_TOKEN_JSON = os.environ.get("GOOGLE_OAUTH_TOKEN_JSON")
+        self.GOOGLE_DELEGATED_USER = os.environ.get(
+            "GOOGLE_DELEGATED_USER", "alebusta@qai.cl"
+        )
+        self.DRIVE_FOLDER_MAP = os.environ.get("DRIVE_FOLDER_MAP")
+
         # === LLM ===
         self.LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "gemini")
         self.GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
