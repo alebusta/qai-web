@@ -43,6 +43,7 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 11-Feb 00:15 | Nzero | Certificación Bot Telegram v1.5 (Fase 1.5) | bot/commands/tarea.py, bot/services/github_writer.py, STATUS.md, INBOX.md | ✅ Bot operativo con personalidad Nzero, gestión de tareas fuzzy y buscador de rutas. Deploy en GCP sincronizado. |
 | 10-Feb 10:20 | Nzero | Auditoría de Codebase & Limpieza Radical | root/temp_files/, TorreDeControl/temp_files/fill_nda_fedex.py | ✅ Eliminada carpeta temporal del root. Eliminado script `fill_nda_fedex.py` tras confirmación de tarea completada. HQ 100% limpio. |
 | 10-Feb 10:15 | Nzero | Blindaje de Protocolo Zero Footprint | TorreDeControl/README.md, agents/lex/profile.md, agents/nzero/system_prompt.md | ✅ Inyectada prohibición de carpetas temporales fuera de Torre de Control y obligación de limpieza de scripts en perfiles de agentes. |
 | 10-Feb 16:45 | Lex | Envío NDA FedEx Firmado | Email a eduardo.mejias@fedex.com, NDA_FedEx_QAI_Completado.pdf | ✅ Email enviado (ID: 19c478e7b46e5166). NDA firmado adjunto. Respuesta sobre hilo original. |

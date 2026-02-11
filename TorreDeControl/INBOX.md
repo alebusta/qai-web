@@ -1,6 +1,6 @@
 # INBOX - Buzón de Tareas Pendientes
  
-> **Última actualización**: 10 de Febrero de 2026 (Sistema Libros Corporativos Operativo)  
+> **Última actualización**: 11 de Febrero de 2026 (Bot Nzero v1.5 Certificado)  
 > **Propietario**: Alejandro Bustamante
 
 ---

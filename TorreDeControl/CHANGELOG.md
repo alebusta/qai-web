@@ -8,6 +8,20 @@
 
 ### Febrero
 
+#### [11-Feb-2026] - Certificación Bot Telegram Nzero (Fase 1.5)
+**Tipo**: Infraestructura / Producto (Experimental)
+
+**Contexto**: Se completó la "Misión de Salida" para convertir el Bot de Telegram de un simple webhook a un agente inteligente (Nzero) capaz de gestionar la operativa diaria del HQ desde el móvil.
+
+**Decisión/Acción**:
+- [INFRA] **Deploy GCP**: Estabilización del pipeline de despliegue mediante `gcloud functions deploy` con variables de entorno robustas (`env.yaml`).
+- [BOT] **Personalidad Nzero**: Implementación de la identidad conversacional de Nzero (CTO/COO style) y enrutador NLP.
+- [BOT] **Gestión INBOX Fuzzy**: Implementación de algoritmo de búsqueda parcial para tareas, permitiendo marcar como hechas tareas con descripciones aproximadas.
+- [BOT] **Comandos de Datos**: Acceso directo a RUT, Banco y datos corporativos mediante lenguaje natural.
+- [BUGFIX] **Estabilización de Código**: Corrección de bug crítico de importación (`datetime`) y optimización de logging de errores de GitHub API (403 Forbidden resolution).
+
+**Impacto**: El Founder ahora puede operar el HQ (agregar tareas, consultar datos, marcar hitos) 100% desde Telegram con un agente que entiende el contexto. El HQ se vuelve móvil y "siempre activo".
+
 #### [09-10-Feb-2026] - Operativización Sistema de Libros Corporativos Digitales
 **Tipo**: Legal / Infraestructura
 

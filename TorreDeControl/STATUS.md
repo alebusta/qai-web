@@ -166,9 +166,7 @@
 - 📄 **Extractores**: PDF (OCR Gemini), DOCX, PPTX, Excel, CSV, Imágenes
 - 🤖 **Agentes**: Nzero (Arquitecto), Lex (Legal), Finn (Financiero) - Builder (futuro)
 - 🤖 **Finn - Google Drive** | ✅ | **API Configurada** - OAuth2, estructura de carpetas (15), upload operativo (27-Dic-2025)
-- 🤖 **Nzero - Gmail** | ✅ | **Upgrade v2.0 (07-Ene)** - Lectura, búsqueda y gestión de inbox funcional.
-- 🤖 **Protocolo de Clientes** | ✅ | **Organización 01/02/03** - Aplicado a CIAL, FedEx y GestionZen.
-- 🤖 **Documentos Core** | ✅ | STATUS, INBOX, CHANGELOG actualizados. Torre de Control operativa.
+- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 1.5 (11-Feb)** - IA conversacional, gestión de tareas (add/done), consulta de datos empresa y rutas de archivos.
 - 📋 **Playbooks**: Procesamiento de INBOX legal
 
 ---
@@ -210,6 +208,7 @@
 **🤖 Para Agentes**: Si actualizaste información aquí, deja una nota abajo con fecha y qué cambiaste.
 
 ### Changelog Reciente
+- ✅ 11-Feb-2026: **Hito Bot Inteligente (Fase 1.5) Certificado** 🤖. Desplegada versión v1.5 con personalidad Nzero. Capacidades: gestión de tareas INBOX (crear/completar) vía lenguaje natural (Fuzzy Match), consulta de datos corporativos (RUT, Banco) y buscador de rutas de archivos. Pipeline de deploy GCP corregido y operativo. (Nzero)
 - ✅ 06-Ene-2026: **Hito FedEx/Sempere Despachado**. Envío formal de cotización v3 a Rodrigo Fernández. Estandardización de carpetas de clientes (01/02/03) aplicada a todo el departamento comercial. Institucionalización del proceso en `DIGITAL_HQ.md`. (Nzero)
 - ✅ 28-Ene-2026: **Certificación E2E "Viñedos Austral"**. Proceso completado exitosamente tras re-autorización de Gmail API. Validado workflow de generación de PDF con motor blindado (Launch Args) y despachoMultipart/Related a múltiples destinatarios. (Nzero)
 - ✅ 24-Ene-2026: **Certificación E2E "Executive Horizon" v1.2**. Validado workflow completo desde clonación de templates maestros hasta despacho via Gmail con logo incrustado (Multipart/Related) y adjuntos PDF dinámicos. Blindaje de encoding UTF-8 institucionalizado. (Nzero)
