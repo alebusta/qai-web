@@ -43,6 +43,7 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 11-Feb 14:30 | Nzero | Certificación Fase 2.5 (Email AI + Firestore) | email_cmd.py, main.py, persona.py, telegram_service.py, state_service.py, CHECKPOINT.md | ✅ Implementada redacción asistida con Gemini, lectura resiliente (stateless) y persistencia en Firestore. Análisis de costos ($0/mes) y Roadmap Phase 3 actualizado. |
 | 11-Feb 13:10 | Nzero | Resolución Conflicto GitHub Accounts | .gitconfig, .gitconfig-qai | ✅ Implementada lógica condicional `includeIf` para separar identidad personal (`alebusta`) de corporativa (`qai-labs`) según el directorio de trabajo. |
 | 11-Feb 13:00 | Nzero | Actualización Seguimiento FedEx | INBOX.md, STATUS.md | ✅ Marcada tarea de contacto a Eduardo como hecha. Creado recordatorio para el Lunes 16-Feb por seguimiento de OC Sempere. |
 | 11-Feb 12:45 | Lex | Nuevo Seguimiento Patente Providencia | Email ID: 19c4d66aae7aafa0, temp_files/seguimiento_patente_rentas_web.txt | ✅ Email enviado a rentas.web@providencia.cl (canal específico para problemas patentes). |
@@ -182,4 +183,4 @@ Al inicio de cada mes, mover el mes anterior a `/TorreDeControl/archive/agent_ac
 
 **Creado**: 27-Dic-2025 (Nzero)  
 **Mantenido por**: Todos los agentes  
-**Última actualización**: 22-Ene-2026
+**Última actualización**: 11-Feb-2026

@@ -1,47 +1,39 @@
 # 🧠 Checkpoint — Misión Salida: QAI al Ciberespacio
 
-> **Fecha:** 11-Feb-2026 | **Estado:** ✅ Fase 2 CERTIFICADA — Gmail + Drive Operacional
+> **Fecha:** 11-Feb-2026 | **Estado:** ✅ Fase 2.5 CERTIFICADA — Email AI + Persistencia (Firestore) 🚀
 >
 > **URL Cloud Function:** `https://us-central1-qai-agents.cloudfunctions.net/qai-hq-bot`
 > **Proyecto GCP:** `qai-agents` | **Runtime:** Python 3.12 | **Region:** us-central1
 
 ---
 
-## 🟢 Hito Alcanzado: Fase 2 (Gmail + Drive)
+## 🟢 Hito Alcanzado: Fase 2.5 (Email AI & Memoria)
 
-El bot Nzero ahora tiene **acceso completo a Gmail y Google Drive**, consolidándose como un verdadero agente ejecutivo:
+El bot Nzero ha evolucionado de un agente de consulta a un agente de ejecución con **memoria persistente**:
 
-### Gmail (alebusta@qai.cl)
-1. **Leer emails** no leídos (`/email leer`) con lectura individual por número (`/email leer N`).
-2. **Buscar emails** con queries estilo Gmail (`/email buscar from:banco`).
-3. **Enviar emails** con human-in-the-loop (`/email enviar` → `/confirmar`).
-4. **Acceso conversacional:** "léeme el email 2", "¿qué emails tengo sin leer?".
+### Email AI & UX
+1. **Redacción asistida (`/email redactar`)**: Nzero genera borradores profesionales usando **Gemini 1.5 Flash** basándose en instrucciones mínimas.
+2. **Lectura Stateless**: Implementación de **Inline Buttons** que encapsulan el ID de Google, permitiendo lectura resiliente a reinicios.
+3. **NLP Confirmation**: Nzero ahora interpreta frases como "Envíalo", "Dale" o "Perfecto" para ejecutar envíos pendientes.
 
-### Google Drive (Carpetas corporativas)
-5. **Buscar archivos** en todo el Drive (`/drive buscar contrato`).
-6. **Listar carpetas** conocidas: Contabilidad, Legales, Tributario, etc. (`/drive carpeta legales`).
-7. **Ver carpetas disponibles** (`/drive carpetas`).
+### Infraestructura: Firebase / Firestore
+- **Persistencia Híbrida**: Se integró **Google Cloud Firestore** (Modo Nativo) para almacenar estados y borradores entre invocaciones de la Cloud Function.
+- **Resiliencia**: El bot ya no sufre de "amnesia" tras los cold-starts de PHP/Python en modo serverless.
+- **Seguridad**: Reglas restrictivas configuradas en la nube.
 
-### Arquitectura
-- **OAuth persistente** vía refresh token en env var (compatible con Google One).
-- **Servicio centralizado** (`google_auth.py`) con auto-refresh de tokens.
-- **NLP Router** extendido para Gmail y Drive en lenguaje natural.
-
----
-
-## 🔧 Mejoras Pendientes (Fase 2.5)
-
-- **Redacción IA:** Que Nzero redacte el cuerpo del email con Gemini.
-- **Memoria corta:** Cache persistente entre invocaciones (actualmente stateless).
-- **Menor fricción:** Ajustes de interacción para flujos más intuitivos.
+### Estimación de Costos (Análisis Operativo)
+- **GCP Cloud Functions**: $0 USD (hasta 2M ejecuciones/mes).
+- **Gemini AI**: $0 USD (Free Tier via AI Studio).
+- **Firestore**: $0 USD (hasta 50k lecturas/20k escrituras diarias).
+- **TOTAL PROYECTADO**: **$0 USD / mes** (uso de startup/personal).
 
 ---
 
-## 🚀 Próxima Frontera: Fase 3 (Infraestructura Final)
+## 🚀 Próxima Frontera: Fase 3 (Drive Profundo & Colaboración)
 
-1. **Memoria entre turnos:** Persistencia de conversación (Firestore/Redis).
-2. **Subdominio:** Transición webhook a `bot.qai.cl`.
-3. **Auth avanzada:** PIN o segundo factor para operaciones sensibles.
+1. **Drive Inteligente**: Capacidad de leer contenidos de archivos (PDF/Docs) para responder preguntas específicas.
+2. **Subdominio**: Transición webhook a `bot.qai.cl`.
+3. **Inter-Agente**: Nzero como orquestador, invocando a **Lex** (Legal) y **Finn** (Finanzas).
 
 ---
 
@@ -52,11 +44,11 @@ El bot Nzero ahora tiene **acceso completo a Gmail y Google Drive**, consolidán
 | Fase 0 | GitHub Setup | ✅ |
 | Fase 1 | Telegram MVP | ✅ |
 | Fase 1.5 | Bot Nzero (NLP + Tareas) | ✅ |
-| **Fase 2** | **Gmail + Drive (Puente de Datos)** | ✅ **CERTIFICADA** |
-| Fase 2.5 | Redacción IA + Memoria corta | 🔜 **PRÓXIMO** |
-| Fase 3 | Fortress Protocol (Auth + Memoria) | ⏳ |
-| Fase 4 | SaaS / Multi-User Support | ⏳ |
+| Fase 2 | Gmail + Drive (Puente de Datos) | ✅ |
+| **Fase 2.5** | **Email AI + Persistencia (Firestore)** | ✅ **CERTIFICADA** |
+| Fase 3 | Drive Profundo & Colaboración | 🔜 **PRÓXIMO** |
+| Fase 4 | Fortress Protocol (Auth + Cert Prod) | ⏳ |
 
 ---
-*Nota: Token OAuth generado 11-Feb-2026 con scopes gmail.modify, gmail.send, drive.readonly.*
-*Backup: `~/.qai/gmail/bot_token.json` | Config: `env.yaml` (gitignored)*
+*Nota: Firestore habilitado en us-central1 (Nativo). Configuración en `services/state_service.py`.*
+
