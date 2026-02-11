@@ -4,7 +4,7 @@ Gestión de tareas en INBOX.md desde Telegram.
 """
 import re
 import logging
-from datetime import datetime
+import datetime
 from services.github_reader import github_reader
 from services.github_writer import github_writer
 
@@ -131,7 +131,7 @@ def _complete_task(search_text: str) -> str:
             if matches >= threshold and matches > 0:
                 # Marcar como hecha: [x] + ✅ fecha
                 task_description = line.strip().replace("- [ ]", "").strip()
-                today = datetime.now().strftime("%d-%b")
+                today = datetime.datetime.now().strftime("%d-%b")
                 new_line = line.replace("[ ]", "[x]")
                 if "✅" not in new_line:
                     new_line = new_line.strip() + f" ✅ {today}\n"
@@ -196,5 +196,4 @@ def _insert_in_section(content: str, section_header: str, task_line: str) -> str
 
 def _today() -> str:
     """Retorna fecha actual."""
-    from datetime import datetime
-    return datetime.now().strftime("%d-%b-%Y")
+    return datetime.datetime.now().strftime("%d-%b-%Y")
