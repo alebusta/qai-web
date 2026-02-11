@@ -76,6 +76,7 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 ## 📋 IMPORTANTE (Este Mes)
 
 ### Prioridades (próximas acciones)
+- [ ] **Escribirle a Eduardo mañana por OC de Sempere** _(vía Telegram, 11-Feb-2026)_
 - [ ] **Sistema de Propuestas vNext: “evento” por manifest** (1 comando)
   - Objetivo: `proposal_manifest.(yml|json)` + orquestador que genere según modo: `pdf`, `deck`, `both`, `both+mock`.
   - Contexto: priorización definida 21-Ene (Nzero). Mantenerlo visible.
