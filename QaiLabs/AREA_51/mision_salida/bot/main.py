@@ -110,7 +110,11 @@ def webhook(request):
         response = _process_message(text, chat_id)
 
         # === Enviar respuesta ===
-        telegram_service.send_message(chat_id, response)
+        if isinstance(response, tuple):
+            text_resp, markup = response
+            telegram_service.send_message(chat_id, text_resp, reply_markup=markup)
+        else:
+            telegram_service.send_message(chat_id, response)
 
         return "OK", 200
 
@@ -138,15 +142,25 @@ def _handle_callback_query(callback_query: dict) -> str:
 
         # Ruteo de callbacks
         # Convención: prefix:payload (ej: "email_read:12345")
+        # Ruteo de callbacks
+        # Convención: prefix:payload (ej: "email_read:12345")
+        
+        response = None
         if data.startswith("email_read:"):
             msg_id = data.split(":", 1)[1]
             response = handle_email_callback("read", msg_id, chat_id)
-            telegram_service.send_message(chat_id, response)
         
         elif data.startswith("email_draft:"):
             action = data.split(":", 1)[1] # send, edit, cancel
             response = handle_email_callback("draft", action, chat_id)
-            telegram_service.send_message(chat_id, response)
+
+        if response:
+            reply_to = message.get("message_id")
+            if isinstance(response, tuple):
+                text_resp, markup = response
+                telegram_service.send_message(chat_id, text_resp, reply_markup=markup, reply_to_message_id=reply_to)
+            else:
+                telegram_service.send_message(chat_id, response, reply_to_message_id=reply_to)
 
         return "OK", 200
 
@@ -202,6 +216,7 @@ Mensaje del usuario: "{text}"
                 "email_buscar": lambda: handle_email(f"buscar {extra}", chat_id),
                 "email_enviar": lambda: handle_email("enviar", chat_id),
                 "email_redactar": lambda: handle_email(f"redactar {extra}", chat_id),
+                "email_confirmar": lambda: handle_confirm(chat_id),
                 "empresa": lambda: handle_empresa(extra),
                 "ruta": lambda: handle_ruta(extra),
                 "tarea_nueva": lambda: handle_tarea(f"nueva {extra}", chat_id),

@@ -54,6 +54,7 @@ Responde SOLO con el CMD si se requiere una de estas acciones:
 - Leer/mostrar un email específico por número (ej: "léeme el 2", "muéstrame el tercero") → CMD:email_leer [N]
 - Buscar un email específico (de alguien, con asunto, etc.) → CMD:email_buscar [query estilo Gmail]
 - Redactar un nuevo email con IA (ej: "redacta un correo a juan@gmail.com pidiendo reunión") → CMD:email_redactar [destinatario] [instrucción]
+- Confirmar envío de borrador o decir que sí a una acción pendiente (ej: "envíalo", "sí", "dale", "perfecto") → CMD:email_confirmar
 - Buscar archivos en Google Drive → CMD:drive_buscar [nombre del archivo]
 - Ver contenido de carpeta de Drive → CMD:drive_carpeta [nombre: contabilidad, legales, tributario, etc.]
 
