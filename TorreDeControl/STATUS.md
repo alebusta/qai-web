@@ -1,6 +1,6 @@
 # STATUS - Estado Actual de QAI Company
 
-> **Última actualización**: 10 de Febrero 2026 (Libros Corporativos Digitales Operativos)
+> **Última actualización**: 11 de Febrero 2026 (Consulta Legal Post-Constitución Completada)
 > **Actualizado por**: Lex (Legal)
 
 ---
@@ -53,7 +53,7 @@
 | **Código Fuente** | ✅ | Migrado a HQ: `/QaiLabs/PROTOTIPOS/invoiceMatch/` (Incluye Export CSV ✅) |
 | Ficha Proveedor (Onboarding) | ✅ | **ENVIADA (02-Feb-2026)** - Versión corregida con Zona Postal |
 | NDA FedEx | ✅ | **COMPLETADO Y ENVIADO (10-Feb-2026)** - NDA firmado por Alejandro, enviado a Eduardo Mejías |
-| Orden de Compra | 🔵 | **Bajo gestión de Sempere y Fernández Arquitectos (Rodrigo Fernández)** |
+| Orden de Compra | 🔵 | **Bajo gestión de Sempere (Rodrigo Fernández). Eduardo monitoreando. Seguimiento: 16-Feb.** |
 
 **Seguimiento**: Ver [INBOX.md](file:///c:/Users/abustamante/TheQaiCo/TorreDeControl/INBOX.md) sección FedEx.
 
@@ -166,7 +166,7 @@
 - 📄 **Extractores**: PDF (OCR Gemini), DOCX, PPTX, Excel, CSV, Imágenes
 - 🤖 **Agentes**: Nzero (Arquitecto), Lex (Legal), Finn (Financiero) - Builder (futuro)
 - 🤖 **Finn - Google Drive** | ✅ | **API Configurada** - OAuth2, estructura de carpetas (15), upload operativo (27-Dic-2025)
-- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 1.5 (11-Feb)** - IA conversacional, gestión de tareas (add/done), consulta de datos empresa y rutas de archivos.
+- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 2 (11-Feb)** — Gmail (leer/buscar/enviar emails) + Drive (buscar archivos, carpetas corporativas) + IA conversacional + gestión de tareas.
 - 📋 **Playbooks**: Procesamiento de INBOX legal
 
 ---
@@ -208,6 +208,9 @@
 **🤖 Para Agentes**: Si actualizaste información aquí, deja una nota abajo con fecha y qué cambiaste.
 
 ### Changelog Reciente
+- ✅ 11-Feb-2026: **Fase 2.5 Email AI & Persistencia Completada** 🚀. Implementada redacción asistida con Gemini (`/email redactar`), lectura stateless con botones inline (`/email leer`) y capa de persistencia híbrida (Firestore/Local). Bot Nzero ahora es resiliente a reinicios en Cloud Functions. (Nzero)
+- ✅ 11-Feb-2026: **Refuerzo de Protocolos y GitHub Fix**. Blindado protocolo de imagen corporativa HTML para Lex y Finn (prohibición de texto plano). Implementada solución de identidades segmentadas de Git para evitar conflictos entre cuentas `alebusta` y `qai-labs`. (Nzero)
+- ✅ 11-Feb-2026: **Hito Gmail + Drive (Fase 2) Certificado** 📧📁. Bot Nzero ahora lee/busca/envía emails (Gmail API) y busca archivos/carpetas en Google Drive. OAuth refresh token persistente configurado. Deploy a GCP exitoso. Probado en vivo desde Telegram. (Nzero)
 - ✅ 11-Feb-2026: **Hito Bot Inteligente (Fase 1.5) Certificado** 🤖. Desplegada versión v1.5 con personalidad Nzero. Capacidades: gestión de tareas INBOX (crear/completar) vía lenguaje natural (Fuzzy Match), consulta de datos corporativos (RUT, Banco) y buscador de rutas de archivos. Pipeline de deploy GCP corregido y operativo. (Nzero)
 - ✅ 06-Ene-2026: **Hito FedEx/Sempere Despachado**. Envío formal de cotización v3 a Rodrigo Fernández. Estandardización de carpetas de clientes (01/02/03) aplicada a todo el departamento comercial. Institucionalización del proceso en `DIGITAL_HQ.md`. (Nzero)
 - ✅ 28-Ene-2026: **Certificación E2E "Viñedos Austral"**. Proceso completado exitosamente tras re-autorización de Gmail API. Validado workflow de generación de PDF con motor blindado (Launch Args) y despachoMultipart/Related a múltiples destinatarios. (Nzero)
