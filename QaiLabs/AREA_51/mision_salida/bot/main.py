@@ -74,8 +74,14 @@ def webhook(request):
         # Extraer mensaje
         message = data.get("message")
         if not message:
-            # Puede ser un update de otro tipo (edited_message, callback, etc.)
-            logger.debug("Update sin mensaje, ignorado")
+            # check for callback_query
+            callback_query = data.get("callback_query")
+            if callback_query:
+                logger.info("🔘 CallbackQuery recibido: %s", callback_query.get("data"))
+                return _handle_callback_query(callback_query)
+
+            # Puede ser un update de otro tipo (edited_message, etc.)
+            logger.debug("Update sin mensaje ni callback, ignorado")
             return "OK", 200
 
         chat_id = message.get("chat", {}).get("id")
@@ -111,6 +117,42 @@ def webhook(request):
     except Exception as e:
         logger.error("❌ Error procesando webhook: %s", e, exc_info=True)
         return "OK", 200  # Siempre retornar 200 a Telegram
+
+
+def _handle_callback_query(callback_query: dict) -> str:
+    """Maneja interacciones con botones inline."""
+    try:
+        from commands.email_cmd import handle_email_callback
+        
+        cq_id = callback_query.get("id")
+        data = callback_query.get("data", "")
+        message = callback_query.get("message", {})
+        chat_id = message.get("chat", {}).get("id")
+        
+        # Ack inmediato para que deje de cargar
+        telegram_service.answer_callback_query(cq_id)
+
+        if not chat_id:
+            logger.error("CallbackQuery sin chat_id valid")
+            return "OK", 200
+
+        # Ruteo de callbacks
+        # Convención: prefix:payload (ej: "email_read:12345")
+        if data.startswith("email_read:"):
+            msg_id = data.split(":", 1)[1]
+            response = handle_email_callback("read", msg_id, chat_id)
+            telegram_service.send_message(chat_id, response)
+        
+        elif data.startswith("email_draft:"):
+            action = data.split(":", 1)[1] # send, edit, cancel
+            response = handle_email_callback("draft", action, chat_id)
+            telegram_service.send_message(chat_id, response)
+
+        return "OK", 200
+
+    except Exception as e:
+        logger.error("❌ Error en callback: %s", e)
+        return "OK", 200
 
 
 def _process_message(text: str, chat_id: int) -> str:
@@ -159,6 +201,7 @@ Mensaje del usuario: "{text}"
                 "email_leer": lambda: handle_email(f"leer {extra}".strip(), chat_id),
                 "email_buscar": lambda: handle_email(f"buscar {extra}", chat_id),
                 "email_enviar": lambda: handle_email("enviar", chat_id),
+                "email_redactar": lambda: handle_email(f"redactar {extra}", chat_id),
                 "empresa": lambda: handle_empresa(extra),
                 "ruta": lambda: handle_ruta(extra),
                 "tarea_nueva": lambda: handle_tarea(f"nueva {extra}", chat_id),

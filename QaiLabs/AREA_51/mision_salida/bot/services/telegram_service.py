@@ -21,19 +21,19 @@ class TelegramService:
         self._base_url = self.BASE_URL.format(token=config.TELEGRAM_BOT_TOKEN)
 
     def send_message(
-        self, chat_id: int, text: str, parse_mode: str = "Markdown"
+        self, chat_id: int, text: str, parse_mode: str = "Markdown", reply_markup: dict = None
     ) -> bool:
         """
         Envía un mensaje a un chat de Telegram.
         Si el texto es muy largo, lo divide en partes.
         """
         if len(text) <= MAX_MESSAGE_LENGTH:
-            return self._send_single(chat_id, text, parse_mode)
+            return self._send_single(chat_id, text, parse_mode, reply_markup)
         else:
             return self._send_long(chat_id, text, parse_mode)
 
     def _send_single(
-        self, chat_id: int, text: str, parse_mode: str
+        self, chat_id: int, text: str, parse_mode: str, reply_markup: dict = None
     ) -> bool:
         """Envía un solo mensaje."""
         url = f"{self._base_url}/sendMessage"
@@ -42,6 +42,8 @@ class TelegramService:
             "text": text,
             "parse_mode": parse_mode,
         }
+        if reply_markup:
+            payload["reply_markup"] = reply_markup
 
         try:
             response = requests.post(url, json=payload, timeout=10)
@@ -53,7 +55,8 @@ class TelegramService:
             # Retry sin parse_mode (a veces Markdown mal formateado falla)
             if parse_mode:
                 logger.info("🔄 Reintentando sin parse_mode...")
-                return self._send_single(chat_id, text, parse_mode="")
+                # No enviamos reply_markup en el reintento para simplificar
+                return self._send_single(chat_id, text, parse_mode="", reply_markup=None)
             return False
 
     def _send_long(
@@ -66,10 +69,24 @@ class TelegramService:
         success = True
         for i, chunk in enumerate(chunks):
             part_header = f"📄 Parte {i + 1}/{len(chunks)}\n\n" if len(chunks) > 1 else ""
-            if not self._send_single(chat_id, part_header + chunk, parse_mode):
+            # Solo la última parte podría llevar botones, pero por ahora simplificamos sin botones en mensajes largos
+            if not self._send_single(chat_id, part_header + chunk, parse_mode, reply_markup=None):
                 success = False
 
         return success
+
+    def answer_callback_query(self, callback_query_id: str, text: str = "") -> bool:
+        """Responde a un callback query para detener el loading state en el cliente."""
+        url = f"{self._base_url}/answerCallbackQuery"
+        payload = {
+            "callback_query_id": callback_query_id,
+            "text": text
+        }
+        try:
+            requests.post(url, json=payload, timeout=5)
+            return True
+        except requests.exceptions.RequestException:
+            return False
 
     def _split_text(self, text: str, max_len: int = MAX_MESSAGE_LENGTH - 50) -> list[str]:
         """Divide texto en chunks respetando saltos de línea."""

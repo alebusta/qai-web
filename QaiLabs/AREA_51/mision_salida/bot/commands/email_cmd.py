@@ -1,28 +1,18 @@
 """
 QAI HQ Bot — Comando /email
-Lee emails, busca, y envía con human-in-the-loop.
-Fase 2: Integración real con Gmail API.
+Lee emails, busca, y envía con human-in-the-loop y persistencia (Firestore).
+Fase 2.5: Stateless + Inline Buttons.
 """
 import logging
 from services.gmail_service import get_gmail
+from services.state_service import get_state
+from services.telegram_service import telegram_service
 
 logger = logging.getLogger(__name__)
-
-# Estado temporal de borradores pendientes de confirmación
-_pending_drafts: dict[int, dict] = {}  # chat_id -> draft_info
-
-# Cache de últimos emails listados (para /email leer N)
-_last_listed: dict[int, list[dict]] = {}  # chat_id -> [messages]
-
 
 def handle_email(args: str, chat_id: int) -> str:
     """
     Manejo de emails via Telegram.
-
-    Subcomandos:
-        /email leer         → últimos emails no leídos
-        /email buscar [q]   → buscar emails con query Gmail
-        /email enviar       → crear borrador (human-in-the-loop)
     """
     logger.info("📧 Comando /email ejecutado (args=%s)", args)
 
@@ -31,29 +21,43 @@ def handle_email(args: str, chat_id: int) -> str:
     detail = parts[1].strip() if len(parts) > 1 else ""
 
     if subcommand in ("leer", "read", "ver", "inbox"):
-        # Si tiene un número, leer ese email específico
-        if detail and detail.isdigit():
-            return _handle_read_one(int(detail), chat_id)
         return _handle_read(chat_id)
     elif subcommand in ("buscar", "search", "find"):
         if not detail:
             return "📧 Uso: `/email buscar [query]`\nEj: `/email buscar from:banco`"
-        return _handle_search(detail)
+        return _handle_search(detail, chat_id)
     elif subcommand in ("enviar", "send", "mandar"):
-        return _handle_send_draft(detail, chat_id)
+        return _handle_create_draft(detail, chat_id)
+    elif subcommand in ("redactar", "draft", "write"):
+        return _handle_ai_draft(detail, chat_id)
     else:
         return (
-            "📧 *Email* — Subcomandos:\n\n"
-            "• `/email leer` — Ver últimos emails no leídos\n"
-            "• `/email leer [N]` — Leer email N completo\n"
-            "• `/email buscar [query]` — Buscar (ej: `from:banco`)\n"
-            "• `/email enviar [destino] [asunto]` — Crear borrador\n\n"
-            "_Luego usa_ `/confirmar` _para enviar._"
+            "📧 *Email* — Comandos:\n\n"
+            "• `/email leer` — Ver emails (con botones)\n"
+            "• `/email buscar [q]` — Buscar (ej: `from:banco`)\n"
+            "• `/email enviar [to] [subject]` — Crear borrador manual\n"
+            "• `/email redactar [to] [instrucción]` — Redacción con IA\n\n"
+            "_Usa_ `/confirmar` _para enviar el borrador actual._"
         )
 
 
+def handle_email_callback(type: str, payload: str, chat_id: int) -> str:
+    """Maneja callbacks de botones inline."""
+    if type == "read":
+        # payload es message_id
+        return _read_message_full(payload)
+    elif type == "draft":
+        # payload es action (send, edit, cancel)
+        if payload == "send":
+            return handle_confirm(chat_id)
+        elif payload == "cancel":
+            get_state().clear_draft(chat_id)
+            return "🗑️ Borrador descartado."
+    return "❓ Acción desconocida"
+
+
 def _handle_read(chat_id: int) -> str:
-    """Lista últimos emails no leídos."""
+    """Lista últimos emails no leídos con botones inline."""
     try:
         gmail = get_gmail()
         messages = gmail.list_unread(max_results=5)
@@ -61,73 +65,34 @@ def _handle_read(chat_id: int) -> str:
         if not messages:
             return "📭 *Inbox limpio* — No hay emails sin leer."
 
-        # Guardar en cache para /email leer N
-        _last_listed[chat_id] = messages
+        telegram_service.send_message(chat_id, f"📧 *{len(messages)} emails sin leer:*")
 
-        lines = [f"📧 *{len(messages)} emails sin leer:*\n"]
-        for i, m in enumerate(messages, 1):
-            sender = m.get("from", "?")
-            if "<" in sender:
-                sender = sender.split("<")[0].strip().strip('"')
+        # Enviar cada email como mensaje separado con su botón "Leer"
+        # Esto es mejor para móvil que un solo mensaje largo con muchos botones
+        for m in messages:
+            sender = _clean_sender(m.get("from", "?"))
             subject = m.get("subject", "(Sin asunto)")
-            snippet = m.get("snippet", "")[:80]
-            lines.append(f"*{i}.* {subject}")
-            lines.append(f"   _De: {sender}_")
-            if snippet:
-                lines.append(f"   {snippet}...")
-            lines.append("")
+            msg_id = m.get("id")
+            
+            text = f"📩 *{subject}*\n_De: {sender}_"
+            
+            # Botón inline
+            keyboard = {
+                "inline_keyboard": [[
+                    {"text": "👁️ Leer", "callback_data": f"email_read:{msg_id}"}
+                ]]
+            }
+            
+            telegram_service.send_message(chat_id, text, reply_markup=keyboard)
 
-        lines.append("_Usa_ `/email leer [N]` _para leer uno completo._")
-        return "\n".join(lines)
+        return "" # Ya enviamos los mensajes
     except Exception as e:
         logger.error("❌ Error leyendo emails: %s", e)
         return f"❌ Error al leer emails: {str(e)[:100]}"
 
 
-def _handle_read_one(index: int, chat_id: int) -> str:
-    """Lee el contenido completo de un email por su número en la lista."""
-    cached = _last_listed.get(chat_id, [])
-    if not cached:
-        return "❌ Primero lista los emails con `/email leer`, luego usa `/email leer [N]`."
-
-    if index < 1 or index > len(cached):
-        return f"❌ Número inválido. Escoge entre 1 y {len(cached)}."
-
-    msg_summary = cached[index - 1]
-    msg_id = msg_summary.get("id")
-    if not msg_id:
-        return "❌ No se pudo obtener el ID del mensaje."
-
-    try:
-        gmail = get_gmail()
-        full_msg = gmail.get_message(msg_id)
-
-        if not full_msg:
-            return "❌ Error al leer el mensaje completo."
-
-        sender = full_msg.get("from", "?")
-        subject = full_msg.get("subject", "(Sin asunto)")
-        date = full_msg.get("date", "")
-        body = full_msg.get("body", full_msg.get("snippet", ""))
-
-        # Truncar body si es muy largo para Telegram
-        if len(body) > 3000:
-            body = body[:3000] + "\n\n_... (truncado)_"
-
-        return (
-            f"📨 *Email #{index}*\n\n"
-            f"📝 *Asunto:* {subject}\n"
-            f"👤 *De:* {sender}\n"
-            f"📅 *Fecha:* {date}\n\n"
-            f"——\n{body}"
-        )
-    except Exception as e:
-        logger.error("❌ Error leyendo email #%d: %s", index, e)
-        return f"❌ Error al leer email: {str(e)[:100]}"
-
-
-def _handle_search(query: str) -> str:
-    """Busca emails con query estilo Gmail."""
+def _handle_search(query: str, chat_id: int) -> str:
+    """Busca emails y muestra resultados con botones."""
     try:
         gmail = get_gmail()
         messages = gmail.search_messages(query, max_results=5)
@@ -135,83 +100,195 @@ def _handle_search(query: str) -> str:
         if not messages:
             return f"📧 No encontré emails con *\"{query}\"*."
 
-        lines = [f"🔍 *Resultados para \"{query}\"*\n"]
-        for i, m in enumerate(messages, 1):
-            sender = m.get("from", "?")
-            if "<" in sender:
-                sender = sender.split("<")[0].strip().strip('"')
-            subject = m.get("subject", "(Sin asunto)")
-            date = m.get("date", "")
-            # Simplificar fecha
-            if "," in date:
-                date = date.split(",")[1].strip()[:12]
-            lines.append(f"*{i}.* {subject}")
-            lines.append(f"   _De: {sender} | {date}_")
-            lines.append("")
+        telegram_service.send_message(chat_id, f"🔍 *Resultados para \"{query}\":*")
 
-        return "\n".join(lines)
+        for m in messages:
+            sender = _clean_sender(m.get("from", "?"))
+            subject = m.get("subject", "(Sin asunto)")
+            date = m.get("date", "")[:10]
+            msg_id = m.get("id")
+
+            text = f"🔎 *{subject}*\n_De: {sender} | {date}_"
+            
+            keyboard = {
+                "inline_keyboard": [[
+                    {"text": "👁️ Leer", "callback_data": f"email_read:{msg_id}"}
+                ]]
+            }
+            telegram_service.send_message(chat_id, text, reply_markup=keyboard)
+
+        return ""
     except Exception as e:
         logger.error("❌ Error buscando emails: %s", e)
         return f"❌ Error al buscar: {str(e)[:100]}"
 
 
-def _handle_send_draft(detail: str, chat_id: int) -> str:
-    """Crea borrador de email con human-in-the-loop."""
-    if not detail:
-        return (
-            "📧 Para crear un borrador:\n"
-            "`/email enviar destinatario@email.com Asunto del correo`\n\n"
-            "Luego te mostraré un preview y esperaré tu `/confirmar` para enviarlo."
-        )
+def _read_message_full(msg_id: str) -> str:
+    """Lee un mensaje completo por ID (stateless)."""
+    try:
+        gmail = get_gmail()
+        full_msg = gmail.get_message(msg_id)
 
-    # Parse destino y asunto
+        if not full_msg:
+            return "❌ No se pudo recuperar el email."
+
+        sender = full_msg.get("from", "?")
+        subject = full_msg.get("subject", "(Sin asunto)")
+        date = full_msg.get("date", "")
+        body = full_msg.get("body", full_msg.get("snippet", ""))
+
+        if len(body) > 3000:
+            body = body[:3000] + "\n\n_... (truncado)_"
+
+        return (
+            f"📨 *Lectura de Email*\n\n"
+            f"📝 *Asunto:* {subject}\n"
+            f"👤 *De:* {sender}\n"
+            f"📅 *Fecha:* {date}\n\n"
+            f"——\n{body}"
+        )
+    except Exception as e:
+        logger.error("❌ Error leyendo mensaje full: %s", e)
+        return f"❌ Error: {str(e)[:100]}"
+
+
+def _handle_create_draft(detail: str, chat_id: int) -> str:
+    """Crea borrador manual."""
+    if not detail:
+        return "📧 Uso: `/email enviar [email] [asunto]`"
+
     parts = detail.split(maxsplit=1)
     dest = parts[0]
     subject = parts[1] if len(parts) > 1 else "(Sin asunto)"
 
-    # Validar que parece un email
     if "@" not in dest:
-        return "❌ El destinatario no parece un email válido. Formato: `usuario@dominio.com`"
+        return "❌ Email inválido."
 
-    # Guardar borrador pendiente
-    _pending_drafts[chat_id] = {
+    # Guardar en StateService (Firestore)
+    draft = {
         "to": dest,
         "subject": subject,
-        "status": "draft",
+        "body": "...", # Pendiente de cuerpo real si quisiéramos
+        "status": "draft_manual",
+        "timestamp": 0
+    }
+    get_state().save_draft(chat_id, draft)
+
+    keyboard = {
+        "inline_keyboard": [[
+            {"text": "✅ Enviar Vacío (Test)", "callback_data": "email_draft:send"},
+            {"text": "❌ Cancelar", "callback_data": "email_draft:cancel"}
+        ]]
     }
 
-    return (
-        f"📧 *Borrador creado*\n\n"
-        f"📬 *Para:* {dest}\n"
-        f"📝 *Asunto:* {subject}\n\n"
-        f"Envía `/confirmar` para despachar este email.\n"
-        f"(Se enviará como texto plano desde alebusta@qai.cl)"
-    )
+    return f"📧 *Borrador Creado*\nPara: {dest}\nAsunto: {subject}\n\n(Envia cuerpo vacío por ahora, WIP)", keyboard
+
+
+def _handle_ai_draft(detail: str, chat_id: int) -> str:
+    """Redacta email con IA."""
+    if not detail:
+        return "📧 Uso: `/email redactar [email] [instrucciones]`"
+    
+    parts = detail.split(maxsplit=1)
+    dest = parts[0]
+    instructions = parts[1] if len(parts) > 1 else ""
+
+    if "@" not in dest:
+        return "❌ Email inválido."
+    
+    if not instructions:
+        return "❌ Faltan instrucciones. Ej: `/email redactar juan@test.com Invitación a reunión`"
+
+    telegram_service.send_message(chat_id, "🤖 *Redactando con IA...*")
+    telegram_service.send_typing_action(chat_id)
+
+    # Generar con LLM
+    try:
+        from services.llm_provider import get_llm
+        llm = get_llm()
+        
+        prompt = f"""
+        Como Nzero (asistente ejecutivo de The QAI Company), redacta un email profesional para: {dest}
+        
+        Instrucciones del usuario: "{instructions}"
+        
+        Remitente: Alejandro Bustamante (CEO, The QAI Company)
+        
+        Formato de salida requerido (JSON):
+        {{
+            "subject": "Asunto del correo",
+            "body": "Cuerpo del correo (texto plano, firma incluida, tono profesional pero cercano)"
+        }}
+        """
+        
+        response = llm.chat(prompt).strip()
+        # Limpiar markdown de json si existe
+        if "```json" in response:
+            response = response.split("```json")[1].split("```")[0].strip()
+        elif "```" in response:
+             response = response.split("```")[1].split("```")[0].strip()
+        
+        import json
+        data = json.loads(response)
+        
+        subject = data.get("subject", "Asunto Propuesto")
+        body = data.get("body", "")
+
+        # Guardar Draft
+        draft = {
+            "to": dest,
+            "subject": subject,
+            "body": body,
+            "status": "draft_ai",
+            "timestamp": 0
+        }
+        get_state().save_draft(chat_id, draft)
+        
+        keyboard = {
+            "inline_keyboard": [[
+                {"text": "✅ Enviar Ahora", "callback_data": "email_draft:send"},
+                {"text": "❌ Cancelar", "callback_data": "email_draft:cancel"}
+            ]]
+        }
+        
+        return (
+            f"🤖 *Borrador Generado*\n\n"
+            f"📬 *Para:* {dest}\n"
+            f"📝 *Asunto:* {subject}\n\n"
+            f"——\n{body}\n——", 
+            keyboard
+        )
+
+    except Exception as e:
+        logger.error("Error redactando: %s", e)
+        return f"❌ Error generando borrador: {e}"
 
 
 def handle_confirm(chat_id: int) -> str:
-    """Confirma y envía un borrador pendiente."""
-    if chat_id not in _pending_drafts:
-        return "❌ No hay ningún borrador pendiente para confirmar."
+    """Confirma el borrador actual."""
+    state = get_state()
+    draft = state.get_draft(chat_id)
 
-    draft = _pending_drafts.pop(chat_id)
+    if not draft:
+        return "❌ No hay borrador activo. Usa `/email enviar` primero."
 
     try:
         gmail = get_gmail()
-        body_text = f"Email enviado desde QAI Bot por Nzero.\n\nAsunto: {draft['subject']}"
+        # Si el draft tiene body generado por IA, usarlo. Si no, texto default.
+        body_text = draft.get("body", "Email enviado desde QAI Bot.")
+        
         result = gmail.send_email(draft["to"], draft["subject"], body_text)
-
+        
         if result:
-            return (
-                f"✅ *Email enviado*\n\n"
-                f"📬 *Para:* {draft['to']}\n"
-                f"📝 *Asunto:* {draft['subject']}\n"
-                f"🆔 ID: `{result.get('id', 'N/A')}`"
-            )
+            state.clear_draft(chat_id)
+            return f"✅ Email enviado a {draft['to']}."
         else:
-            return "❌ Error enviando el email. Revisa los logs."
+            return "❌ Falló el envío."
     except Exception as e:
-        logger.error("❌ Error enviando email: %s", e)
-        # Restaurar borrador en caso de error
-        _pending_drafts[chat_id] = draft
-        return f"❌ Error al enviar: {str(e)[:100]}\nEl borrador sigue pendiente, intenta `/confirmar` de nuevo."
+        return f"❌ Error: {e}"
+
+
+def _clean_sender(sender: str) -> str:
+    if "<" in sender:
+        return sender.split("<")[0].strip().strip('"')
+    return sender
