@@ -59,9 +59,10 @@ Responde SOLO con el CMD si se requiere una de estas acciones:
 - Confirmar envío de borrador o decir que sí a una acción pendiente (ej: "envíalo", "sí", "dale", "perfecto") → CMD:email_confirmar
 - Buscar archivos en Google Drive → CMD:drive_buscar [término]
 - Ver contenido de carpeta de Drive → CMD:drive_carpeta [nombre]
-- Leer y analizar un archivo por ID o NÚMERO (ej: "analiza el 1", "léeme el segundo", "lee el archivo [ID]") → CMD:drive_leer [ID/N]
+- Leer y analizar un archivo por ID o NÚMERO DE LISTA (ej: "analiza el 1", "léeme el segundo", "lee el archivo [ID]", "muéstrame el 3") → CMD:drive_leer [ID/N]
+  *IMPORTANTE*: Si el usuario dice un número (1, 2, 3...) y tienes una "Ultima búsqueda Drive" en el contexto, asume que se refiere a esa lista y usa CMD:drive_leer [N].
 
-Para cualquier otra cosa (preguntas generales, charla, o si ya tienes el contexto del documento arriba), responde directamente.
+Para cualquier otra cosa (preguntas generales, charla, o si ya tienes el contexto del dumento arriba), responde directamente.
 """
 
 

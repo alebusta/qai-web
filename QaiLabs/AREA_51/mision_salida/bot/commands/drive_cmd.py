@@ -42,7 +42,7 @@ def handle_drive(args: str, chat_id: int) -> str:
     elif subcommand in ("leer", "read", "analizar"):
         if not detail:
             return "📁 Uso: `/drive leer [file_id]`\nConsigue el ID con `/drive buscar` o `/drive carpeta`."
-        return _handle_read_file(detail)
+        return _handle_read_file(detail, chat_id)
 
     else:
         return (

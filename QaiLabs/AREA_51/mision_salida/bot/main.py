@@ -202,9 +202,10 @@ def _handle_natural_language(text: str, chat_id: int) -> str:
 
     context_summary = ""
     if last_search:
-        context_summary += f"\n- Ultima búsqueda Drive: {[f['name'] for f in last_search]}"
+        search_items = "\n".join([f"{i+1}. {f['name']}" for i, f in enumerate(last_search)])
+        context_summary += f"\n- Ultima búsqueda Drive:\n{search_items}"
     if doc_context:
-        context_summary += f"\n- Documento analizado: {doc_context.get('file_name')}"
+        context_summary += f"\n- Documento analizado recientemente: {doc_context.get('file_name')}"
 
     router_prompt = f"""{NZERO_NLP_ROUTER}
 Contexto Reciente del Chat:{context_summary}

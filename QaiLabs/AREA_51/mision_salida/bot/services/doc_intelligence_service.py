@@ -41,9 +41,8 @@ class DocIntelligenceService:
         
         logger.info("🧠 Analizando archivo: %s (%s)", file_name, file_id)
         
-        # 2. Descargar a temporal
-        temp_path = os.path.join(os.getcwd(), "temp_files")
-        os.makedirs(temp_path, exist_ok=True)
+        # 2. Descargar a temporal (/tmp en GCP es mandatorio)
+        temp_path = "/tmp"
         local_file = os.path.join(temp_path, file_name)
         
         success = self._gdrive.download_file(file_id, local_file)
