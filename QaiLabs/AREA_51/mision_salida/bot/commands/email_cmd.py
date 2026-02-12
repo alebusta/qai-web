@@ -207,8 +207,25 @@ def _handle_ai_draft(detail: str, chat_id: int) -> str:
         from services.llm_provider import get_llm
         llm = get_llm()
         
+        # Recuperar contexto de documento reciente
+        state = get_state()
+        doc_context = state.get_user_state(chat_id, "last_document_context")
+        
+        context_text = ""
+        if doc_context:
+            context_text = f"""
+            INFORMACIÓN CRUCIAL (Contexto de Documento Analizado):
+            Archivo: {doc_context.get('file_name')}
+            Categoría: {doc_context.get('category')}
+            Análisis: {doc_context.get('analysis')}
+            
+            Usa esta información para completar el correo si el usuario lo pide o si es relevante.
+            """
+
         prompt = f"""
         Como Nzero (asistente ejecutivo de The QAI Company), redacta un email profesional para: {dest}
+        
+        {context_text}
         
         Instrucciones del usuario: "{instructions}"
         

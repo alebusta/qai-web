@@ -141,14 +141,36 @@ def _handle_read_file(file_detail: str, chat_id: int) -> str:
         state = get_state()
         file_id = file_detail.strip()
 
-        # 1. Intentar resolver si es un número (indice de última búsqueda)
+        # 1. Intentar resolver si es un número o palabra ordinal
         last_search = state.get_user_state(chat_id, "last_drive_search")
+        
+        # Diccionario básico de ordinales
+        ordinals = {
+            "primero": "1", "primer": "1", "1ro": "1", "1ra": "1",
+            "segundo": "2", "2do": "2", "2da": "2",
+            "tercero": "3", "tercer": "3", "3ro": "3", "3ra": "3",
+            "cuarto": "4", "4to": "4",
+            "quinto": "5", "5to": "5",
+            "el": "", "la": "", "un": "", "una": "" # Limpieza básica de artículos
+        }
+        
+        # Limpiar palabras comunes
+        clean_id = file_id.lower().replace("el ", "").replace("la ", "").replace("un ", "").strip()
+        if clean_id in ordinals:
+            file_id = ordinals[clean_id]
+        elif any(o in clean_id for o in ordinals if ordinals[o] != ""):
+             # Caso como "segundo " o "el segundo"
+             for o, val in ordinals.items():
+                 if val != "" and o in clean_id:
+                     file_id = val
+                     break
+
         if file_id.isdigit() and last_search:
             idx = int(file_id) - 1
             if 0 <= idx < len(last_search):
                 selected = last_search[idx]
                 file_id = selected["id"]
-                logger.info("🔢 Índice detectado: %d -> %s", idx + 1, file_id)
+                logger.info("🔢 Índice/Ordinal detectado: %d -> %s", idx + 1, file_id)
 
         doc_int = get_doc_intelligence()
         # Nzero informa que está trabajando

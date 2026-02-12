@@ -61,6 +61,9 @@ Responde SOLO con el CMD si se requiere una de estas acciones:
 - Ver contenido de carpeta de Drive → CMD:drive_carpeta [nombre]
 - Leer y analizar un archivo por ID o NÚMERO DE LISTA (ej: "analiza el 1", "léeme el segundo", "lee el archivo [ID]", "muéstrame el 3") → CMD:drive_leer [ID/N]
   *IMPORTANTE*: Si el usuario dice un número (1, 2, 3...) y tienes una "Ultima búsqueda Drive" en el contexto, asume que se refiere a esa lista y usa CMD:drive_leer [N].
+  *IMPORTANTE*: Si el usuario dice "el segundo", "el tercero", etc., mapearlo a su número (2, 3...) y usar CMD:drive_leer [N].
+- Mandar información analizada por email → CMD:email_redactar [email] [instrucción]
+  *IMPORTANTE*: Si el usuario pide mandar "esa información", "el resumen", o similar, asume que es sobre el último archivo analizado.
 
 Para cualquier otra cosa (preguntas generales, charla, o si ya tienes el contexto del dumento arriba), responde directamente.
 """
