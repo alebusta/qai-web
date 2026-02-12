@@ -43,6 +43,7 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 12-Feb 00:15 | Nzero | Certificación Fase 3.4 (Memoria & Ordinales) | drive_cmd.py, email_cmd.py, persona.py, CHECKPOINT.md, STATUS.md, INBOX.md | ✅ Implementada resolución de ordinales (*"el segundo"*), memoria contextual para drafts de email y bundles de QaiCore tools en GCP. Roadmap Phase 4 (Iliana access) definido. |
 | 11-Feb 14:30 | Nzero | Certificación Fase 2.5 (Email AI + Firestore) | email_cmd.py, main.py, persona.py, telegram_service.py, state_service.py, CHECKPOINT.md | ✅ Implementada redacción asistida con Gemini, lectura resiliente (stateless) y persistencia en Firestore. Análisis de costos ($0/mes) y Roadmap Phase 3 actualizado. |
 | 11-Feb 13:10 | Nzero | Resolución Conflicto GitHub Accounts | .gitconfig, .gitconfig-qai | ✅ Implementada lógica condicional `includeIf` para separar identidad personal (`alebusta`) de corporativa (`qai-labs`) según el directorio de trabajo. |
 | 11-Feb 13:00 | Nzero | Actualización Seguimiento FedEx | INBOX.md, STATUS.md | ✅ Marcada tarea de contacto a Eduardo como hecha. Creado recordatorio para el Lunes 16-Feb por seguimiento de OC Sempere. |
