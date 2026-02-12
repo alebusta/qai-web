@@ -112,13 +112,29 @@ class GmailService:
 
     def send_email(self, to: str, subject: str, body_text: str) -> dict | None:
         """
-        Envía un email en texto plano.
-        Para uso desde Telegram, texto plano es suficiente.
+        Envía un email con soporte HTML y plantilla corporativa.
+        Incluye versión texto plano como fallback.
         """
         try:
-            message = MIMEText(body_text)
+            from utils.email_templates import wrap_corporate_template
+
+            # Crear mensaje multipart (HTML + Texto Plano)
+            message = MIMEMultipart("alternative")
             message["to"] = to
             message["subject"] = subject
+
+            # Parte 1: Texto plano (para clientes antiguos / preview)
+            part_text = MIMEText(body_text, "plain")
+            
+            # Parte 2: HTML (con branding)
+            # Primero sanitizamos un poco el texto para HTML básico
+            html_content = body_text.replace("\n", "<br>")
+            full_html = wrap_corporate_template(html_content)
+            part_html = MIMEText(full_html, "html")
+
+            # Adjuntar partes (el orden importa: el último es el preferido por el cliente)
+            message.attach(part_text)
+            message.attach(part_html)
 
             raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
