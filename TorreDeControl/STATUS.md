@@ -167,7 +167,7 @@
 - 📄 **Extractores**: PDF (OCR Gemini), DOCX, PPTX, Excel, CSV, Imágenes
 - 🤖 **Agentes**: Nzero (Arquitecto), Lex (Legal), Finn (Financiero) - Builder (futuro)
 - 🤖 **Finn - Google Drive** | ✅ | **API Configurada** - OAuth2, estructura de carpetas (15), upload operativo (27-Dic-2025)
-- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 2 (11-Feb)** — Gmail (leer/buscar/enviar emails) + Drive (buscar archivos, carpetas corporativas) + IA conversacional + gestión de tareas.
+- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 3 (12-Feb)** — Certificación de Memoria Inter-Servicios & Ordinales. Lectura de PDFs con análisis contextual, redacción de borradores de email con memoria de corto plazo y resolución de lenguaje natural para referencias. Despliegue en GCP estable.
 - 📋 **Playbooks**: Procesamiento de INBOX legal
 
 ---
@@ -209,6 +209,7 @@
 **🤖 Para Agentes**: Si actualizaste información aquí, deja una nota abajo con fecha y qué cambiaste.
 
 ### Changelog Reciente
+- ✅ 12-Feb-2026: **Fase 3: Memoria Inter-Servicios & Ordinales Certificada** 🚀🧠. El bot ahora resuelve referencias naturales (*"el segundo"*) y mantiene el contexto de análisis de documentos al redactar emails. Se acabó la "amnesia" entre servicios. Sincronización final GCP-GitHub completada. (Nzero)
 - ✅ 11-Feb-2026: **Fase 2.5 Email AI & Persistencia Completada** 🚀. Implementada redacción asistida con Gemini (`/email redactar`), lectura stateless con botones inline (`/email leer`) y capa de persistencia híbrida (Firestore/Local). Bot Nzero ahora es resiliente a reinicios en Cloud Functions. (Nzero)
 - ✅ 11-Feb-2026: **Refuerzo de Protocolos y GitHub Fix**. Blindado protocolo de imagen corporativa HTML para Lex y Finn (prohibición de texto plano). Implementada solución de identidades segmentadas de Git para evitar conflictos entre cuentas `alebusta` y `qai-labs`. (Nzero)
 - ✅ 11-Feb-2026: **Hito Gmail + Drive (Fase 2) Certificado** 📧📁. Bot Nzero ahora lee/busca/envía emails (Gmail API) y busca archivos/carpetas en Google Drive. OAuth refresh token persistente configurado. Deploy a GCP exitoso. Probado en vivo desde Telegram. (Nzero)

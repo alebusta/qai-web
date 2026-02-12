@@ -24,6 +24,7 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [ ] **Crear GitHub Organization** "The QAI Company" (migrar repos personales)
 - [x] **Configurar alerta de billing GCP** ($5 USD/mes) → ver `QaiLabs/AREA_51/mision_salida/COSTOS.md` ✅ 11-Feb
 
+- [ ] **Habilitar acceso al bot para Iliana** (Whitelist de chat_id + modo restringido)
 - [ ] **Rotar tokens del bot** (Telegram, GitHub PAT, Gemini API Key) — expuestos durante setup
 
 ### FedEx - Invoice Matcher
@@ -152,10 +153,14 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [x] **Crear playbooks financieros** en `/QaiCore/playbooks/`:
   - [x] `registrar_gasto_ingreso.md` (registro diario de operaciones) ✅ 30-Dic
   - [x] `facturar_cliente_saas.md` (flujo completo de facturación) ✅ 30-Dic
-- [ ] **Crear playbooks técnicos** en `/QaiCore/playbooks/`:
-  - `deploy_prod.md` (cómo hacer deploy)
-  - `onboarding_cliente_saas.md` (activar nuevo cliente)
-- [ ] Documentar proceso de revisión legal de contratos (para Lex)
+- [ ] **Misión Salida - Fase 4: Especialistas & Pro-UX**
+  - [ ] Implementar comandos `/legal` (Lex) y `/finanzas` (Finn) en el bot.
+  - [ ] Crear generador dinámico de PDFs para `/propuesta`.
+  - [ ] Implementar Fortress Protocol (PIN de seguridad para acciones críticas).
+  - [ ] Automatizar CI/CD para bundling de QaiCore tools en cada deploy.
+- [ ] **Misión Salida - Fase 5: Horizon**
+  - [ ] Evaluación de n8n para soporte WhatsApp.
+  - [ ] Diseño de Dashboard Web (UI propia).
 
 #### 🟢 NICE TO HAVE - Sistema Financiero (Futuro)
 - [ ] Implementar tracking automático de consumo de APIs (monitoreo Google Cloud)
