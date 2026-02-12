@@ -52,15 +52,23 @@
 | 11-Feb 12:30 | Lex | Consulta Legal Post-Constitución | INBOX.md, STATUS.md | ✅ Análisis completado. Pendientes: Activación facturación SII (depende OC FedEx), Patente Municipal (seguimiento), Junta Ordinaria 2025 (antes de feb-28). |
 
 | 11-Feb 02:00 | Nzero | Certificación Bot Telegram Fase 2 (Gmail + Drive) | services/google_auth.py, gmail_service.py, gdrive_service.py, commands/drive_cmd.py, email_cmd.py, persona.py, main.py, config.py, scripts/auth_google_bot.py, CHECKPOINT.md | ✅ Gmail API operativo (leer/buscar/enviar). Drive API operativo (buscar/listar carpetas). OAuth refresh token configurado. Deploy GCP exitoso. Probado en vivo desde Telegram. |
+
 | 11-Feb 00:15 | Nzero | Certificación Bot Telegram v1.5 (Fase 1.5) | bot/commands/tarea.py, bot/services/github_writer.py, STATUS.md, INBOX.md | ✅ Bot operativo con personalidad Nzero, gestión de tareas fuzzy y buscador de rutas. Deploy en GCP sincronizado. |
+
 | 10-Feb 10:20 | Nzero | Auditoría de Codebase & Limpieza Radical | root/temp_files/, TorreDeControl/temp_files/fill_nda_fedex.py | ✅ Eliminada carpeta temporal del root. Eliminado script `fill_nda_fedex.py` tras confirmación de tarea completada. HQ 100% limpio. |
-| 10-Feb 10:15 | Nzero | Blindaje de Protocolo Zero Footprint | TorreDeControl/README.md, agents/lex/profile.md, agents/nzero/system_prompt.md | ✅ Inyectada prohibición de carpetas temporales fuera de Torre de Control y obligación de limpieza de scripts en perfiles de agentes. |
+
 | 10-Feb 16:45 | Lex | Envío NDA FedEx Firmado | Email a eduardo.mejias@fedex.com, NDA_FedEx_QAI_Completado.pdf | ✅ Email enviado (ID: 19c478e7b46e5166). NDA firmado adjunto. Respuesta sobre hilo original. |
+
 | 10-Feb 15:30 | Lex | Respaldo Google Drive: Libros Corporativos | Drive: Actas/ (ID: 1Ieyd6PtP-3vooPePJ4nmxXR7E8Ieyf-O), Registros Oficiales/ (ID: 1cxSL7Iz3j99yNsaLW6KRCrggBJKXHs3_); Acta N°1 PDF, Comprobante RES PDF/MD | ✅ Carpetas creadas. 3 archivos respaldados. Config gdrive_folders.json actualizado. |
+
 | 10-Feb 15:00 | Lex | Estructura Libros Corporativos Digitales | Empresa/04_LEGAL/actas/INDICE.md, registros_oficiales/INDICE.md, CHECKLIST_OPERATIVO_ACTAS.md, README.md | ✅ Repositorio completo operativo. Checklist para futuras actas. |
+
 | 10-Feb 14:00 | Lex | Apertura Registro de Accionistas (RES) | Portal RES, Empresa/04_LEGAL/registros_oficiales/2026-02-09_APERTURA_REGISTRO_ACCIONISTAS_RES.md | ✅ Libro abierto oficialmente. CVE: RA1UcsKaOvrD. Composición 50/50 registrada. N° Atención: 10294717. |
+
 | 07-Feb 19:30 | Lex | Acta N°1 digital + template | Empresa/04_LEGAL/2026-02-07_ACTA_01_CONSTITUCION_LIBROS_DIGITALES.md, Empresa/04_LEGAL/actas/ACTA_TEMPLATE.md, QaiCore/tools/md_to_pdf.py, Empresa/04_LEGAL/README.md | ✅ PDF final generado. Pendiente firma simple y upload a Drive. |
+
 | 07-Feb 10:15 | Nzero | Corrección Facturación Doc. 46 | TorreDeControl/INBOX.md | ⚠️ Tareas de Doc. 46 revertidas a PENDIENTE/BLOQUEADO. El SII requiere primera OC (FedEx) para autorizar emisión. Gastos ya están registrados contablemente. |
+
 | 07-Feb 10:05 | Nzero | Decisión Google Workspace: No migrar | TorreDeControl/INBOX.md, TorreDeControl/STATUS.md | ✅ Se mantiene setup Google One + SMTP2GO para preservar acceso a modelos AI Pro. |
 | 07-Feb 19:35 | Lex | Seguimiento Patente Providencia | TorreDeControl/INBOX.md, TorreDeControl/STATUS.md | ✅ Seguimiento enviado, respuesta pendiente. |
 
