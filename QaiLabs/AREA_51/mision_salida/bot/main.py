@@ -194,8 +194,20 @@ def _handle_natural_language(text: str, chat_id: int) -> str:
 
     llm = get_llm()
 
-    # Paso 1: Determinar intención
+    # Paso 1: Determinar intención con contexto de memoria
+    from services.state_service import get_state
+    state = get_state()
+    last_search = state.get_user_state(chat_id, "last_drive_search")
+    doc_context = state.get_user_state(chat_id, "last_document_context")
+
+    context_summary = ""
+    if last_search:
+        context_summary += f"\n- Ultima búsqueda Drive: {[f['name'] for f in last_search]}"
+    if doc_context:
+        context_summary += f"\n- Documento analizado: {doc_context.get('file_name')}"
+
     router_prompt = f"""{NZERO_NLP_ROUTER}
+Contexto Reciente del Chat:{context_summary}
 
 Mensaje del usuario: "{text}"
 """
