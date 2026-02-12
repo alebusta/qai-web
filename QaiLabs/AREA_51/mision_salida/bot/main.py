@@ -230,14 +230,31 @@ Mensaje del usuario: "{text}"
             if handler:
                 return handler()
 
-        # Paso 2: Si no es un comando, responder como Nzero
-        # Usar system prompt completo solo para respuestas conversacionales
+        # Paso 2: Si no es un comando, responder como Nzero con contexto
+        from services.state_service import get_state
+        state = get_state()
+        doc_context = state.get_user_state(chat_id, "last_document_context")
+        
+        context_str = ""
+        if doc_context:
+            context_str = f"""
+## Contexto de Documento Reciente (Memoria de Corto Plazo):
+Archivo: {doc_context.get('file_name')}
+Categoría: {doc_context.get('category')}
+Resumen del Análisis:
+{doc_context.get('analysis')}
+"""
+
         persona_prompt = f"""{NZERO_IDENTITY}
+{context_str}
 
 El Founder te escribió por Telegram:
 "{text}"
 
-Responde como Nzero. Sé conciso (máx 5-8 líneas)."""
+Responde como Nzero. Sé conciso (máx 5-8 líneas). 
+REGLA CRÍTICA: Si preguntan sobre un documento y NO tienes su análisis en el 'Contexto de Documento Reciente', NO INVENTES. Responde que no lo has leído y ofrece buscarlo.
+Solo usa la información del resumen de arriba si es relevante.
+"""
 
         response = llm.chat(persona_prompt).strip()
         return response

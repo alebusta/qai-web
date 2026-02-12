@@ -24,10 +24,13 @@ class DocIntelligenceService:
         self._gdrive = get_gdrive()
         self._llm = get_llm()
         
-    def analyze_drive_file(self, file_id: str) -> str:
+    def analyze_drive_file(self, file_id: str, chat_id: int) -> str:
         """
         Descarga, extrae y analiza un archivo de Drive.
         """
+        from services.state_service import get_state
+        state = get_state()
+
         # 1. Obtener metadata
         meta = self._gdrive.get_file_metadata(file_id)
         if not meta:
@@ -77,19 +80,35 @@ RESUMEN: [RESUMEN]
             
             # 5. Interpretar sugerencia de agente
             suggestion = ""
+            category = "GENERAL"
             if "CATEGORIA: LEGAL" in analysis_text:
+                category = "LEGAL"
                 suggestion = "\n\n⚖️ **Sugerencia**: Este documento es de naturaleza legal. ¿Deseas que llame a **Lex** para un análisis jurídico profundo?"
             elif "CATEGORIA: FINANCIERO" in analysis_text:
+                category = "FINANCIERO"
                 suggestion = "\n\n💰 **Sugerencia**: Este archivo tiene contenido financiero. ¿Debería consultar con **Finn** sobre los números?"
+            elif "CATEGORIA: COMERCIAL" in analysis_text:
+                category = "COMERCIAL"
+
+            # Limpiar el tag CATEGORIA de la respuesta final para el usuario
+            final_resp = analysis_text.replace("CATEGORIA:", "📁 **Categoría**:").replace("RESUMEN:", "📝 **Resumen**:")
+            
+            # 6. GUARDAR CONTEXTO EN ESTADO
+            from datetime import datetime
+            doc_context = {
+                "file_name": file_name,
+                "category": category,
+                "analysis": analysis_text,
+                "timestamp": datetime.now().isoformat()
+            }
+            state.set_user_state(chat_id, "last_document_context", doc_context)
+            logger.info("💾 Contexto de documento guardado para %s", chat_id)
 
             # Limpieza
             try:
                 os.remove(local_file)
             except:
                 pass
-                
-            # Limpiar el tag CATEGORIA de la respuesta final para el usuario si se desea
-            final_resp = analysis_text.replace("CATEGORIA:", "📁 **Categoría**:").replace("RESUMEN:", "📝 **Resumen**:")
                 
             return f"✅ **Análisis de: {file_name}**\n\n{final_resp}{suggestion}"
             

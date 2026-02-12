@@ -5,6 +5,7 @@ Busca y lista archivos de Google Drive desde Telegram.
 import logging
 from services.gdrive_service import get_gdrive
 from services.doc_intelligence_service import get_doc_intelligence
+from services.state_service import get_state
 
 logger = logging.getLogger(__name__)
 
@@ -28,12 +29,12 @@ def handle_drive(args: str, chat_id: int) -> str:
     if subcommand in ("buscar", "search", "find"):
         if not detail:
             return "📁 Uso: `/drive buscar [término]`\nEj: `/drive buscar factura FedEx`"
-        return _handle_search(detail)
+        return _handle_search(detail, chat_id)
 
     elif subcommand in ("carpeta", "folder", "ls"):
         if not detail:
             return _handle_list_folders()
-        return _handle_list_folder(detail)
+        return _handle_list_folder(detail, chat_id)
 
     elif subcommand in ("carpetas", "folders"):
         return _handle_list_folders()
@@ -53,36 +54,41 @@ def handle_drive(args: str, chat_id: int) -> str:
         )
 
 
-def _handle_search(query: str) -> str:
+def _handle_search(query: str, chat_id: int) -> str:
     """Busca archivos en Drive por nombre."""
     try:
         gdrive = get_gdrive()
+        state = get_state()
         files = gdrive.search_files(query, max_results=8)
 
         if not files:
             return f"📁 No encontré archivos con *\"{query}\"* en Drive."
 
         lines = [f"🔍 *Resultados para \"{query}\"*\n"]
-        for f in files:
+        for i, f in enumerate(files, 1):
             name = f["name"]
             link = f["link"]
             ftype = f["type"]
             fid = f["id"]
             if link:
-                lines.append(f"• {ftype} [{name}]({link})\n  ID: `{fid}`")
+                lines.append(f"{i}. {ftype} [{name}]({link})\n   ID: `{fid}`")
             else:
-                lines.append(f"• {ftype} {name}\n  ID: `{fid}`")
+                lines.append(f"{i}. {ftype} {name}\n   ID: `{fid}`")
 
-        return "\n".join(lines) + "\n\nUsa `/drive leer [ID]` para analizar."
+        # Guardar en estado para referencia por número
+        state.set_user_state(chat_id, "last_drive_search", files)
+
+        return "\n".join(lines) + "\n\nUsa `/drive leer [ID]` o `/drive leer [número]` para analizar."
     except Exception as e:
         logger.error("❌ Error buscando en Drive: %s", e)
         return f"❌ Error al buscar en Drive: {str(e)[:100]}"
 
 
-def _handle_list_folder(folder_name: str) -> str:
+def _handle_list_folder(folder_name: str, chat_id: int) -> str:
     """Lista archivos de una carpeta conocida."""
     try:
         gdrive = get_gdrive()
+        state = get_state()
         files = gdrive.list_folder(folder_name)
 
         if not files:
@@ -93,17 +99,20 @@ def _handle_list_folder(folder_name: str) -> str:
             return f"❌ {files[0]['error']}"
 
         lines = [f"📁 *Carpeta: {folder_name.title()}*\n"]
-        for f in files:
+        for i, f in enumerate(files, 1):
             name = f["name"]
             link = f.get("link", "")
             ftype = f["type"]
             fid = f["id"]
             if link:
-                lines.append(f"• {ftype} [{name}]({link})\n  ID: `{fid}`")
+                lines.append(f"{i}. {ftype} [{name}]({link})\n   ID: `{fid}`")
             else:
-                lines.append(f"• {ftype} {name}\n  ID: `{fid}`")
+                lines.append(f"{i}. {ftype} {name}\n   ID: `{fid}`")
 
-        return "\n".join(lines) + "\n\nUsa `/drive leer [ID]` para analizar."
+        # Guardar en estado para referencia por número
+        state.set_user_state(chat_id, "last_drive_search", files)
+
+        return "\n".join(lines) + "\n\nUsa `/drive leer [ID]` o `/drive leer [número]` para analizar."
     except Exception as e:
         logger.error("❌ Error listando carpeta: %s", e)
         return f"❌ Error al listar carpeta: {str(e)[:100]}"
@@ -126,12 +135,24 @@ def _handle_list_folders() -> str:
         return f"❌ Error: {str(e)[:100]}"
 
 
-def _handle_read_file(file_id: str) -> str:
+def _handle_read_file(file_detail: str, chat_id: int) -> str:
     """Lee y analiza un archivo de Drive."""
     try:
+        state = get_state()
+        file_id = file_detail.strip()
+
+        # 1. Intentar resolver si es un número (indice de última búsqueda)
+        last_search = state.get_user_state(chat_id, "last_drive_search")
+        if file_id.isdigit() and last_search:
+            idx = int(file_id) - 1
+            if 0 <= idx < len(last_search):
+                selected = last_search[idx]
+                file_id = selected["id"]
+                logger.info("🔢 Índice detectado: %d -> %s", idx + 1, file_id)
+
         doc_int = get_doc_intelligence()
         # Nzero informa que está trabajando
-        return doc_int.analyze_drive_file(file_id)
+        return doc_int.analyze_drive_file(file_id, chat_id)
     except Exception as e:
         logger.error("❌ Error leyendo archivo: %s", e)
         return f"❌ Error al leer el archivo: {str(e)[:100]}"
