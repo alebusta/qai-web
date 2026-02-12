@@ -71,9 +71,9 @@ def _handle_search(query: str, chat_id: int) -> str:
             ftype = f["type"]
             fid = f["id"]
             if link:
-                lines.append(f"{i}. {ftype} [{name}]({link})\n   ID: `{fid}`")
+                lines.append(f"{i}. {ftype} [{name}]({link})")
             else:
-                lines.append(f"{i}. {ftype} {name}\n   ID: `{fid}`")
+                lines.append(f"{i}. {ftype} {name}")
 
         # Guardar en estado para referencia por número
         state.set_user_state(chat_id, "last_drive_search", files)
@@ -105,9 +105,9 @@ def _handle_list_folder(folder_name: str, chat_id: int) -> str:
             ftype = f["type"]
             fid = f["id"]
             if link:
-                lines.append(f"{i}. {ftype} [{name}]({link})\n   ID: `{fid}`")
+                lines.append(f"{i}. {ftype} [{name}]({link})")
             else:
-                lines.append(f"{i}. {ftype} {name}\n   ID: `{fid}`")
+                lines.append(f"{i}. {ftype} {name}")
 
         # Guardar en estado para referencia por número
         state.set_user_state(chat_id, "last_drive_search", files)

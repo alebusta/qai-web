@@ -7,13 +7,7 @@ import logging
 import sys
 from typing import Dict, Any
 
-# Asegurar que QaiCore esté en el path para los extractores
-# El bot está en AREA_51/mision_salida/bot
-# QaiCore está en la raíz: ../../../QaiCore
-current_dir = os.path.dirname(os.path.abspath(__file__))
-qaicore_dir = os.path.abspath(os.path.join(current_dir, "../../../../../QaiCore"))
-if qaicore_dir not in sys.path:
-    sys.path.insert(0, qaicore_dir)
+# Los extractores se han movido a la carpeta local 'tools/' para deploy en GCP
 
 logger = logging.getLogger(__name__)
 
