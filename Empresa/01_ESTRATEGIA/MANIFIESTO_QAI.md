@@ -30,3 +30,10 @@ Nosotros navegamos estos riesgos con una filosofía de transparencia radical y p
 *   **Cero Burocracia:** Si no aporta valor al usuario final, no lo hacemos.
 *   **Independencia:** No rendimos cuentas a inversores especulativos. Rendimos cuentas a la calidad de nuestro producto.
 *   **Calidad sobre Cantidad:** Preferimos un modelo pequeño que funcione perfecto a uno gigante que falle constantemente.
+
+## 6. El Doble Motor: Valor y Misión
+En QAI no nos movemos por un solo eje. Generamos valor económico y prosperidad porque es la base de la sostenibilidad, pero nuestro propósito trasciende el balance financiero:
+*   **Motor A (Sostenibilidad):** Crear productos de clase mundial que generen valor real y rentabilidad.
+*   **Motor B (Misión):** Democratizar la IA para los "pequeños" (PYMEs, organizaciones sociales, empresas hermanas como Latinarq). Combatimos la desigualdad de conocimiento para que todos puedan prosperar.
+
+No es "o uno u otro", es **ambos**. El éxito de QAI se mide tanto en sus utilidades como en la productividad inyectada en quienes antes no tenían acceso a este nivel de tecnología.

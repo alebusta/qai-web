@@ -5,10 +5,10 @@ Allows agents (like Finn) to send emails using the Gmail API.
 
 import os
 
-# Evitar proxy local 127.0.0.1 que bloquea Gmail API en terminal del IDE (Cursor)
+# Limpieza radical de proxies (bloquean Gmail API en terminales de IDE)
+import os
 for _k in list(os.environ):
-    _val = os.environ.get(_k, "")
-    if "PROXY" in _k.upper() and "127.0.0.1" in str(_val):
+    if "PROXY" in _k.upper():
         os.environ.pop(_k, None)
 
 import base64
@@ -234,6 +234,60 @@ class GmailTool:
             print(f"Error al enviar email: {e}")
             raise e
 
+    def create_draft(self, to, subject, body_html, logo_path=None, attachments=None):
+        """
+        Crea un borrador en Gmail con el mismo formato que send_email.
+        """
+        from email.mime.application import MIMEApplication
+        from email import encoders
+        from email.mime.base import MIMEBase
+        from email.mime.multipart import MIMEMultipart
+        from email.mime.text import MIMEText
+        from email.mime.image import MIMEImage
+
+        # Estructura idéntica a send_email
+        message = MIMEMultipart('mixed')
+        message['to'] = to
+        message['subject'] = subject
+
+        msg_body_root = MIMEMultipart('related')
+        msg_html = MIMEText(body_html, 'html')
+        msg_body_root.attach(msg_html)
+
+        if logo_path and os.path.exists(logo_path):
+            with open(logo_path, 'rb') as f:
+                img = MIMEImage(f.read())
+                img.add_header('Content-ID', '<logo_qai>')
+                img.add_header('Content-Disposition', 'inline', filename=os.path.basename(logo_path))
+                msg_body_root.attach(img)
+
+        message.attach(msg_body_root)
+
+        if attachments:
+            for file_path in attachments:
+                if os.path.exists(file_path):
+                    with open(file_path, 'rb') as f:
+                        part = MIMEBase('application', 'octet-stream')
+                        part.set_payload(f.read())
+                        encoders.encode_base64(part)
+                        part.add_header(
+                            'Content-Disposition',
+                            f'attachment; filename={os.path.basename(file_path)}'
+                        )
+                        message.attach(part)
+
+        raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+        
+        try:
+            draft = self.service.users().drafts().create(
+                userId='me',
+                body={'message': {'raw': raw_message}}
+            ).execute()
+            return draft
+        except Exception as e:
+            print(f"Error al crear borrador: {e}")
+            raise e
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='QAI Gmail CLI Tool')
@@ -249,6 +303,15 @@ if __name__ == "__main__":
     send_parser.add_argument('--body-file', help='Ruta al archivo HTML del cuerpo (recomendado para email_preview.html)')
     send_parser.add_argument('--logo', help='Ruta al logo para incrustar')
     send_parser.add_argument('--attach', action='append', help='Ruta de archivo para adjuntar (puede usarse múltiples veces)')
+
+    # Comando: Draft
+    draft_parser = subparsers.add_parser('draft', help='Crear un borrador')
+    draft_parser.add_argument('--to', required=True)
+    draft_parser.add_argument('--subject', required=True)
+    draft_parser.add_argument('--body', help='Cuerpo HTML as string')
+    draft_parser.add_argument('--body-file', help='Ruta al archivo HTML del cuerpo')
+    draft_parser.add_argument('--logo', help='Ruta al logo')
+    draft_parser.add_argument('--attach', action='append', help='Ruta de archivo para adjuntar')
 
     # Comando: List
     list_parser = subparsers.add_parser('list', help='Listar correos del inbox')
@@ -283,6 +346,17 @@ if __name__ == "__main__":
             parser.error('send requiere --body o --body-file')
         res = gmail.send_email(args.to, args.subject, body_html, args.logo, args.attach)
         print(f"✅ Email enviado con ID: {res['id']}")
+    
+    elif args.command == 'draft':
+        if args.body_file:
+            with open(args.body_file, 'r', encoding='utf-8') as f:
+                body_html = f.read()
+        elif args.body:
+            body_html = args.body
+        else:
+            parser.error('draft requiere --body o --body-file')
+        res = gmail.create_draft(args.to, args.subject, body_html, args.logo, args.attach)
+        print(f"✅ Borrador creado con ID: {res['id']}")
     
     elif args.command == 'list':
         messages = gmail.list_messages(query=args.query, max_results=args.max)
