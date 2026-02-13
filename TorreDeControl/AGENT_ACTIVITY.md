@@ -43,7 +43,9 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 13-Feb 00:15 | Nzero | **Certificación Fase 4: Especialistas Context-Aware** | bot/commands/legal.py, bot/commands/finanzas.py, bot/persona.py | ✅ Certificada la integración de Lex y Finn con acceso a Memoria Institucional (STATUS/INBOX) vía GitHub. Implementadas reglas de "Zero Verborrea" y deploy v0.27 en GCP exitoso. |
 | 12-Feb 23:55 | Nzero | **Misión Salida - Fase 4: Integración de Especialistas** | bot/main.py, bot/commands/legal.py, bot/commands/finanzas.py, bot/persona.py, help.py | ✅ Implementados comandos `/legal` y `/finanzas`. Lex y Finn ahora son accesibles desde Telegram. Actualizadas personalidades y ruteo NLP. |
+
 | 12-Feb 23:30 | Nzero | **Hardening de Persistencia (ADR-017)** | ADR-017, lex/system_prompt.md, finn/system_prompt.md | ✅ Creado protocolo de Verificación Post-Escritura (RAW) y Protección de Landing Zone para evitar amnesia de agentes. |
 | 12-Feb 23:00 | Nzero | **Recuperación de Memoria (Incidente Lex)** | AGENT_ACTIVITY.md, STATUS.md, INBOX.md | ✅ Restauradas retroactivamente las actividades de Lex del 12-Feb perdidas por falla de persistencia. Sincronización completa de la Torre de Control. |
 | 12-Feb 00:15 | Nzero | Certificación Fase 3.4 (Memoria & Ordinales) | drive_cmd.py, email_cmd.py, persona.py, CHECKPOINT.md, STATUS.md, INBOX.md | ✅ Implementada resolución de ordinales (*"el segundo"*), memoria contextual para drafts de email y bundles de QaiCore tools en GCP. Roadmap Phase 4 (Iliana access) definido. |
