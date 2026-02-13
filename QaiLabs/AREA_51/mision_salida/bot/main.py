@@ -24,6 +24,9 @@ from commands.empresa import handle_empresa
 from commands.tarea import handle_tarea
 from commands.ruta import handle_ruta
 from commands.drive_cmd import handle_drive
+from commands.legal import handle_legal
+from commands.finanzas import handle_finanzas
+
 
 # Configurar logging
 logging.basicConfig(
@@ -52,7 +55,10 @@ COMMANDS = {
     "/tarea": lambda args, cid: handle_tarea(args, cid),
     "/ruta": lambda args, cid: handle_ruta(args),
     "/drive": lambda args, cid: handle_drive(args, cid),
+    "/legal": lambda args, cid: handle_legal(args),
+    "/finanzas": lambda args, cid: handle_finanzas(args),
 }
+
 
 
 @functions_framework.http
@@ -237,7 +243,10 @@ Mensaje del usuario: "{text}"
                 "drive_buscar": lambda: handle_drive(f"buscar {extra}", chat_id),
                 "drive_carpeta": lambda: handle_drive(f"carpeta {extra}", chat_id),
                 "drive_leer": lambda: handle_drive(f"leer {extra}", chat_id),
+                "legal": lambda: handle_legal(extra),
+                "finanzas": lambda: handle_finanzas(extra),
             }
+
 
             handler = cmd_map.get(cmd)
             if handler:

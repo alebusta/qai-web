@@ -27,7 +27,11 @@ HELP_TEXT = """🤖 *Nzero — QAI HQ Bot*
 📁 `/drive carpeta [nombre]` — Ver carpeta (contabilidad, legales...)
 📁 `/drive carpetas` — Carpetas disponibles
 
+⚖️ `/legal [consulta]` — Consulta al agente legal Lex
+💰 `/finanzas [consulta]` — Consulta al agente financiero Finn
+
 ❓ `/help` — Este menú
+
 
 💡 También puedes escribir en *lenguaje natural*:
 _"¿Qué emails tengo?" — "Busca el PDF del contrato" — "Dame el RUT"_

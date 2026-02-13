@@ -43,7 +43,11 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 12-Feb 23:55 | Nzero | **Misión Salida - Fase 4: Integración de Especialistas** | bot/main.py, bot/commands/legal.py, bot/commands/finanzas.py, bot/persona.py, help.py | ✅ Implementados comandos `/legal` y `/finanzas`. Lex y Finn ahora son accesibles desde Telegram. Actualizadas personalidades y ruteo NLP. |
+| 12-Feb 23:30 | Nzero | **Hardening de Persistencia (ADR-017)** | ADR-017, lex/system_prompt.md, finn/system_prompt.md | ✅ Creado protocolo de Verificación Post-Escritura (RAW) y Protección de Landing Zone para evitar amnesia de agentes. |
+| 12-Feb 23:00 | Nzero | **Recuperación de Memoria (Incidente Lex)** | AGENT_ACTIVITY.md, STATUS.md, INBOX.md | ✅ Restauradas retroactivamente las actividades de Lex del 12-Feb perdidas por falla de persistencia. Sincronización completa de la Torre de Control. |
 | 12-Feb 00:15 | Nzero | Certificación Fase 3.4 (Memoria & Ordinales) | drive_cmd.py, email_cmd.py, persona.py, CHECKPOINT.md, STATUS.md, INBOX.md | ✅ Implementada resolución de ordinales (*"el segundo"*), memoria contextual para drafts de email y bundles de QaiCore tools en GCP. Roadmap Phase 4 (Iliana access) definido. |
+
 | 12-Feb 14:00 | Lex | Limpieza Final Landing Zone - Protocolo Completo | temp_files → Drive/Patente Comercial/, Drive/Certificados/; STATUS.md, INBOX.md, AGENT_ACTIVITY.md | ✅ Verificación Drive, subida documentos nuevos, renombrado certificados, actualización archivos de control. temp_files parcialmente limpiado (archivos en uso por procesos pendientes). |
 | 12-Feb 13:30 | Lex | Corrección Documento Autorización Domicilio | AUTORIZACION_USO_DOMICILIO_CORREGIDA.pdf + Poder_Paula.pdf → AUTORIZACION_DOMICILIO_BUCAREST17_58_FINAL.pdf | ✅ Documento corregido con dirección Bucarest 17 depto 58 y datos Paula Andrea Bustamante Serrano RUT 12.722.884-1. Unido con poder notarial. |
 | 12-Feb 12:00 | Lex | Generación Declaración Jurada Actividad QAI | Declaración jurada PDF (1 página) con giros SII incluidos | ✅ PDF creado con declaración completa de actividades comerciales B2B, sin impacto ambiental, firmado. |

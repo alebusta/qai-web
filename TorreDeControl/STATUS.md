@@ -167,7 +167,8 @@
 - 📄 **Extractores**: PDF (OCR Gemini), DOCX, PPTX, Excel, CSV, Imágenes
 - 🤖 **Agentes**: Nzero (Arquitecto), Lex (Legal), Finn (Financiero) - Builder (futuro)
 - 🤖 **Finn - Google Drive** | ✅ | **API Configurada** - OAuth2, estructura de carpetas (15), upload operativo (27-Dic-2025)
-- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 3 (12-Feb)** — Certificación de Memoria Inter-Servicios & Ordinales. Lectura de PDFs con análisis contextual, redacción de borradores de email con memoria de corto plazo y resolución de lenguaje natural para referencias. Despliegue en GCP estable.
+- 🤖 **Bot Telegram Nzero** | ✅ | **Fase 4 (12-Feb/Noche)** — **Integración de Especialistas completada** ⚖️💰. Lex (Legal) y Finn (Finanzas) ahora son accesibles vía `/legal` y `/finanzas`. El cerebro central del bot ahora rutea automáticamente consultas comerciales, legales y financieras a sus respectivos agentes.
+
 - 📋 **Playbooks**: Procesamiento de INBOX legal
 
 ---

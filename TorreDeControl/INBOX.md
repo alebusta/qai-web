@@ -155,7 +155,8 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
   - [x] `registrar_gasto_ingreso.md` (registro diario de operaciones) ✅ 30-Dic
   - [x] `facturar_cliente_saas.md` (flujo completo de facturación) ✅ 30-Dic
 - [ ] **Misión Salida - Fase 4: Especialistas & Pro-UX**
-  - [ ] Implementar comandos `/legal` (Lex) y `/finanzas` (Finn) en el bot.
+  - [x] Implementar comandos `/legal` (Lex) y `/finanzas` (Finn) en el bot. ✅ 12-Feb
+
   - [ ] Crear generador dinámico de PDFs para `/propuesta`.
   - [ ] Implementar Fortress Protocol (PIN de seguridad para acciones críticas).
   - [ ] Automatizar CI/CD para bundling de QaiCore tools en cada deploy.
