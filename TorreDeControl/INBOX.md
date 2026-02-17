@@ -217,3 +217,6 @@ Si procesaste alguna tarea de este INBOX:
  - 13-Feb-2026: **Misión Latinarq: Prospección Inteligente v1.0**. Completado el enriquecimiento de 68 registros de Circle Pack. Triangulación exitosa de 34 perfiles activos (50%). Entrega final enviada a Iliana Alzurutt. Graduado a QaiLabs/AREA_51 para I+D de técnicas OSINT. Protocolo de seguridad y cierre Zero-Footprint ejecutado. (Nzero)
 - [x] **Refinamiento Web V3 (The Hinge)** - Estética anti-hype certificada. ✅ 15-Feb-2026
 - [x] **Procesar Orden Namecheap (theqai.co)** - Dominio registrado en GSheets y Drive. ✅ 16-Feb-2026. **Optimización QaiCore**: Bypass de discovery network en `gsheets.py` operativo. (Finn)
+
+## 📋 IMPORTANTE (Este Mes)
+- [ ] **uno de los demos para la web puede ser la captura de datos de imágenes de medidores** _(vía Telegram, 17-Feb-2026)_
