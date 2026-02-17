@@ -34,21 +34,37 @@ class GmailTool:
     def __init__(self):
         self.creds = self._authenticate()
         
-        # Bypass network discovery by using local static file
-        import sys
+        # Nueva ubicación central de cache de discovery en .qai
         from pathlib import Path
-        discovery_path = Path(sys.prefix) / "lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "gmail.v1.json"
+        discovery_cache_dir = Path("c:/Users/abustamante/.qai/google_discovery")
+        discovery_cache_dir.mkdir(parents=True, exist_ok=True)
+        discovery_path = discovery_cache_dir / "gmail.v1.json"
         
-        if not discovery_path.exists():
-            discovery_path = Path(sys.prefix) / "Lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "gmail.v1.json"
-            
+        # 1. Intentar cargar desde cache local en .qai
+        # 2. Intentar cargar desde site-packages (hack previo)
+        # 3. Fallback: descarga y guarda en cache
+        
+        legacy_discovery_path = Path(sys.prefix) / "lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "gmail.v1.json"
+        if not legacy_discovery_path.exists():
+            legacy_discovery_path = Path(sys.prefix) / "Lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "gmail.v1.json"
+
+        discovery_doc = None
         if discovery_path.exists():
-            with open(discovery_path, 'r') as f:
-                discovery_doc = f.read()
+            discovery_doc = discovery_path.read_text(encoding="utf-8")
+        elif legacy_discovery_path.exists():
+            discovery_doc = legacy_discovery_path.read_text(encoding="utf-8")
+            # Migrar a la nueva cache
+            discovery_path.write_text(discovery_doc, encoding="utf-8")
+            
+        if discovery_doc:
             from googleapiclient.discovery import build_from_document
-            self.service = build_from_document(discovery_doc, credentials=self.creds)
+            import json
+            self.service = build_from_document(json.loads(discovery_doc), credentials=self.creds)
         else:
-            self.service = build('gmail', 'v1', credentials=self.creds, static_discovery=True)
+            import sys
+            sys.stderr.write("[-] Descargando Gmail API Discovery (Warm-up)...\n")
+            self.service = build('gmail', 'v1', credentials=self.creds, static_discovery=False)
+
 
     def _authenticate(self):
         creds = None

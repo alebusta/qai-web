@@ -37,10 +37,34 @@ class GDriveTool:
         if self._service is None:
             sys.stderr.write("[-] Inicializando Google Drive Service...\n")
             self._creds = self._authenticate()
-            sys.stderr.write("[-] Construyendo API Discovery...\n")
-            self._service = build('drive', 'v3', credentials=self._creds, static_discovery=True)
+            
+            # Nueva ubicación central de cache de discovery en .qai
+            from pathlib import Path
+            discovery_cache_dir = Path("c:/Users/abustamante/.qai/google_discovery")
+            discovery_cache_dir.mkdir(parents=True, exist_ok=True)
+            discovery_path = discovery_cache_dir / "drive.v3.json"
+            
+            legacy_discovery_path = Path(sys.prefix) / "lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "drive.v3.json"
+            if not legacy_discovery_path.exists():
+                legacy_discovery_path = Path(sys.prefix) / "Lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "drive.v3.json"
+
+            discovery_doc = None
+            if discovery_path.exists():
+                discovery_doc = discovery_path.read_text(encoding="utf-8")
+            elif legacy_discovery_path.exists():
+                discovery_doc = legacy_discovery_path.read_text(encoding="utf-8")
+                discovery_path.write_text(discovery_doc, encoding="utf-8")
+                
+            if discovery_doc:
+                from googleapiclient.discovery import build_from_document
+                self._service = build_from_document(json.loads(discovery_doc), credentials=self._creds)
+            else:
+                sys.stderr.write("[-] Descargando Drive API Discovery (Warm-up)...\n")
+                self._service = build('drive', 'v3', credentials=self._creds, static_discovery=False)
+            
             sys.stderr.write("[+] Servicio listo.\n")
         return self._service
+
 
     def upload_file(self, local_path, drive_folder_id, description=None):
         """

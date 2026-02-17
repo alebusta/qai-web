@@ -43,6 +43,13 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 17-Feb 18:55 | Nzero | **Mantenimiento HQ & Limpieza INBOX.md** | TorreDeControl/INBOX.md | ✅ Estructura reorganizada, corregida codificación UTF-8 (Mojibake fix) y sincronizado con últimas tareas. |
+| 17-Feb 18:45 | Nzero | **Optimización Masiva de Rendimiento QaiCore** | QaiCore/tools/ (varios), .qai/google_discovery/ | ✅ Implementada caché local de Discovery APIs de Google (30s → <1s). Habilitado `--data-file` en GSheets para robustez en PowerShell. Refactorizados Lazy Imports en `tools/__init__.py`. |
+| 17-Feb 18:05 | Finn | **Procesamiento Contable Landing Zone** | Invoice-23T8JEF0-0003.pdf, cartola.xlsx → Drive, GSheets | ✅ Factura Cursor y Cartola procesadas. Asientos registrados en Runway Master. Backup generado y Landing Zone despejada. Email enviado a albus@hotmail.com. |
+
+| 17-Feb 17:30 | Nzero | **Test Integración Drive (Upload/Delete)** | cartola.csv | ✅ Prueba E2E completada. Archivo subido (ID: 1dkl...) y movido a papelera con éxito. Autenticación y Service inicializados correctamente. |
+| 17-Feb 17:25 | Nzero | **Test Extractor PDF (Invoice-23T8JEF0)** | Invoice-23T8JEF0-0003.pdf | ✅ Extracción exitosa (576 caracteres). Procesamiento nativo (sin OCR) con alta fidelidad de datos (Cursor Pro $20 USD). |
+| 17-Feb 15:45 | Nzero | **Mejora Extractor Excel y Test Landing Zone** | QaiCore/tools/extractors/excel.py, cartola.xlsx | ✅ Refactorizada detección de cabeceras para ser más robusta con metadatos. Testeado con cartola de hoy con éxito (cabecera auto-detectada en fila 21). |
 | 16-Feb 23:10 | Nzero | **Limpieza SSOT financiero (TEST NAMECHEAP)** | Registro_Diario (GSheets), INBOX.md | ✅ Fila de prueba vaciada (A9:N9). Asiento real Namecheap verificado intacto (monto neto $5.161 CLP + link Drive). |
 | 16-Feb 22:55 | Nzero | **Postmortem Finn: anti-loop y deduplicación email** | QaiCore/tools/gmail.py, QaiCore/agents/finn/system_prompt.md, QaiCore/playbooks/process_financial_inbox.md, INBOX.md, CHANGELOG.md | ✅ Implementados guardrails anti-duplicado en `gmail.py`, límites de reintentos y tarea de limpieza de fila `TEST NAMECHEAP` en INBOX. |
 | 16-Feb 22:20 | Nzero | **Formalización rol institucional de Iliana (CGO)** | STATUS.md, CHANGELOG.md, AGENT_ACTIVITY.md | ✅ Definido título oficial comercial: **Co-Founder & Chief Growth Officer (CGO)** para firma y representación en growth/ventas/prospección. |

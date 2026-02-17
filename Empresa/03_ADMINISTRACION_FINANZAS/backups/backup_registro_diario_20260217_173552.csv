@@ -1,5 +1,5 @@
 Fecha,Tipo,Concepto,Categoría FinOps,Cuenta Contable,Monto Neto,IVA,Retención,Monto Bruto,Monto Pagado
-,TOTALES,,,,189604,4742.09,0
+,TOTALES,,,,155931,4742.09,0
 2026-01-07,PRÉSTAMO,Préstamo socio - Alejandro Bustamante,,21.01 Préstamos de Socios,50000,0,0,50000,50000
 2026-01-09,GASTO,GitHub Copilot Pro - Suscripción Enero 2026,Fijo,61.01.03 Suscripciones Tech,9250,1704.09,0,10954.09,9250
 2026-01-08,GASTO,Google One / Google AI Pro - Suscripción Enero 2026,Fijo,61.01.03 Suscripciones Tech,7330,0,0,7330,7330
@@ -7,8 +7,4 @@ Fecha,Tipo,Concepto,Categoría FinOps,Cuenta Contable,Monto Neto,IVA,Retención,
 2026-02-03,PRÉSTAMO,Préstamo socio - Alejandro Bustamante (Inyección Capital),,21.01 Préstamos de Socios,50000,0,0,50000,50000
 2026-02-03,GASTO,E-Cert Chile - Certificado Digital Persona Natural (1 año),Fijo,61.01.03 Suscripciones Tech,15990,3038,0,17375,17375
 
-2026-02-16,GASTO,Namecheap - Registro Dominio theqai.co (1 año),Fijo,61.01.03 Suscripciones Tech,5274,0,0,5274,5274
-2026-02-16,GASTO,Cursor Pro - Suscripción Mensual Feb-Mar,Fijo,61.01.03 Suscripciones Tech,17640,0,0,17640,17640
-2026-02-10,GASTO,Github - Suscripción Copilot-Pro,Fijo,61.01.03 Suscripciones Tech,8820,0,0,8820,8820
-2026-02-06,GASTO,Google Play / Cloud,Fijo,61.01.03 Suscripciones Tech,7100,0,0,7100,7100
-2026-02-17,MOVIMIENTO,Extracto Bancario Actualizado,General,05-Bancos,0,0,0,0,0
+2026-02-16,GASTO,Namecheap - Registro Dominio theqai.co (1 año),Fijo,61.01.03 Suscripciones Tech,5161,0,0,5161,5161

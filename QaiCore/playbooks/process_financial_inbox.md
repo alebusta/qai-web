@@ -64,7 +64,9 @@ ACCIÓN:
 
 **ACCIÓN**: 
 - Usar `gsheets.py` para abrir el GSheet Master (`QAI_Finanzas_2026`).
+- **💡 TIP**: Si los datos contienen paréntesis `()` o caracteres especiales (ej: "Cursor (Feb)"), guardar el JSON en un archivo temporal y usar `--data-file` para evitar errores de escape en PowerShell/CMD.
 - Agregar fila con: [Fecha] | [Tipo] | [Concepto] | [Categoría FinOps] | [Cuenta] | [Monto Neto] | [IVA] | [Retención] | [Monto Bruto] | [Monto Pagado] | [Proyecto] | [Link a Drive].
+
 - **Prohibido en producción**: insertar filas de prueba (`TEST`, `DEBUG`, `PING`) en `Registro_Diario`.
 - Si necesitas validar conectividad, usa lectura (`--read`) o una planilla sandbox; nunca contaminar el SSOT financiero.
 
@@ -98,6 +100,6 @@ ACCIÓN:
 
 ---
 
-**Versión**: 1.0  
-**Fecha**: 29-Dic-2025  
+**Versión**: 1.1 (PowerShell Robustness Update)  
+**Fecha**: 17-Feb-2026  
 **Autor**: Nzero (Arquitecto)

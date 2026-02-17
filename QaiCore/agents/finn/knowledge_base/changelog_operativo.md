@@ -312,6 +312,40 @@
 
 ---
 
-**Última actualización**: 10-Ene-2026  
-**Responsable**: Finn (Agente Financiero)
+---
+
+## 17-Feb-2026 - Mejora de Infraestructura: Extracción Inteligente y GDrive E2E
+
+### ✅ Mejoras en Herramientas de Extracción (`QaiCore/tools/extractors`)
+
+1. **`excel.py` (Inteligencia de Cabeceras)**:
+   - Implementada detección automática de la fila de cabecera mediante búsqueda de palabras clave (`Fecha`, `Descripción`, `Monto`, etc.).
+   - Capacidad de omitir metadatos de titulares en cartolas bancarias de forma transparente.
+   - **Preferencia**: Excel (.xlsx) es ahora el formato preferido para carga de datos por sobre CSV/PDF por su limpieza nativa.
+
+2. **`csv_parser.py` (Robustez Bancaria)**:
+   - Detección automática de delimitadores (`;` vs `,`).
+   - Pre-procesador para limpiar líneas "envueltas" en comillas (típico de exportaciones del Banco de Chile).
+   - Detección de cabeceras similar a la de Excel.
+
+3. **`pdf.py` (Fidelidad Nativa)**:
+   - Validada extracción de texto nativo para facturas internacionales (Cursor, Namecheap).
+   - Se mantiene para validaciones y cuando no existe Excel/CSV disponible.
+
+### ✅ Validación de Integración Google Drive (`gdrive.py`)
+
+1. **Prueba E2E Certificada**:
+   - Verificado el ciclo completo de Upload -> Link -> Delete.
+   - Autenticación de Lex y Finn validada y refrescada.
+   - Instrucción reforzada: Usar siempre `--show-folders` para identificar rutas de destino dinámicamente.
+
+### 📋 Impacto Operativo
+- **Agilidad**: Los agentes (Finn/Lex) ya no requieren que el usuario especifique la fila de cabecera.
+- **Precisión**: Reducción de errores en la interpretación de montos y fechas en cartolas "mañosas".
+- **Confianza**: Herramientas blindadas para el proceso de fin de mes y conciliación.
+
+---
+
+**Última actualización**: 17-Feb-2026  
+**Responsable**: Nzero (Arquitecto / Agent-in-Chief)
 

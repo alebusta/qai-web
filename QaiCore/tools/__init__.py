@@ -2,13 +2,42 @@
 QaiCore Tools - Herramientas compartidas para agentes IA.
 """
 
-from .document_processor import extract_content, get_file_info
-from .extractors.pdf import extract_text_from_pdf
-from .extractors.docx_extractor import extract_text_from_docx
-from .extractors.pptx import extract_text_from_pptx
-from .extractors.excel import extract_data_from_excel, excel_to_markdown_table
-from .extractors.csv_parser import extract_data_from_csv, csv_to_markdown_table
-from .extractors.ocr import extract_text_from_image
+# Función de conveniencia para carga perezosa
+def _lazy_import(module_name: str, func_name: str):
+    import importlib
+    module = importlib.import_module(module_name)
+    return getattr(module, func_name)
+
+def extract_content(*args, **kwargs):
+    return _lazy_import(".document_processor", "extract_content")(*args, **kwargs)
+
+def get_file_info(*args, **kwargs):
+    return _lazy_import(".document_processor", "get_file_info")(*args, **kwargs)
+
+def extract_text_from_pdf(*args, **kwargs):
+    return _lazy_import(".extractors.pdf", "extract_text_from_pdf")(*args, **kwargs)
+
+def extract_text_from_docx(*args, **kwargs):
+    return _lazy_import(".extractors.docx_extractor", "extract_text_from_docx")(*args, **kwargs)
+
+def extract_text_from_pptx(*args, **kwargs):
+    return _lazy_import(".extractors.pptx", "extract_text_from_pptx")(*args, **kwargs)
+
+def extract_data_from_excel(*args, **kwargs):
+    return _lazy_import(".extractors.excel", "extract_data_from_excel")(*args, **kwargs)
+
+def excel_to_markdown_table(*args, **kwargs):
+    return _lazy_import(".extractors.excel", "excel_to_markdown_table")(*args, **kwargs)
+
+def extract_data_from_csv(*args, **kwargs):
+    return _lazy_import(".extractors.csv_parser", "extract_data_from_csv")(*args, **kwargs)
+
+def csv_to_markdown_table(*args, **kwargs):
+    return _lazy_import(".extractors.csv_parser", "csv_to_markdown_table")(*args, **kwargs)
+
+def extract_text_from_image(*args, **kwargs):
+    return _lazy_import(".extractors.ocr", "extract_text_from_image")(*args, **kwargs)
+
 
 # md_to_pdf (FPDF) es opcional: no debe romper la importación del paquete tools.
 try:

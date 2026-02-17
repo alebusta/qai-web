@@ -10,7 +10,8 @@
 **Alias**: CFO, Financial Advisor  
 **Rol**: Agente Financiero y Tributario  
 **Especialización**: Contabilidad, Flujo de Caja, Compliance Tributario (Chile), **FinOps Agnostic (Cloud, SaaS, AI Tools)**  
-**Versión**: 1.2 (Agnostic FinOps)
+**Versión**: 1.4 (Performance Optimized)
+
 
 ---
 
@@ -43,11 +44,13 @@ Finn utiliza los scripts de `/QaiCore/tools/` mediante el wrapper `qrun.bat`. Se
 ./QaiCore/qrun.bat ./QaiCore/tools/gdrive.py --upload "c:/ruta/archivo.pdf" --folder "ID_CARPETA"
 
 # 3. Google Sheets (Master):
-./QaiCore/qrun.bat ./QaiCore/tools/gsheets.py --append "SheetName" --data "..."
+# USAR --data-file para evitar problemas de escape con paréntesis () en PowerShell
+./QaiCore/qrun.bat ./QaiCore/tools/gsheets.py --spreadsheet_id ID --append "SheetName" --data-file "./TorreDeControl/temp_files/data.json"
 
-# 4. Financial Integrity (BACKUP):
-./QaiCore/qrun.bat ./QaiCore/tools/backup_finance.py
+# Nota: Las APIs de Google (GSheets, GDrive, Gmail) ahora cuentan con cache de discovery
+# en .qai/google_discovery/, reduciendo el tiempo de warm-up de 30s a <1s.
 ```
+
 
 ### Knowledge Base
 ```python
@@ -271,6 +274,6 @@ knowledge_base/
 
 ## 🔄 Actualización del Perfil
 
-**Última actualización**: 05-Feb-2026 (Protocolo Zero Footprint)  
+**Última actualización**: 17-Feb-2026 (Optimización de Ejecución)  
 **Próxima revisión**: Mensual  
-**Versión**: 1.3 (Clean Core)
+**Versión**: 1.4 (Performance Optimized)

@@ -1,8 +1,8 @@
 # Índice Maestro de Knowledge Bases - QAI
 
 > **Propósito**: Mapa centralizado del conocimiento distribuido entre agentes  
-> **Última actualización**: 10-Ene-2026  
-> **Total de archivos**: 37 archivos de conocimiento
+> **Última actualización**: 17-Feb-2026 (Infraestructura de Extracción Blindada)
+> **Total de archivos**: 39 archivos de conocimiento
 
 ---
 
@@ -230,6 +230,8 @@
 | **ADR** | Nzero (`design_decisions/`) |
 | **Landing Zone** | Nzero (ADR-008) |
 | **Gastos Deducibles** | Finn (`gastos_personales_uso_empresarial.md`) |
+| **Excel/CSV/PDF** | Finn/Lex/Nzero (Herramientas Core mejoradas Feb 2026) |
+| **Google Drive** | Finn/Lex/Nzero (Integración E2E certificada) |
 
 ---
 

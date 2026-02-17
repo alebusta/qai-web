@@ -147,26 +147,34 @@ Si al intentar ejecutar una herramienta de `QaiCore` recibes un `ModuleNotFoundE
 
 ### 📄 Extracción de Documentos
 
-**Ubicación**: `/QaiCore/tools/document_processor.py`
+**Ubicación**: `/QaiCore/tools/document_processor.py` y `/QaiCore/tools/extractors/`
+
+**Capacidades Blindadas (Feb 2026)**:
+- **Inteligencia de Cabeceras**: Los extractores de Excel (`excel.py`) y CSV (`csv_parser.py`) ahora detectan la fila de cabecera automáticamente buscando palabras clave (`Fecha`, `Monto`, `Rut`, etc.). NO necesitas adivinar la fila.
+- **Pre-procesado de CSV**: El extractor de CSV ahora limpia automáticamente las comas/comillas "envueltas" típicas de las cartolas del Banco de Chile.
+- **Fidelidad PDF**: Extracción nativa verificada para facturas electrónicas (Cursor, Namecheap, etc.).
+
+**Preferencias de Finn**:
+1.  **Excel (.xlsx)**: ES LA PREFERENCIA N°1. Carga limpia, tipos de datos nativos y sin errores de delimitador.
+2.  **CSV**: Opción B. Robusto para cartolas, pero requiere atención a los ceros a la izquierda en montos.
+3.  **PDF**: Opción C. Úsalo para validar lo que ya registraste o si no hay otra opción.
 
 **MODO A (Si tienes herramienta nativa Python)**:
 ```python
 from qaicore.tools import extract_content
-text = extract_content('c:\\ruta\\al\\documento.pdf')
+# El tool detecta cabeceras automáticamente en fila 10, 21, etc.
+text = extract_content('c:\\ruta\\al\\documento.xlsx', format_for_llm=True)
 ```
 
 **MODO B (Terminal - RECOMENDADO)**:
-Usa el wrapper de entorno aislado. Prioriza rutas relativas al root del proyecto si es posible, o detecta el root dinámicamente:
 ```bash
-# Si estás en el root 'TheQaiCo/':
-./QaiCore/qrun.bat ./QaiCore/tools/document_processor.py "c:/Users/abustamante/TheQaiCo/TorreDeControl/temp_files/documento.pdf"
+./QaiCore/qrun.bat ./QaiCore/tools/document_processor.py "c:/ruta/al/archivo.xlsx"
 ```
-*Nota: Si la ruta absoluta c:/Users/abustamante/TheQaiCo/... no coincide con tu entorno actual, localiza el directorio 'TheQaiCo' y usa rutas relativas desde allí.*
 
 **Casos de uso**:
-- Leer facturas PDF para extraer monto, proveedor, fecha
-- Procesar declaraciones tributarias escaneadas
-- Analizar contratos antes de archivar
+- Procesar cartolas bancarias (Excel/CSV) para conciliación.
+- Leer facturas PDF para extraer monto, proveedor, fecha.
+- Analizar receipts internacionales (Namecheap, Cursor) para registro contable.
 
 ### 📂 Google Drive
 

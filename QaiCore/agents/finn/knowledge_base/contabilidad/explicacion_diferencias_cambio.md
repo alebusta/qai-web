@@ -152,6 +152,28 @@ Crédito: 21.04 Proveedores Extranjeros  $1.757,50  (IVA que se declarará en F2
 
 ---
 
-**Última actualización**: 10-Ene-2026  
-**Responsable**: Finn (CFO QAI)
+## 🛡️ Protocolo de Conciliación Bancaria (QAI Zero-Loss)
 
+> **Regla de Oro**: El saldo en el Runway Master (GSheets) es la "Única Fuente de Verdad" (SSOT) y DEBE coincidir al peso con el saldo real del banco al cierre de cada sesión.
+
+### 1. El Ajuste de Realidad (Post-Transacción)
+Cuando operamos con USD (Namecheap, Cursor, Google), el flujo es:
+1.  **Registro Inicial**: Se usa el valor USD * Dólar Observado del día (estimado).
+2.  **Conciliación**: Apenas el cargo aparece en la cartola bancaria, el monto en el GSheet **se sobreescribe** con el valor real en CLP cobrado por el banco.
+3.  **Absorción**: La diferencia (spread bancario/comisión) se absorbe en el gasto principal si es < $1.000 CLP.
+
+### 2. Lección Aprendida (Caso Namecheap Feb-2026)
+*   **Estimado Inicial**: $5.161 CLP.
+*   **Cargo Real Banco**: $5.274 CLP.
+*   **Acción**: Se actualizó el GSheet para reflejar los $5.274, asegurando que el Runway Master proyecte el saldo bancario exacto.
+*   **Por qué**: Evita que pequeños "goteos" de 100-200 pesos descalcen el saldo final después de 10-20 transacciones.
+
+### 3. Checklist de Cierre para Finn
+- [ ] ¿Todos los cargos USD en el GSheet coinciden con la cartola?
+- [ ] Si hay diferencia, ¿se actualizó el monto bruto y pagado para igualar al banco?
+- [ ] ¿Se generó el backup local tras la conciliación?
+
+---
+
+**Última actualización**: 17-Feb-2026  
+**Responsable**: Finn (Financial Agent)

@@ -8,6 +8,35 @@
 
 ### Febrero
 
+#### [17-Feb-2026] - Optimización Masiva de Rendimiento QaiCore y Mantenimiento HQ
+**Tipo**: Infraestructura / Operativo
+
+**Contexto**: Se detectaron problemas de latencia crítica en las APIs de Google y errores de codificación/escape en el Inbox y herramientas de terminal durante el procesamiento contable real.
+
+**Decisión/Acción**:
+- [INFRA] **Caché de Discovery APIs**: Implementado sistema de caché local en `.qai/google_discovery/` para Sheets v4, Gmail v1 y Drive v3. Reducción de tiempo de warm-up de ~30s a <1s.
+- [INFRA] **Lazy Imports Optimization**: Refactorizado `QaiCore/tools/__init__.py` para postergar la carga de dependencias pesadas (`openpyxl`, `google-api-python-client`), eliminando deadlocks y acelerando el arranque de scripts ligeros (como el de emails).
+- [OPERATIVO] **Robustez PowerShell**: Habilitado soporte para `--data-file` en `gsheets.py` para evitar fallos de escape con caracteres especiales (paréntesis) en la línea de comandos de Windows.
+- [MEMORIA] **Saneamiento INBOX**: Reparado archivo `INBOX.md` de errores de codificación UTF-8 (Mojibake fix) y reorganización táctica de prioridades.
+- [PERFIL] **Finn v1.4**: Actualización del perfil del agente financiero para incorporar estas mejoras de rendimiento y protocolos de robustez.
+
+**Impacto**: El Digital HQ alcanza su mayor nivel de fluidez técnica hasta la fecha. Operaciones que antes tomaban cerca de un minuto por las latencias de red ahora son virtualmente instantáneas.
+
+#### [17-Feb-2026] - Automatización de Procesamiento Contable de Landing Zone (Finn)
+
+**Tipo**: Procesamiento Operativo / Finanzas
+
+**Contexto**: Se procesaron los primeros documentos reales depositados por el Founder en la Landing Zone (`TorreDeControl/temp_files/`) siguiendo el protocolo de procesamiento automático de Finn.
+
+**Decisión/Acción**:
+- [FINANZAS] **Extracción y Conciliación**: Procesada factura Cursor Pro ($20 USD) y cartola bancaria Feb 2026.
+- [INFRA] **GDrive Automation**: Los archivos fueron clasificados y subidos automáticamente a las carpetas correspondientes (`04-Operaciones_Extranjeras_Doc46` y `05-Bancos_Cartolas_y_Pagos`).
+- [FINANZAS] **Runway Master**: Registro de 4 movimientos pendientes (Cursor, Github, Google, Namecheap) en el SSOT financiero (`QAI_Finanzas_2026`).
+- [PROTOCOLO] **Zero Inbox**: Limpieza total de la Landing Zone tras el procesamiento.
+- [PERFORMANCE] Identificación de cuellos de botella en el parsing de CLI (PowerShell) y latencia de inicialización de APIs de Google, documentados en INBOX para revisión de Nzero.
+
+**Impacto**: Consolidación total de la contabilidad de Febrero hasta la fecha. El Founder recibe un resumen formal por email y el HQ queda sincronizado con el banco.
+
 #### [16-Feb-2026] - Hardening Anti-Duplicados en Envíos Email (Finn)
 **Tipo**: Infraestructura / Protocolo Operativo
 

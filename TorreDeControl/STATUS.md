@@ -1,7 +1,7 @@
 # STATUS - Estado Actual de QAI Company
 
-> **Última actualización**: 16 de Febrero 2026 (Rol institucional comercial formalizado)
-> **Actualizado por**: Nzero (Arquitecto)
+> **Última actualización**: 17 de Febrero 2026 (Procesamiento Contable Feb)
+> **Actualizado por**: Finn (Financial Agent)
 
 ---
 
@@ -144,11 +144,15 @@
 - Suscripciones Tech (Cursor, Copilot, Google): ~$40.000 CLP
 - **Total**: ~**$90.000 CLP/mes** (proyectado)
 
-### Estado Bancario (Actualizado 05-Feb-2026 11:00)
-- **Banco Chile (11.02)**: Saldo **$46.192 CLP**
+### Estado Bancario (Actualizado 17-Feb-2026 18:10)
+- **Banco Chile**: Saldo **$7.358 CLP**
 - **Últimos Movimientos**:
+  - ✅ Cursor Pro: $17.640 CLP cargo (17-Feb) - Factura archivada (Finn)
+  - ✅ Namecheap (.co): $5.274 CLP cargo (16-Feb)
+  - ✅ Github Pro/Copilot: $8.820 CLP cargo (10-Feb)
+  - ✅ Google Play / Cloud: $7.100 CLP cargo (06-Feb)
+  - ✅ E-Cert Chile: $19.028 CLP cargo (03-Feb)
   - ✅ Préstamo Socio: $50.000 CLP abono (03-Feb)
-  - ✅ E-Cert Chile: $19.028 CLP cargo (03-Feb) - Factura #3286323 recibida y archivada. (Finn)
 
 ### Bloqueadores Administrativos
 - **🔴 Verificación de Actividad (SII)**: No es posible emitir Facturas de Compra (Doc. 46) ni de Venta sin una "Orden de Compra" validada por el SII para pasar a etapa productiva.
@@ -167,11 +171,12 @@
 | **GSheets / GDrive Automation** | ✅ | Integrado para Finn via CLI/REPL - [Sheet Master 2026](https://docs.google.com/spreadsheets/d/1O7hENHvyLKcAOM9ynfvhibTX3pMynP2kFPMmGPxKNLw/edit) |
 | **Aislamiento de Entorno (.venv)** | ✅ | **Completado (30-Dic)** - Entorno aislado y portable via `qrun.bat` |
 | **Standardización Tools** | ✅ | **Habilitado Terminal Fallback (CLI)** - Regla #8 README |
-| **Finn Profile v1.2** | ✅ | Actualizado con protocolos de ejecución agnósticos |
+| **Finn Profile v1.4** | ✅ | Actualizado con protocolos de ejecución agnósticos y optimización de rendimiento (caché APIs) |
 | **Tools (Extractors)** | ✅ | 7 extractors disponibles |
 | **Agente Lex (Legal)** | ✅ | Operativo con knowledge_base |
-| **Agente Finn (Financiero)** | ✅ | Operativo con knowledge_base & **GSheets / GDrive Automation** |
-| **Playbooks** | ✅ | process_inbox_task.md & **process_financial_inbox.md** |
+| **Agente Finn (Financiero)** | ✅ | Operativo con knowledge_base & **GSheets / GDrive Automation** (v1.4 Performance Optimized) |
+| **Playbooks** | ✅ | process_inbox_task.md & **process_financial_inbox.md** (v1.1 PowerShell Robust) |
+
 | **Documentación** | ✅ | README completo |
 | **Sistema de Propuestas (Deck+PDF+Email)** | ✅ | **Executive Horizon v1.2** - Motor unificado de PDF (Scale 1:1) + Motor de Email Premium (Markdown robusto, Logo CID inline, Multipart/Related). Certificado E2E. Guía en `PROPOSAL_SYSTEM.md`. |
 
@@ -223,7 +228,9 @@
 **🤖 Para Agentes**: Si actualizaste información aquí, deja una nota abajo con fecha y qué cambiaste.
 
 ### Changelog Reciente
-- ✅ 12-Feb-2026: **Fase 3: Memoria Inter-Servicios & Ordinales Certificada** 🚀🧠. El bot ahora resuelve referencias naturales (*"el segundo"*) y mantiene el contexto de análisis de documentos al redactar emails. Se acabó la "amnesia" entre servicios. Sincronización final GCP-GitHub completada. (Nzero)
+- ✅ 17-Feb-2026: **Optimización Masiva QaiCore & Mantenimiento HQ** 🚀⚡. Implementado sistema de caché local para Discovery APIs (reducción de 30s a <1s). Refactorizado `tools/__init__.py` con Lazy Imports evitando deadlocks. Reparado `INBOX.md` de errores UTF-8 y robustecido `gsheets.py` con `--data-file` para PowerShell. (Nzero)
+- ✅ 12-Feb-2026: **Fase 3: Memoria Inter-Servicios & Ordinales Certificada** 🚀🧠.
+ El bot ahora resuelve referencias naturales (*"el segundo"*) y mantiene el contexto de análisis de documentos al redactar emails. Se acabó la "amnesia" entre servicios. Sincronización final GCP-GitHub completada. (Nzero)
 - ✅ 11-Feb-2026: **Fase 2.5 Email AI & Persistencia Completada** 🚀. Implementada redacción asistida con Gemini (`/email redactar`), lectura stateless con botones inline (`/email leer`) y capa de persistencia híbrida (Firestore/Local). Bot Nzero ahora es resiliente a reinicios en Cloud Functions. (Nzero)
 - ✅ 11-Feb-2026: **Refuerzo de Protocolos y GitHub Fix**. Blindado protocolo de imagen corporativa HTML para Lex y Finn (prohibición de texto plano). Implementada solución de identidades segmentadas de Git para evitar conflictos entre cuentas `alebusta` y `qai-labs`. (Nzero)
 - ✅ 11-Feb-2026: **Hito Gmail + Drive (Fase 2) Certificado** 📧📁. Bot Nzero ahora lee/busca/envía emails (Gmail API) y busca archivos/carpetas en Google Drive. OAuth refresh token persistente configurado. Deploy a GCP exitoso. Probado en vivo desde Telegram. (Nzero)

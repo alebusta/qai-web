@@ -11,60 +11,127 @@ from typing import List, Dict, Any
 
 def extract_data_from_csv(
     csv_path: str,
-    has_header: bool = True,
-    delimiter: str = ',',
-    encoding: str = 'utf-8'
+    delimiter: str = None,
+    encoding: str = None,
+    header_row: int = None,
+    as_dict: bool = True
 ) -> Dict[str, Any]:
     """
-    Extrae datos de un archivo CSV.
+    Extrae datos de un archivo CSV con detección inteligente.
     
     Args:
         csv_path: Ruta al archivo CSV
-        has_header: Si True, la primera fila son headers
-        delimiter: Delimitador usado (default: coma)
-        encoding: Encoding del archivo (default: utf-8)
+        delimiter: Delimitador (None = auto-detectar)
+        encoding: Encoding (None = intentar utf-8 y fallback a latin-1)
+        header_row: Índice de la fila de cabecera (None = auto-detectar)
+        as_dict: Retornar con headers separados
         
     Returns:
-        Dict con headers y rows
+        Dict con headers, rows y metadata
     """
-    try:
-        with open(csv_path, 'r', encoding=encoding) as file:
-            reader = csv.reader(file, delimiter=delimiter)
-            all_rows = list(reader)
+    path = Path(csv_path)
+    encodings = [encoding] if encoding else ['utf-8', 'latin-1', 'cp1252', 'utf-16']
+    
+    all_rows = []
+    actual_encoding = 'utf-8'
+    
+    for enc in encodings:
+        try:
+            with open(csv_path, 'r', encoding=enc) as f:
+                lines = f.readlines()
+                
+                # Pre-proceso: Limpiar líneas envueltas en comillas (típico de Banco Chile)
+                # Si una línea empieza y termina con comillas y tiene delimitadores dentro,
+                # las quitamos primero para no confundir al csv.reader
+                cleaned_lines = []
+                for line in lines:
+                    line = line.strip()
+                    if line.startswith('"') and line.endswith('"') and (';' in line or ',' in line):
+                        # Quitar comillas externas y des-escapar comillas dobles internas
+                        line = line[1:-1].replace('""', '"')
+                    cleaned_lines.append(line)
+                
+                content = "\n".join(cleaned_lines)
+
+                # Detectar delimitador si no se provee
+                if delimiter is None:
+                    sample = "\n".join(cleaned_lines[:5])
+                    delimiter = ';' if sample.count(';') > sample.count(',') else ','
+                
+                # Usar csv module para parsear el contenido
+                import io
+                reader = csv.reader(io.StringIO(content), delimiter=delimiter)
+                all_rows = list(reader)
+                actual_encoding = enc
+                break
+        except Exception:
+            continue
             
-            if not all_rows:
-                return {"headers": [], "rows": [], "total_rows": 0}
+    if not all_rows:
+        return {"error": "❌ No se pudo leer el archivo CSV (problema de encoding o vacío)"}
+
+    # Detectar Header Row (similar a Excel)
+    keywords = {'fecha', 'descripcion', 'descripción', 'monto', 'cargo', 'abono', 'saldo', 'total', 'rut', 'nro', 'detalle'}
+    
+    best_header_idx = 0
+    max_matches = 0
+    
+    if header_row is None:
+        for i, row in enumerate(all_rows[:20]): # Mirar primeras 20 filas
+            row_str = [str(c).lower() for c in row if c is not None]
+            matches = [k for k in keywords if any(k in cell for cell in row_str)]
+            num_matches = len(matches)
             
-            if has_header:
-                headers = all_rows[0]
-                data_rows = all_rows[1:]
-            else:
-                # Generar headers genéricos
-                num_cols = len(all_rows[0]) if all_rows else 0
-                headers = [f"Col_{i+1}" for i in range(num_cols)]
-                data_rows = all_rows
+            # Bonus si contiene 'fecha'
+            if any('fecha' in s for s in row_str):
+                num_matches += 2
+                
+            if num_matches > max_matches:
+                max_matches = num_matches
+                best_header_idx = i
+        
+        # Fallback si no hay matches
+        if max_matches < 2:
+            for i, row in enumerate(all_rows[:5]):
+                if len([c for c in row if c and str(c).strip()]) > 2:
+                    best_header_idx = i
+                    break
+        
+        detected_header_idx = best_header_idx
+    else:
+        detected_header_idx = header_row
+
+    headers_raw = all_rows[detected_header_idx]
+    data_rows = all_rows[detected_header_idx + 1:]
+    
+    # Limpiar celdas vacías y filas finales
+    while data_rows and (not data_rows[-1] or all(not str(c).strip() for c in data_rows[-1])):
+        data_rows.pop()
+
+    if as_dict:
+        # Limpiar headers
+        headers = []
+        for i, h in enumerate(headers_raw):
+            name = str(h).strip() if h is not None else f"Col_{i}"
+            if name == "":
+                name = f"Col_{i}"
+            headers.append(name)
             
-            return {
-                "headers": headers,
-                "rows": data_rows,
-                "total_rows": len(data_rows)
-            }
-            
-    except Exception as e:
-        return {"error": f"❌ Error extrayendo datos del CSV: {str(e)}"}
+        return {
+            "headers": headers,
+            "rows": data_rows,
+            "total_rows": len(data_rows),
+            "delimiter": delimiter,
+            "encoding": actual_encoding,
+            "header_row_index": detected_header_idx
+        }
+    else:
+        return all_rows
 
 
 def csv_to_markdown_table(csv_path: str, max_rows: int = 50, **kwargs) -> str:
     """
-    Convierte CSV a tabla Markdown para fácil lectura por agentes IA.
-    
-    Args:
-        csv_path: Ruta al archivo CSV
-        max_rows: Máximo de filas a mostrar
-        **kwargs: Parámetros adicionales para extract_data_from_csv
-        
-    Returns:
-        String con tabla en formato Markdown
+    Convierte CSV a tabla Markdown.
     """
     data = extract_data_from_csv(csv_path, **kwargs)
     
@@ -74,17 +141,18 @@ def csv_to_markdown_table(csv_path: str, max_rows: int = 50, **kwargs) -> str:
     headers = data["headers"]
     rows = data["rows"][:max_rows]
     
-    # Construir tabla Markdown
     md_lines = [
         f"# CSV: {Path(csv_path).name}",
-        f"*(Mostrando {len(rows)} de {data['total_rows']} filas)*\n",
+        f"*(Detected {data['delimiter']} delimiter, {data['encoding']} encoding. Headers at row {data['header_row_index']})*",
+        f"*(Showing {len(rows)} of {data['total_rows']} data rows)*\n",
         "| " + " | ".join(headers) + " |",
         "| " + " | ".join(["---"] * len(headers)) + " |"
     ]
     
     for row in rows:
-        row_str = " | ".join(str(cell) for cell in row)
-        md_lines.append(f"| {row_str} |")
+        # Limpiar strings de celdas (eliminar excesos de espacios o comillas duplicadas)
+        clean_row = [str(c).replace('\n', ' ').strip() for c in row]
+        md_lines.append("| " + " | ".join(clean_row) + " |")
     
     if data['total_rows'] > max_rows:
         md_lines.append(f"\n*... y {data['total_rows'] - max_rows} filas más*")
@@ -92,7 +160,6 @@ def csv_to_markdown_table(csv_path: str, max_rows: int = 50, **kwargs) -> str:
     return "\n".join(md_lines)
 
 
-# Ejemplo de uso
 if __name__ == "__main__":
     import sys
     
@@ -108,14 +175,17 @@ if __name__ == "__main__":
     
     print(f"📊 Extrayendo datos de: {csv_file}")
     
-    # Método 1: Como dict
     data = extract_data_from_csv(csv_file)
-    print(f"\n✅ Headers: {', '.join(data.get('headers', []))}")
+    if "error" in data:
+        print(data["error"])
+        sys.exit(1)
+        
+    print(f"✅ Delimitador: '{data['delimiter']}' | Encoding: {data['encoding']}")
+    print(f"✅ Cabecera en fila: {data['header_row_index']}")
     print(f"✅ Total filas: {data.get('total_rows', 0)}")
     
-    # Método 2: Como Markdown
     print("\n" + "="*60)
     print("VISTA MARKDOWN (para agentes):")
     print("="*60)
-    md_table = csv_to_markdown_table(csv_file, max_rows=10)
-    print(md_table)
+    print(csv_to_markdown_table(csv_file, max_rows=15))
+
