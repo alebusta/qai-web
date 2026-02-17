@@ -65,6 +65,8 @@ ACCIÓN:
 **ACCIÓN**: 
 - Usar `gsheets.py` para abrir el GSheet Master (`QAI_Finanzas_2026`).
 - Agregar fila con: [Fecha] | [Tipo] | [Concepto] | [Categoría FinOps] | [Cuenta] | [Monto Neto] | [IVA] | [Retención] | [Monto Bruto] | [Monto Pagado] | [Proyecto] | [Link a Drive].
+- **Prohibido en producción**: insertar filas de prueba (`TEST`, `DEBUG`, `PING`) en `Registro_Diario`.
+- Si necesitas validar conectividad, usa lectura (`--read`) o una planilla sandbox; nunca contaminar el SSOT financiero.
 
 ### 5. Actualización de Memoria (Torre de Control)
 ```markdown
@@ -72,6 +74,17 @@ ACCIÓN:
 - Registrar en `AGENT_ACTIVITY.md`: "Procesado documento [X] -> Registrado en Runway".
 - Actualizar `STATUS.md`: Reflejar balance actual si es significativo.
 - **LIMPIAR**: Borrar el archivo de `/TorreDeControl/temp_files/`.
+```
+
+### 6. Guardrail de Reintentos
+```markdown
+ACCIÓN:
+- Si un comando de Google API queda en estado incierto, NO ejecutar loops de reintento.
+- Máximo 1 reintento por operación financiera crítica (append/upload/send).
+- Antes de reintentar, verificar estado real:
+  - GSheets: leer rango donde debería aparecer el registro.
+  - GDrive: buscar archivo por nombre.
+  - Gmail: buscar por asunto/destinatario.
 ```
 
 ---

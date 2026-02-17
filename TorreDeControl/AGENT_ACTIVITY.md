@@ -1,7 +1,7 @@
 # Registro de Actividad de Agentes
 
 > **Propósito**: Log de acciones importantes realizadas por agentes QAI  
-> **Última actualización**: 10-Feb-2026
+> **Última actualización**: 16-Feb-2026
 
 ---
 
@@ -43,6 +43,10 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 16-Feb 23:10 | Nzero | **Limpieza SSOT financiero (TEST NAMECHEAP)** | Registro_Diario (GSheets), INBOX.md | ✅ Fila de prueba vaciada (A9:N9). Asiento real Namecheap verificado intacto (monto neto $5.161 CLP + link Drive). |
+| 16-Feb 22:55 | Nzero | **Postmortem Finn: anti-loop y deduplicación email** | QaiCore/tools/gmail.py, QaiCore/agents/finn/system_prompt.md, QaiCore/playbooks/process_financial_inbox.md, INBOX.md, CHANGELOG.md | ✅ Implementados guardrails anti-duplicado en `gmail.py`, límites de reintentos y tarea de limpieza de fila `TEST NAMECHEAP` en INBOX. |
+| 16-Feb 22:20 | Nzero | **Formalización rol institucional de Iliana (CGO)** | STATUS.md, CHANGELOG.md, AGENT_ACTIVITY.md | ✅ Definido título oficial comercial: **Co-Founder & Chief Growth Officer (CGO)** para firma y representación en growth/ventas/prospección. |
+| 16-Feb 21:55 | Finn | **Procesar Orden Namecheap (theqai.co)** | namecheap-order-194911733.pdf → Drive/04-Operaciones_Extranjeras_Doc46, Registro_Diario (GSheets) | ✅ Registrado $5.98 USD ($5.161 CLP). Optimización de `gsheets.py` (bypass discovery hang) implementada para mayor velocidad. |
 | 15-Feb 21:15 | Nzero | **Cierre Evolución Web V3 & Checkpoint** | AREA_51/proyectos/web_evolution_2026/, STATUS.md, INBOX.md, CHANGELOG.md | ✅ Refinamiento V3 completado. Insumos migrados de temp_files a Area 51. Memoria institucional actualizada. |
 | 13-Feb 17:30 | Nzero | **Cierre Misión Latinarq & Graduación Área 51** | AGENT_ACTIVITY.md, STATUS.md, INBOX.md, CONTEXTO_ESTRATEGICO.md | ✅ Finalizada entrega de 68 registros. Institucionalizado el proyecto en `QaiLabs/AREA_51`. Protocolo Zero-Footprint completado tras purga de procesos bloqueados. |
 | 13-Feb 15:35 | Nzero | **Misión Circle Pack: Extracción & Entrega** | expositores_circlepack.xlsx | ✅ Extraída base de 68 expositores del catálogo 2024. Generado Excel refinado y enviado por email corporativo a `iliana.alzurutt@uc.cl`. |
@@ -210,4 +214,4 @@ Al inicio de cada mes, mover el mes anterior a `/TorreDeControl/archive/agent_ac
 
 **Creado**: 27-Dic-2025 (Nzero)  
 **Mantenido por**: Todos los agentes  
-**Última actualización**: 11-Feb-2026
+**Última actualización**: 16-Feb-2026

@@ -1,6 +1,6 @@
 # STATUS - Estado Actual de QAI Company
 
-> **Última actualización**: 15 de Febrero 2026 (Refinamiento Web V3 Completado)
+> **Última actualización**: 16 de Febrero 2026 (Rol institucional comercial formalizado)
 > **Actualizado por**: Nzero (Arquitecto)
 
 ---
@@ -26,6 +26,7 @@
 | Registro Google Cloud / APIs | ✅ | 28-Dic-2025 | Billing & Tax Info configurado (RUT, IVA, IA Exento) |
 | └─ Método de Pago | ✅ | 29-Dic-2025 | **Banco Chile (Débito)** afiliado. $300 USD Free Tier activo (Vence en 90 días o consumo total). |
 | └─ Estrategia FinOps | ✅ | 29-Dic-2025 | APIs x Proyecto. Monitoreo a cargo de Finn. |
+| **Dominios Corporativos** | ✅ | **16-Feb-2026** | `theqai.co` registrado (Namecheap). Vigencia: Feb 2027. |
 
 **Pendiente**: Gestionado en [INBOX.md](file:///c:/Users/abustamante/TheQaiCo/TorreDeControl/INBOX.md) 📥
 
@@ -54,7 +55,7 @@
 | **Código Fuente** | ✅ | Migrado a HQ: `/QaiLabs/PROTOTIPOS/invoiceMatch/` (Incluye Export CSV ✅) |
 | Ficha Proveedor (Onboarding) | ✅ | **ENVIADA (02-Feb-2026)** - Versión corregida con Zona Postal |
 | NDA FedEx | ✅ | **COMPLETADO Y ENVIADO (10-Feb-2026)** - NDA firmado por Alejandro, enviado a Eduardo Mejías |
-| Orden de Compra | 🔵 | **Bajo gestión de Sempere (Rodrigo Fernández). Eduardo monitoreando. Seguimiento: 16-Feb.** |
+| Orden de Compra | 🟡 | **Esperando emisión OC de Sempere a FedEx. Eduardo reporta que debería ocurrir esta semana (del 16-Feb) para la primera facturación.** |
 
 **Seguimiento**: Ver [INBOX.md](file:///c:/Users/abustamante/TheQaiCo/TorreDeControl/INBOX.md) sección FedEx.
 
@@ -195,6 +196,7 @@
 - **Runway**: Infinito (founder tiene ingresos externos)
 - **Filosofía**: No escalar "a lo loco", crecer a ritmo sostenible
 - **Prioridad**: Validar productos antes de marketing agresivo
+- **Roles Ejecutivos**: Iliana Alzurutt usa el título **Co-Founder & Chief Growth Officer (CGO)** para funciones de crecimiento comercial, ventas y prospección.
 
 ### Finanzas & Administración
 - **SSOT**: Google Sheets `QAI_Finanzas_2026` (Consolidado en Carpeta Administración y Finanzas).

@@ -13,8 +13,21 @@ if str(qai_core_root) not in sys.path:
     sys.path.insert(0, str(qai_core_root))
 
 from googleapiclient.discovery import build
-from tools.gdrive import get_gdrive
 import json
+
+# Direct import to avoid heavy tools.__init__
+# We add the parent directory to sys.path and import gdrive directly
+_tools_dir = str(Path(__file__).parent)
+if _tools_dir not in sys.path:
+    sys.path.append(_tools_dir)
+
+try:
+    from gdrive import get_gdrive
+except ImportError:
+    # Fallback for when running from QaiCore root
+    import gdrive
+    get_gdrive = gdrive.get_gdrive
+
 
 # Scopes are technically managed by gdrive tool, but for reference:
 # SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
@@ -27,10 +40,22 @@ class GSheetsTool:
     def __init__(self):
         # Reutilizamos las credenciales ya autenticadas por el tool de GDrive
         self.gdrive = get_gdrive()
-        # Accedemos a service para asegurar autenticación
         _ = self.gdrive.service 
         self.creds = self.gdrive._creds
-        self.service = build('sheets', 'v4', credentials=self.creds)
+        
+        discovery_path = Path(sys.prefix) / "lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "sheets.v4.json"
+        
+        # Fallback for some Windows Python installations where it might be in 'Lib' instead of 'lib'
+        if not discovery_path.exists():
+            discovery_path = Path(sys.prefix) / "Lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "sheets.v4.json"
+            
+        if discovery_path.exists():
+            with open(discovery_path, 'r') as f:
+                discovery_doc = f.read()
+            from googleapiclient.discovery import build_from_document
+            self.service = build_from_document(discovery_doc, credentials=self.creds)
+        else:
+            self.service = build('sheets', 'v4', credentials=self.creds, static_discovery=True)
     
     def create_spreadsheet(self, title):
         """

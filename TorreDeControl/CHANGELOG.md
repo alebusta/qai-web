@@ -8,6 +8,42 @@
 
 ### Febrero
 
+#### [16-Feb-2026] - Hardening Anti-Duplicados en Envíos Email (Finn)
+**Tipo**: Infraestructura / Protocolo Operativo
+
+**Contexto**: En una sesión operativa se detectaron reintentos de envío de correo por latencia/ambigüedad de estado en terminal, lo que provocó duplicados al enviar borradores a revisión.
+
+**Decisión/Acción**:
+- [QAICORE] `gmail.py` incorpora guardrail de deduplicación por defecto en `send` (destinatario + asunto + ventana temporal).
+- [QAICORE] Se agrega bypass explícito `--allow-duplicate` para casos excepcionales con intención confirmada.
+- [PROTOCOLO] Refuerzo en `finn/system_prompt.md`: usar `draft` cuando el usuario pide visualizar, y limitar reintentos ante estados ambiguos.
+- [PLAYBOOK] `process_financial_inbox.md` incorpora guardrail de reintentos y prohibición de filas `TEST/DEBUG` en SSOT financiero.
+
+**Impacto**: Reducción drástica del riesgo de envíos duplicados y de loops de reintento. Mayor seguridad operativa en sesiones con latencia alta.
+
+#### [16-Feb-2026] - Optimización de Infraestructura QaiCore (Google API Local Discovery)
+**Tipo**: Infraestructura / Rendimiento
+
+**Contexto**: Se detectaron cuellos de botella críticos (hangs) al inicializar los servicios de Google Sheets y Gmail. La causa era la latencia en la descarga dinámica de los "discovery documents" vía red.
+
+**Decisión/Acción**:
+- [QAICORE] **Bypass de Red**: Refactorización de `gsheets.py` y `gmail.py` para utilizar `build_from_document` con archivos JSON locales.
+- [QAICORE] **Inmunidad SSL/DNS**: Las herramientas financieras ahora operan de forma instantánea al no depender de handshakes externos para su construcción.
+
+**Impacto**: Reducción del tiempo de respuesta de las herramientas de ~30s a <1s. Eliminación de fallos por timeout en entornos con redes restrictivas or inestables.
+
+#### [16-Feb-2026] - Formalización de Rol Comercial Institucional (Iliana CGO)
+**Tipo**: Gobierno Corporativo / Comercial
+
+**Contexto**: Se requería estandarizar el título institucional de Iliana para firma y representación comercial en propuestas, prospección y dirección de equipos/agentes de crecimiento.
+
+**Decisión/Acción**:
+- [GOBIERNO] Se formaliza el uso de título: **Co-Founder & Chief Growth Officer (CGO)**.
+- [COMERCIAL] Se alinea su uso para contexto de ventas, búsqueda de clientes, alianzas y liderazgo de growth.
+- [MEMORIA] Actualización de `STATUS.md` para dejar el rol visible en la memoria operativa.
+
+**Impacto**: Claridad de representación externa e interna en funciones comerciales. Se evita inconsistencia de cargos en documentos y comunicaciones.
+
 #### [15-Feb-2026] - Refinamiento Arquitectural Web V3 ("The Hinge")
 **Tipo**: Identidad / Producto
 

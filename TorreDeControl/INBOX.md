@@ -1,4 +1,4 @@
-﻿# INBOX - BuzÃ³n de Tareas Pendientes
+# INBOX - BuzÃ³n de Tareas Pendientes
  
 > **Ãšltima actualizaciÃ³n**: 13 de Febrero de 2026 (Experimento ProspecciÃ³n IA Finalizado)  
 > **Propietario**: Alejandro Bustamante
@@ -79,7 +79,9 @@ Tu **inbox personal** para capturar tareas rÃ¡pidamente sin perder el contexto
 
 ### Prioridades (prÃ³ximas acciones)
 - [x] **Escribirle a Eduardo por OC de Sempere** (Hablado hoy 11-Feb) âœ…
-- [ ] **Seguimiento OC FedEx/Sempere** (Si no llega, contactar a Eduardo) _(Lunes 16-Feb)_
+- [ ] **Seguimiento OC FedEx/Sempere**: Eduardo (FedEx) informa que Sempere debe emitir la OC a ellos primero. Se espera para esta semana. 🟡 (16-Feb)
+- [ ] **Enviar correo recordatorio a Eduardo (FedEx)**: Consultar si Sempere ya emitió la OC. 📅 **Jueves 19-Feb**.
+- [x] **Depurar registro de prueba en GSheets (TEST NAMECHEAP)**: Fila de test limpiada en `Registro_Diario`. ✅ 16-Feb-2026.
 - [ ] **Sistema de Propuestas vNext: â€œeventoâ€ por manifest** (1 comando)
   - Objetivo: `proposal_manifest.(yml|json)` + orquestador que genere segÃºn modo: `pdf`, `deck`, `both`, `both+mock`.
   - Contexto: priorizaciÃ³n definida 21-Ene (Nzero). Mantenerlo visible.
@@ -214,3 +216,4 @@ Si procesaste alguna tarea de este INBOX:
 - `07-Ene-2026`: QaiCore - Upgrade de `gmail.py` a v2.0. Implementada lectura, bÃºsqueda y gestiÃ³n de inbox (trash/read). DocumentaciÃ³n creada en `README_GMAIL.md`. Proceso validado con Ã©xito. (Nzero)
  - 13-Feb-2026: **Misión Latinarq: Prospección Inteligente v1.0**. Completado el enriquecimiento de 68 registros de Circle Pack. Triangulación exitosa de 34 perfiles activos (50%). Entrega final enviada a Iliana Alzurutt. Graduado a QaiLabs/AREA_51 para I+D de técnicas OSINT. Protocolo de seguridad y cierre Zero-Footprint ejecutado. (Nzero)
 - [x] **Refinamiento Web V3 (The Hinge)** - Estética anti-hype certificada. ✅ 15-Feb-2026
+- [x] **Procesar Orden Namecheap (theqai.co)** - Dominio registrado en GSheets y Drive. ✅ 16-Feb-2026. **Optimización QaiCore**: Bypass de discovery network en `gsheets.py` operativo. (Finn)

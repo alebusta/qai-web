@@ -13,6 +13,7 @@ for _k in list(os.environ):
 
 import base64
 import pickle
+import time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
@@ -32,7 +33,22 @@ CREDENTIALS_PATH = r'c:\Users\abustamante\.qai\gdrive\credentials.json'
 class GmailTool:
     def __init__(self):
         self.creds = self._authenticate()
-        self.service = build('gmail', 'v1', credentials=self.creds)
+        
+        # Bypass network discovery by using local static file
+        import sys
+        from pathlib import Path
+        discovery_path = Path(sys.prefix) / "lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "gmail.v1.json"
+        
+        if not discovery_path.exists():
+            discovery_path = Path(sys.prefix) / "Lib" / "site-packages" / "googleapiclient" / "discovery_cache" / "documents" / "gmail.v1.json"
+            
+        if discovery_path.exists():
+            with open(discovery_path, 'r') as f:
+                discovery_doc = f.read()
+            from googleapiclient.discovery import build_from_document
+            self.service = build_from_document(discovery_doc, credentials=self.creds)
+        else:
+            self.service = build('gmail', 'v1', credentials=self.creds, static_discovery=True)
 
     def _authenticate(self):
         creds = None
@@ -172,7 +188,16 @@ class GmailTool:
             print(f"Error al mover {message_id} a papelera: {e}")
             return False
 
-    def send_email(self, to, subject, body_html, logo_path=None, attachments=None):
+    def send_email(
+        self,
+        to,
+        subject,
+        body_html,
+        logo_path=None,
+        attachments=None,
+        allow_duplicate=False,
+        dedupe_window_minutes=30
+    ):
         """
         Envía un email con formato HTML, logo incrustado y adjuntos opcionales.
         Utiliza una estructura de mensaje robusta (multipart/related) para asegurar
@@ -184,6 +209,16 @@ class GmailTool:
         from email.mime.multipart import MIMEMultipart
         from email.mime.text import MIMEText
         from email.mime.image import MIMEImage
+
+        # Idempotencia defensiva:
+        # Evita duplicados cuando el operador reintenta por latencia de terminal.
+        if not allow_duplicate and self._recent_sent_exists(
+            to, subject, window_minutes=dedupe_window_minutes
+        ):
+            raise RuntimeError(
+                f"Bloqueado envío duplicado: ya existe un correo reciente a '{to}' con asunto '{subject}'. "
+                "Usa --allow-duplicate si realmente necesitas reenviarlo."
+            )
 
         # 1. Contenedor Raíz (MIXED) - Permite cuerpo + adjuntos reales
         message = MIMEMultipart('mixed')
@@ -233,6 +268,25 @@ class GmailTool:
         except Exception as e:
             print(f"Error al enviar email: {e}")
             raise e
+
+    def _recent_sent_exists(self, to, subject, window_minutes=30):
+        """
+        Revisa si existe un correo reciente en 'Sent' con mismo destinatario + asunto.
+        Sirve como guardrail anti-duplicado ante reintentos por incertidumbre.
+        """
+        try:
+            cutoff_epoch = int(time.time() - (window_minutes * 60))
+            query = f'to:{to} subject:"{subject}" after:{cutoff_epoch}'
+            results = self.service.users().messages().list(
+                userId='me',
+                q=query,
+                maxResults=5,
+                labelIds=['SENT']
+            ).execute()
+            return bool(results.get('messages', []))
+        except Exception:
+            # En caso de error de verificación, no bloqueamos envío.
+            return False
 
     def create_draft(self, to, subject, body_html, logo_path=None, attachments=None):
         """
@@ -303,6 +357,8 @@ if __name__ == "__main__":
     send_parser.add_argument('--body-file', help='Ruta al archivo HTML del cuerpo (recomendado para email_preview.html)')
     send_parser.add_argument('--logo', help='Ruta al logo para incrustar')
     send_parser.add_argument('--attach', action='append', help='Ruta de archivo para adjuntar (puede usarse múltiples veces)')
+    send_parser.add_argument('--allow-duplicate', action='store_true', help='Permite reenviar aunque exista un envío reciente con mismo destino+asunto')
+    send_parser.add_argument('--dedupe-window-min', type=int, default=30, help='Ventana de deduplicación en minutos (default: 30)')
 
     # Comando: Draft
     draft_parser = subparsers.add_parser('draft', help='Crear un borrador')
@@ -344,7 +400,15 @@ if __name__ == "__main__":
             body_html = args.body
         else:
             parser.error('send requiere --body o --body-file')
-        res = gmail.send_email(args.to, args.subject, body_html, args.logo, args.attach)
+        res = gmail.send_email(
+            args.to,
+            args.subject,
+            body_html,
+            args.logo,
+            args.attach,
+            allow_duplicate=args.allow_duplicate,
+            dedupe_window_minutes=args.dedupe_window_min
+        )
         print(f"✅ Email enviado con ID: {res['id']}")
     
     elif args.command == 'draft':

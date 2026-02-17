@@ -38,7 +38,7 @@ class GDriveTool:
             sys.stderr.write("[-] Inicializando Google Drive Service...\n")
             self._creds = self._authenticate()
             sys.stderr.write("[-] Construyendo API Discovery...\n")
-            self._service = build('drive', 'v3', credentials=self._creds)
+            self._service = build('drive', 'v3', credentials=self._creds, static_discovery=True)
             sys.stderr.write("[+] Servicio listo.\n")
         return self._service
 
