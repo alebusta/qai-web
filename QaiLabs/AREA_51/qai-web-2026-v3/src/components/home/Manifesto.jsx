@@ -17,7 +17,7 @@ const Manifesto = () => {
                     Somos una Bisagra.
                 </h2>
 
-                <div className="w-full h-px bg-white/10 mb-10"></div>
+                <div className="w-full h-px bg-[#9B6FD4]/30 mb-10"></div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
                     <div className="space-y-8 text-xl text-gray-300 font-light leading-relaxed">

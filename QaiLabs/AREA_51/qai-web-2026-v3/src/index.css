@@ -29,3 +29,82 @@
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
+
+/* Botón primario QAI: negro en reposo, gradiente del logo en hover */
+.btn-qai-primary {
+  position: relative;
+  background-color: #050505;
+  color: white;
+  overflow: hidden;
+  isolation: isolate;
+  transition: box-shadow 0.4s ease, transform 0.2s ease;
+}
+
+.btn-qai-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #9B6FD4 0%, #4DD9E0 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.btn-qai-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-qai-primary:hover {
+  box-shadow: 0 8px 32px rgba(155, 111, 212, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Card con borde gradiente QAI en hover */
+.card-qai-border {
+  position: relative;
+  border: 1px solid #E5E5E5;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-qai-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #9B6FD4 0%, #4DD9E0 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.card-qai-border:hover::before {
+  opacity: 1;
+}
+
+.card-qai-border:hover {
+  border-color: transparent;
+  box-shadow: 0 4px 24px rgba(155, 111, 212, 0.12);
+}
+
+/* Números de proceso: gris en reposo, gradiente QAI en hover del grupo */
+.process-number {
+  color: #E5E5E5;
+  transition: color 0.3s ease;
+}
+
+.group:hover .process-number {
+  background: linear-gradient(135deg, #9B6FD4 0%, #4DD9E0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

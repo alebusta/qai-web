@@ -1,11 +1,98 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, X } from 'lucide-react'
-import { cn } from '../../lib/utils'
+import { ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react'
+
+// Fondos progresivos: de púrpura muy tenue → cian más intenso
+const slideStyles = [
+    {
+        bg: 'rgba(155, 111, 212, 0.06)',
+        border: 'rgba(155, 111, 212, 0.15)',
+        accent: '#9B6FD4',
+        label: 'El Problema',
+    },
+    {
+        bg: 'rgba(130, 100, 220, 0.10)',
+        border: 'rgba(130, 100, 220, 0.20)',
+        accent: '#8264DC',
+        label: 'La Fricción Económica',
+    },
+    {
+        bg: 'rgba(77, 190, 210, 0.10)',
+        border: 'rgba(77, 190, 210, 0.20)',
+        accent: '#4DBED2',
+        label: 'Nuestra Solución',
+    },
+    {
+        bg: 'rgba(77, 217, 224, 0.14)',
+        border: 'rgba(77, 217, 224, 0.25)',
+        accent: '#4DD9E0',
+        label: 'Impacto Medible',
+    },
+]
 
 const CaseStudy = ({ title, subtitle, problem, friction, solution, result, quote }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
+    const [slide, setSlide] = useState(0)
+    const [direction, setDirection] = useState(1)
+
+    const slides = [
+        {
+            content: (
+                <p className="text-base text-gray-700 font-light leading-relaxed">{problem}</p>
+            )
+        },
+        {
+            content: (
+                <p className="text-base text-gray-800 font-medium leading-relaxed">{friction}</p>
+            )
+        },
+        {
+            content: (
+                <ul className="space-y-3">
+                    {solution.map((item, i) => (
+                        <li key={i} className="flex items-start text-base text-gray-700 font-light">
+                            <span
+                                className="w-1.5 h-1.5 rounded-full mt-1.5 mr-3 flex-shrink-0"
+                                style={{ backgroundColor: slideStyles[2].accent }}
+                            />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            )
+        },
+        {
+            content: (
+                <div className="space-y-3">
+                    {result.map((item, i) => (
+                        <div key={i} className="flex items-start p-3 rounded-xl bg-white/60 border border-white/80">
+                            <span className="font-bold mr-3 text-sm" style={{ color: slideStyles[3].accent }}>✓</span>
+                            <span className="text-base font-medium text-gray-800">{item}</span>
+                        </div>
+                    ))}
+                    {quote && (
+                        <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest pt-2 text-center">
+                            {quote}
+                        </p>
+                    )}
+                </div>
+            )
+        },
+    ]
+
+    const goTo = (next) => {
+        setDirection(next > slide ? 1 : -1)
+        setSlide(next)
+    }
+
+    const variants = {
+        enter: (dir) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
+        center: { x: 0, opacity: 1 },
+        exit: (dir) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
+    }
+
+    const style = slideStyles[slide]
 
     return (
         <>
@@ -14,10 +101,9 @@ const CaseStudy = ({ title, subtitle, problem, friction, solution, result, quote
                 <p className="text-gray-500 font-sans font-light leading-relaxed mb-8 flex-grow">
                     {subtitle}
                 </p>
-
                 <button
-                    onClick={() => setIsOpen(true)}
-                    className="px-6 py-2 border border-gray-100 rounded-full text-[10px] font-mono tracking-widest text-gray-400 hover:border-qai-dark hover:text-qai-dark transition-all uppercase"
+                    onClick={() => { setIsOpen(true); setSlide(0) }}
+                    className="px-6 py-2 border-2 border-gray-200 rounded-full text-[10px] font-mono tracking-widest text-gray-400 hover:border-qai-dark hover:text-qai-dark transition-all uppercase"
                 >
                     Ver Más
                 </button>
@@ -26,79 +112,105 @@ const CaseStudy = ({ title, subtitle, problem, friction, solution, result, quote
             <AnimatePresence>
                 {isOpen && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsOpen(false)}
-                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                         />
+
+                        {/* Modal */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className="relative bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl z-10"
+                            className="relative w-full max-w-xl z-10 rounded-3xl overflow-hidden shadow-2xl"
+                            style={{
+                                background: style.bg,
+                                border: `1px solid ${style.border}`,
+                                backdropFilter: 'blur(20px)',
+                                transition: 'background 0.5s ease, border-color 0.5s ease',
+                            }}
                         >
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 transition-colors z-[11]"
-                            >
-                                <X className="w-5 h-5 text-gray-400" />
-                            </button>
+                            {/* Glassmorphism base */}
+                            <div className="absolute inset-0 bg-white/75 backdrop-blur-xl -z-10 rounded-3xl" />
 
-                            <div className="p-8 md:p-12">
-                                <div className="mb-12">
-                                    <h3 className="text-3xl font-serif font-bold text-qai-dark mb-4">{title}</h3>
-                                    <p className="text-gray-500 font-sans font-light">{subtitle}</p>
+                            {/* Header */}
+                            <div className="px-8 pt-8 pb-4">
+                                <div className="flex items-start justify-between mb-1">
+                                    <div>
+                                        <h3 className="text-xl font-serif font-bold text-qai-dark">{title}</h3>
+                                        <p className="text-xs text-gray-400 font-light">{subtitle}</p>
+                                    </div>
+                                    <button
+                                        onClick={() => setIsOpen(false)}
+                                        className="p-2 rounded-full hover:bg-black/5 transition-colors ml-4 flex-shrink-0"
+                                    >
+                                        <X className="w-4 h-4 text-gray-400" />
+                                    </button>
                                 </div>
 
-                                <div className="space-y-4">
-                                    {/* El Problema - Light Gray */}
-                                    <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                                        <h4 className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-2 font-bold">El Problema</h4>
-                                        <p className="text-sm text-gray-600 font-light leading-relaxed">{problem}</p>
+                                {/* Progress pills */}
+                                <div className="flex items-center gap-3 mt-4">
+                                    <span
+                                        className="text-xs font-mono font-semibold uppercase tracking-widest transition-colors duration-300"
+                                        style={{ color: style.accent }}
+                                    >
+                                        {style.label}
+                                    </span>
+                                    <div className="ml-auto flex items-center gap-2">
+                                        {slideStyles.map((s, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => goTo(i)}
+                                                className="h-1 rounded-full transition-all duration-300"
+                                                style={{
+                                                    width: i === slide ? '2rem' : '0.5rem',
+                                                    backgroundColor: i === slide ? s.accent : '#D1D5DB',
+                                                }}
+                                            />
+                                        ))}
                                     </div>
-
-                                    {/* La Fricción - Medium Gray */}
-                                    <div className="bg-gray-100 p-8 rounded-2xl border border-gray-200">
-                                        <h4 className="text-xs font-mono uppercase tracking-widest text-gray-500 mb-2 font-bold">La Fricción Económica</h4>
-                                        <p className="text-sm text-gray-800 font-medium leading-relaxed">{friction}</p>
-                                    </div>
-
-                                    {/* Nuestra Solución - Dark Gray/Black */}
-                                    <div className="bg-gray-900 p-8 rounded-2xl text-white">
-                                        <h4 className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4 font-bold">Nuestra Solución</h4>
-                                        <ul className="grid grid-cols-1 gap-4">
-                                            {solution.map((item, i) => (
-                                                <li key={i} className="flex items-start text-sm text-gray-300 font-light">
-                                                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full mt-1.5 mr-3 flex-shrink-0" />
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* Resultado */}
-                                    <div className="pt-8 space-y-3">
-                                        <h4 className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4 font-bold text-center">Impacto Medible</h4>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            {result.map((item, i) => (
-                                                <div key={i} className="flex items-start p-4 border border-gray-100 rounded-xl bg-white shadow-sm">
-                                                    <span className="text-gray-900 mr-3 font-bold">✓</span>
-                                                    <span className="text-sm font-medium text-qai-dark">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {quote && (
-                                        <div className="pt-8 text-center">
-                                            <p className="text-sm text-gray-500 italic px-8">
-                                                "{quote}"
-                                            </p>
-                                        </div>
-                                    )}
                                 </div>
+                            </div>
+
+                            {/* Slide content */}
+                            <div className="px-8 pb-8 h-[260px] relative overflow-hidden">
+                                <AnimatePresence custom={direction} mode="wait">
+                                    <motion.div
+                                        key={slide}
+                                        custom={direction}
+                                        variants={variants}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
+                                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                    >
+                                        {slides[slide].content}
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
+
+                            {/* Navigation */}
+                            <div className="px-8 pb-6 flex items-center justify-between border-t border-black/5 pt-4">
+                                <button
+                                    onClick={() => goTo(slide - 1)}
+                                    disabled={slide === 0}
+                                    className="flex items-center gap-1 text-xs font-mono text-gray-400 hover:text-gray-700 disabled:opacity-20 transition-all uppercase tracking-widest"
+                                >
+                                    <ChevronLeft className="w-3 h-3" /> Anterior
+                                </button>
+                                <span className="text-[10px] font-mono text-gray-300">{slide + 1} / {slides.length}</span>
+                                <button
+                                    onClick={() => slide < slides.length - 1 ? goTo(slide + 1) : setIsOpen(false)}
+                                    className="flex items-center gap-1 text-xs font-mono hover:opacity-70 transition-all uppercase tracking-widest font-medium"
+                                    style={{ color: style.accent }}
+                                >
+                                    {slide < slides.length - 1 ? 'Siguiente' : 'Cerrar'}
+                                    {slide < slides.length - 1 && <ChevronRight className="w-3 h-3" />}
+                                </button>
                             </div>
                         </motion.div>
                     </div>
@@ -180,7 +292,7 @@ const Cases = () => {
                     />
                 </div>
 
-                {/* Subtle Footer-style CTA */}
+                {/* CTA */}
                 <div className="pt-10 text-center max-w-5xl mx-auto">
                     <h3 className="text-xl font-serif font-bold text-qai-dark mb-4">
                         ¿Tu Organización Tiene Otro Desafío?
@@ -191,7 +303,7 @@ const Cases = () => {
                     <div className="flex flex-col items-center gap-6">
                         <a
                             href="mailto:hola@theqai.co"
-                            className="group flex items-center gap-3 px-8 py-4 bg-qai-dark text-white rounded-full font-medium text-sm hover:bg-black transition-all shadow-lg"
+                            className="btn-qai-primary group flex items-center gap-3 px-8 py-4 rounded-full font-medium text-sm"
                         >
                             Describir tu Caso
                             <ArrowRight className="w-4 h-4 ml-2" />

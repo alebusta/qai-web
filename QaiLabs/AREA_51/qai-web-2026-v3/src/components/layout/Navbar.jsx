@@ -17,10 +17,10 @@ const Navbar = () => {
     }, [])
 
     const navLinks = [
-        { name: 'Manifesto', href: '#manifesto' },
-        { name: 'Work', href: '#work' },
-        { name: 'Solutions', href: '#solutions' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Manifiesto', href: '#manifesto' },
+        { name: 'Casos', href: '#cases' },
+        { name: 'Cómo Trabajamos', href: '#how-we-work' },
+        { name: 'Contacto', href: '#contact' },
     ]
 
     return (
@@ -35,17 +35,17 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center">
                         <a href="#" className="flex items-center gap-2">
-                            <img src="/logo.png" alt="The QAI Company" className="h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300" />
+                            <img src="/logo.png" alt="The QAI Company" className="h-12 w-auto transition-all duration-300" />
                         </a>
                     </div>
 
                     {/* Desktop Menu */}
-                    <nav className="hidden md:flex space-x-8">
+                    <nav className="hidden md:flex items-center space-x-8">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                                className="text-[11px] font-mono font-medium text-gray-400 hover:text-black transition-colors uppercase tracking-widest"
                             >
                                 {link.name}
                             </a>

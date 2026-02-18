@@ -12,11 +12,11 @@ const AIPosture = () => {
                         Nuestra Postura sobre la IA
                     </h2>
                     <p className="text-xl md:text-2xl text-gray-800 italic max-w-2xl mx-auto font-medium mb-8">
-                        Ni apocalípticos ni integrados. Pragmáticos.
+                        Ni apocalípticos ni integrados, pragmáticos. Sin el criterio humano, la IA es solo ruido generativo.
                     </p>
                     <p className="text-lg text-gray-800 max-w-4xl mx-auto font-normal leading-relaxed">
                         Usamos Inteligencia Artificial intensivamente, pero no vendemos promesas mágicas. Conocemos sus capacidades y somos conscientes de sus limitaciones.
-                        Por eso, diseñamos procesos bajo el principio de <b>Human-in-the-Loop</b>: La IA genera, procesa y escala, pero el humano juzga, valida y dirige. Sin el criterio humano, la IA es solo ruido generativo.
+                        Por eso, diseñamos procesos bajo el principio de <b>Human-in-the-Loop</b>: La IA genera, procesa y escala, pero el humano juzga, valida y dirige.
                     </p>
                 </div>
 
@@ -26,7 +26,7 @@ const AIPosture = () => {
                         <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
                             La IA es excepcionalmente buena para:
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-2">
                             {[
                                 "Procesar volúmenes masivos de datos estructurados",
                                 "Detectar patrones en información repetitiva",
@@ -46,7 +46,7 @@ const AIPosture = () => {
                         <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
                             La IA es excepcionalmente mala para:
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-2">
                             {[
                                 "Entender contexto matizado sin supervisión",
                                 "Tomar decisiones estratégicas complejas",
@@ -69,9 +69,9 @@ const AIPosture = () => {
                     </p>
                 </div>*/}
 
-                <div className="text-center mt-8">
-                    <p className="text-gray-600 italic">
-                        No sustituimos criterio, amplificamos capacidades. Creemos en la transparencia técnica.<br />Si quieres saber exactamente qué hace y no hace la IA en nuestras soluciones, pregunta.
+                <div className="text-center mt-10">
+                    <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
+                        No sustituimos criterio, amplificamos capacidades. Creemos en la transparencia técnica.
                     </p>
                 </div>
             </div>

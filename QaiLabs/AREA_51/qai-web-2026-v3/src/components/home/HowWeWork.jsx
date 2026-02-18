@@ -10,7 +10,7 @@ const ProcessCard = ({ number, title, desc, delay, time }) => {
             transition={{ duration: 0.6, delay }}
             className="group relative bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 h-full flex flex-col items-center text-center"
         >
-            <div className="text-6xl font-mono font-bold text-gray-200 mb-6 group-hover:text-qai-dark transition-colors duration-300">
+            <div className="process-number text-6xl font-mono font-bold mb-6">
                 {number}
             </div>
 
@@ -21,7 +21,7 @@ const ProcessCard = ({ number, title, desc, delay, time }) => {
             </p>
 
             <div className="mt-6 pt-4 border-t border-gray-50 w-full">
-                <span className="text-xs font-mono uppercase tracking-widest text-gray-400">
+                <span className="text-xs font-mono uppercase tracking-widest text-gray-400 group-hover:text-qai-dark group-hover:font-bold transition-all duration-300">
                     Tiempo: {time}
                 </span>
             </div>
@@ -31,7 +31,7 @@ const ProcessCard = ({ number, title, desc, delay, time }) => {
 
 const HowWeWork = () => {
     return (
-        <section className="py-24 bg-white relative">
+        <section id="how-we-work" className="py-24 bg-white relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <span className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-4 block">Metodología</span>
@@ -70,9 +70,10 @@ const HowWeWork = () => {
                     />
                 </div>
 
-                <div className="text-lg font-serif text-qai-dark mb-6 text-center">
-                    <strong>Tú</strong> tienes el expertise, <strong>la IA</strong> tiene la velocidad. <strong>Tú</strong> defines el criterio, <strong>la IA</strong> ejecuta el proceso. <strong>Tú</strong> validas el resultado, <strong>la IA</strong> escala la operación.
-                    {/*<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <p className="text-[11px] font-mono text-gray-400 uppercase tracking-widest text-center leading-relaxed">
+                    Tú tienes el expertise, la IA tiene la velocidad. · Tú defines el criterio, la IA ejecuta el proceso. · Tú validas el resultado, la IA escala la operación.
+                </p>
+                {/*<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <ul className="space-y-4">
                             <li className="flex items-start">
                                 <span className="w-1.5 h-1.5 bg-qai-dark rounded-full mt-2 mr-3 flex-shrink-0" />
@@ -99,7 +100,6 @@ const HowWeWork = () => {
                             </p>
                         </div>
                     </div>*/}
-                </div>
             </div>
         </section>
     )

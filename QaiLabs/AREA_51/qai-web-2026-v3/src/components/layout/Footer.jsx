@@ -18,7 +18,7 @@ const Footer = () => {
 
                     <a
                         href="mailto:hola@theqai.co"
-                        className="inline-flex px-8 py-4 bg-qai-dark text-white rounded-lg font-medium text-lg hover:bg-black transition-all shadow-lg mb-8"
+                        className="btn-qai-primary inline-flex items-center px-8 py-4 rounded-full font-medium text-lg mb-8"
                     >
                         Agendar Diagnóstico
                     </a>
