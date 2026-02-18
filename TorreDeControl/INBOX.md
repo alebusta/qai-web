@@ -24,18 +24,18 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [ ] **Mover código de Gestión Zen** a `/QaiLabs/PROTOTIPOS/gestion-zen/` (estructura corporativa)
 - [ ] **Crear GitHub Organization** "The QAI Company" (migrar repos personales)
 
-### GestiÃ³n Zen - Joint Venture
-- [ ] **Transcribir segunda parte de la reuniÃ³n del 22 de diciembre** para identificar puntos pendientes
-- [ ] **Consultar con SWS** sobre registro de prorrateo de gastos de gas y agua caliente comÃºn en cobros individuales
-- [ ] **Configurar Prorrateo Estacional**: Reglas Invierno/Verano para MetrogÃ¡s
-- [ ] **Alertas de Consumo**: Implementar pre-auditorÃ­a de medidores (+10m3 warning)
+### Gestión Zen - Joint Venture
+- [ ] **Transcribir segunda parte de la reunión del 22 de diciembre** para identificar puntos pendientes
+- [ ] **Consultar con SWS** sobre registro de prorrateo de gastos de gas y agua caliente común en cobros individuales
+- [ ] **Configurar Prorrateo Estacional**: Reglas Invierno/Verano para Metrogás
+- [ ] **Alertas de Consumo**: Implementar pre-auditoría de medidores (+10m3 warning)
 - [ ] **uno de los demos para la web puede ser la captura de datos de imágenes de medidores** _(vía Telegram, 17-Feb-2026)_
-- [ ] **Firmar MOU fundacional** con socios (basado en acuerdos de reuniÃ³n)
-- [ ] Agendar prÃ³xima reuniÃ³n con socios (definir fecha)
+- [ ] **Firmar MOU fundacional** con socios (basado en acuerdos de reunión)
+- [ ] Agendar próxima reunión con socios (definir fecha)
 
 ### Legal & Compliance
-- [ ] **Seguimiento Patente Municipal Nueva Solicitud #3026** - Enviada el 12-Feb-2026. Esperar confirmaciÃ³n de recepciÃ³n y fecha de evaluaciÃ³n (plazo 10 dÃ­as hÃ¡biles)
-- [ ] **Junta Ordinaria 2025 (Expedita)** - Semana del 16-Feb. AprobaciÃ³n EEFF sin movimiento + ratificaciÃ³n administradores.
+- [ ] **Seguimiento Patente Municipal Nueva Solicitud #3026** - Enviada el 12-Feb-2026. Esperar confirmación de recepción y fecha de evaluación (plazo 10 días hábiles)
+- [ ] **Junta Ordinaria 2025 (Expedita)** - Semana del 16-Feb. Aprobación EEFF sin movimiento + ratificación administradores.
 
 ---
 
@@ -44,9 +44,9 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 ### FedEx - Operaciones Comerciales
 - [ ] **Seguimiento OC FedEx/Sempere**: Eduardo (FedEx) informa que Sempere debe emitir la OC a ellos primero. Se espera para esta semana. 🟡 (16-Feb)
 - [ ] **Enviar correo recordatorio a Eduardo (FedEx)**: Consultar si Sempere ya emitió la OC. 📅 **Jueves 19-Feb**.
-- [ ] **FacturaciÃ³n y Compliance - Documento 46 (DeclaraciÃ³n Enero)**:
-  - [ ] Emitir Factura de Compra (Doc. 46) para **GitHub** (Neto: 9.250) → **BLOQUEADO** (Pendiente OC FedEx para habilitar facturaciÃ³n en SII)
-  - [ ] Emitir Factura de Compra (Doc. 46) para **Cursor** (Neto: 18.200) → **BLOQUEADO** (Pendiente OC FedEx para habilitar facturaciÃ³n en SII)
+- [ ] **Facturación y Compliance - Documento 46 (Declaración Enero)**:
+  - [ ] Emitir Factura de Compra (Doc. 46) para **GitHub** (Neto: 9.250) → **BLOQUEADO** (Pendiente OC FedEx para habilitar facturación en SII)
+  - [ ] Emitir Factura de Compra (Doc. 46) para **Cursor** (Neto: 18.200) → **BLOQUEADO** (Pendiente OC FedEx para habilitar facturación en SII)
 
 ### Infraestructura & QaiCore
 - [ ] **Auditoría de Alineación de Agentes**: Verificar que Lex y Finn estén usando el motor de templates HTML correctamente en sus próximas tareas.
@@ -63,8 +63,8 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [ ] **Finalizar Apertura Cuenta BancoEstado** (No urgente - Costo $0)
   - [ ] Pendiente: Firma presencial de socia (Esposa)
   - [ ] Retirar tarjetas/claves tras firma
-- [ ] Implementar tracking automÃ¡tico de consumo de APIs (monitoreo Google Cloud)
-- [ ] Crear reporte mensual automatizado (dashboard de mÃ©tricas)
+- [ ] Implementar tracking automático de consumo de APIs (monitoreo Google Cloud)
+- [ ] Crear reporte mensual automatizado (dashboard de métricas)
 
 ---
 

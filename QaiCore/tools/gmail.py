@@ -4,6 +4,7 @@ Allows agents (like Finn) to send emails using the Gmail API.
 """
 
 import os
+import sys
 
 # Limpieza radical de proxies (bloquean Gmail API en terminales de IDE)
 import os
@@ -61,7 +62,6 @@ class GmailTool:
             import json
             self.service = build_from_document(json.loads(discovery_doc), credentials=self.creds)
         else:
-            import sys
             sys.stderr.write("[-] Descargando Gmail API Discovery (Warm-up)...\n")
             self.service = build('gmail', 'v1', credentials=self.creds, static_discovery=False)
 
@@ -118,20 +118,55 @@ class GmailTool:
             # Extraer Cuerpo (Body)
             body = ""
             html_body = ""
+
+            def _decode_part(part_data, part_headers):
+                """Decodifica bytes respetando el charset declarado en Content-Type."""
+                raw = base64.urlsafe_b64decode(part_data)
+                # Buscar charset en los headers de la parte
+                charset = 'utf-8'
+                for h in part_headers:
+                    if h.get('name', '').lower() == 'content-type':
+                        val = h.get('value', '')
+                        for token in val.split(';'):
+                            token = token.strip()
+                            if token.lower().startswith('charset='):
+                                charset = token.split('=', 1)[1].strip().strip('"\'')
+                                break
+                # Intentar con charset declarado, luego fallbacks
+                for enc in [charset, 'utf-8', 'latin-1']:
+                    try:
+                        return raw.decode(enc)
+                    except (UnicodeDecodeError, LookupError):
+                        continue
+                return raw.decode('utf-8', errors='replace')
+
             if 'parts' in payload:
                 for part in payload['parts']:
+                    part_headers = part.get('headers', [])
                     if part['mimeType'] == 'text/plain':
                         data = part.get('body', {}).get('data', '')
                         if data:
-                            body = base64.urlsafe_b64decode(data).decode('utf-8')
+                            body = _decode_part(data, part_headers)
                     elif part['mimeType'] == 'text/html':
                         data = part.get('body', {}).get('data', '')
                         if data:
-                            html_body = base64.urlsafe_b64decode(data).decode('utf-8')
+                            html_body = _decode_part(data, part_headers)
+                    elif part['mimeType'].startswith('multipart/'):
+                        # Recursión para multipart anidados (e.g. multipart/alternative)
+                        for subpart in part.get('parts', []):
+                            sub_headers = subpart.get('headers', [])
+                            if subpart['mimeType'] == 'text/plain':
+                                data = subpart.get('body', {}).get('data', '')
+                                if data and not body:
+                                    body = _decode_part(data, sub_headers)
+                            elif subpart['mimeType'] == 'text/html':
+                                data = subpart.get('body', {}).get('data', '')
+                                if data and not html_body:
+                                    html_body = _decode_part(data, sub_headers)
             else:
                 data = payload.get('body', {}).get('data', '')
                 if data:
-                    raw_body = base64.urlsafe_b64decode(data).decode('utf-8')
+                    raw_body = _decode_part(data, payload.get('headers', []))
                     if payload.get('mimeType') == 'text/html':
                         html_body = raw_body
                     else:
