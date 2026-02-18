@@ -1,0 +1,449 @@
+# Web - 3era iteración
+
+# Landing Page The QAI Company
+
+### Versión con Framing Anti-Hype
+
+*Febrero 2026*
+
+---
+
+**Documento para implementación directa**
+
+---
+
+## Índice
+
+Este documento contiene el contenido completo para cada sección del landing, *con notas de diseño, alternativas y el tono exacto anti-hype integrado.*
+
+1. Sección HERO
+2. Sección UN LABORATORIO, NO UNA CONSULTORA
+3. Sección NUESTRA POSTURA SOBRE LA IA
+4. Sección CÓMO TRABAJAMOS
+5. Sección FRICCIÓN RESUELTA (Casos de Uso)
+6. Sección LA BISAGRA (Filosofía)
+7. Sección CALL TO ACTION FINAL
+8. Notas de Diseño Visual
+
+---
+
+## SECCIÓN 1: HERO
+
+> **NOTA DE DISEÑO:** Esta es la primera impresión. Tipografía grande, espacio en blanco generoso. Fondo blanco o gris muy claro. Máxima claridad.
+> 
+
+### H1 (Titular Principal)
+
+> **Tipografía:** Serif, Bold. Color: Negro puro (#000000 o #1A1A1A). Tamaño: Grande (~48-64px).
+> 
+
+**Arquitectura de Soluciones Impulsadas por IA**
+
+### Subtitle (Bajada)
+
+> **Tipografía:** Sans-serif, Regular o Light. Color: Gris medio (#666666). Tamaño: Mediano (~18-24px). Espaciado generoso.
+> 
+
+Reducimos la fricción operativa en organizaciones que buscan eficiencia sin complejidad innecesaria. Convertimos datos caóticos en sistemas de inteligencia que amplifican capacidades y eliminan ineficiencias.
+
+**No vendemos tecnología mágica. Vendemos problemas resueltos con herramientas apropiadas.**
+
+### Calls to Action
+
+> **Diseño:** Dos botones. Primary: Fondo negro, texto blanco. Secondary: Fondo blanco, borde negro, texto negro. Hover con transición suave.
+> 
+- **CTA Primary:** "Ver Casos Reales" → Link a sección de Casos de Uso
+- **CTA Secondary:** "Nuestra Filosofía" → Link a sección de Filosofía/Postura
+
+---
+
+## SECCIÓN 2: UN LABORATORIO, NO UNA CONSULTORA
+
+> **NOTA DE DISEÑO:** Fondo puede ser gris muy claro o blanco. Esta sección establece identidad. Es el 'quiénes somos' sin necesidad de fotos o CVs.
+> 
+
+### H2 (Título de Sección)
+
+**Un Laboratorio de arquitectura de soluciones, No una Consultora**
+
+### Contenido
+
+QAI nace como respuesta pragmática a la era de la IA. No somos una startup buscando ser unicornio ni una consultora tradicional vendiendo horas-hombre.
+
+Somos un laboratorio boutique que combina:
+
+- **Expertise** en dominios complejos.
+- **Capacidad de ejecución acelerada** mediante el aprovechamiento de los potenciales de la IA.
+- **Humildad científica:** validamos con datos, no con promesas. Rigor científico aplicado al negocio.
+
+Operamos bajo una filosofía simple:
+
+*Calidad sobre cantidad. Ejecución sobre planificación. Valor tangible sobre complejidad innecesaria. Donde otros ven código, nosotros vemos el potencial de generar valor.*
+
+> **NOTA:** El siguiente texto va en tipografía más pequeña, italic, color gris. Puede ir al final de esta sección o como footer discreto.
+> 
+
+*Bootstrapped. Independiente. Desde Santiago de Chile para organizaciones locales, globales de cualquier tamaño y en cualquier lugar.*
+
+---
+
+## SECCIÓN 3: NUESTRA POSTURA SOBRE LA IA
+
+> **NOTA CRÍTICA:** Esta sección es tu diferenciador anti-hype. Puede ir después de 'Un Laboratorio' o más abajo antes de 'Cómo Trabajamos'. Establece credibilidad técnica y honestidad.
+> 
+
+### H2 (Título de Sección)
+
+**Nuestra Postura sobre la IA**
+
+### Subtitle
+
+*Ni apocalípticos ni integrados. Pragmáticos.*
+
+Usamos Inteligencia Artificial intensivamente, pero no vendemos promesas mágicas. Conocemos sus capacidades y somos conscientes de sus limitaciones.
+
+### La IA es excepcionalmente buena para:
+
+- Procesar volúmenes masivos de datos estructurados
+- Detectar patrones en información repetitiva
+- Automatizar tareas predecibles y bien definidas
+- Acelerar la ejecución de procesos especificados
+
+### La IA es excepcionalmente mala para:
+
+- Entender contexto matizado sin supervisión
+- Tomar decisiones estratégicas complejas
+- Validar su propia exactitud
+- Operar sin consecuencias cuando se equivoca
+
+Por eso, diseñamos procesos bajo el principio de **Human-in-the-Loop**: la IA ejecuta, el humano valida. No sustituimos criterio. Amplificamos capacidad.
+
+> **NOTA:** El siguiente texto puede ir en un box diferenciado o simplemente como cierre de la sección con tipografía italic.
+> 
+
+*Creemos en la transparencia técnica. Si quieres saber exactamente qué hace y no hace la IA en nuestras soluciones, pregunta.*
+
+---
+
+## SECCIÓN 4: CÓMO TRABAJAMOS
+
+> **NOTA DE DISEÑO:** Tres cards o columnas. Fondo blanco con borde sutil o gris muy claro. Iconos opcionales (reloj, microscopio, engranaje). Espaciado generoso entre cards.
+> 
+
+### H2 (Título de Sección)
+
+**Cómo Trabajamos**
+
+### Subtitle
+
+*Combinamos rigor de laboratorio con velocidad de ejecución*
+
+---
+
+### CARD 1: Diagnóstico Económico
+
+**Diagnóstico Económico**
+
+No empezamos con tecnología. Empezamos con tu problema.
+
+¿Cuál es la fricción? ¿Cuánto valor se pierde? ¿Dónde está el cuello de botella real?
+
+- **Resultado:** Una hipótesis clara y un ROI estimado antes de escribir código.
+- **Tiempo:** 1-2 semanas
+
+---
+
+### CARD 2: Prototipo Científico
+
+**Prototipo Científico**
+
+Construimos un experimento funcional con tus datos reales. No un mockup, no un demo. Un sistema que trabaja.
+
+- **Resultado:** Validación empírica de que la solución funciona con tu operación específica.
+- **Tiempo:** 3-6 semanas
+
+---
+
+### CARD 3: Producción & Evolución
+
+**Producción & Evolución**
+
+Desplegamos, monitoreamos y refinamos basados en uso real. Los sistemas no se 'terminan', se mejoran continuamente con feedback operativo.
+
+- **Resultado:** Una solución viva que se adapta a tu operación.
+- **Tiempo:** Continuo
+
+---
+
+> **NOTA ADICIONAL:** Agregar aqí un pequeño párrafo sobre exoesqueletos de IA (IA como amplificador).
+> 
+
+### La IA como amplificador, No como Reemplazo
+
+- Tú tienes el expertise, la IA tiene la velocidad
+- Tú defines el criterio, la IA ejecuta el proceso
+- Tú validas el resultado, la IA escala la operación
+
+La IA nos permite operar con la eficiencia de equipos grandes mientras mantenemos la agilidad de equipos pequeños.
+
+No es 'IA en vez de humanos'. Es 'IA + humanos = más capacidad con menos fricción'.
+
+*Resultado: Velocidad de ejecución sin sacrificar el juicio crítico que solo el expertise humano puede aportar. La tecnología es el medio. Tu problema resuelto es el fin.*
+
+---
+
+## SECCIÓN 5: FRICCIÓN RESUELTA (Casos de Uso)
+
+> **NOTA CRÍTICA:** Esta es tu sección de conversión. Casos reales con números reales. Cada caso sigue estructura: El Problema → La Fricción → Nuestra Solución → Resultado (con métricas) → Estado Actual → CTA.
+> 
+
+### H2 (Título de Sección)
+
+**Fricción Resuelta**
+
+### Subtitle
+
+*Ineficiencias operativas convertidas en ventaja competitiva*
+
+---
+
+## CASO 1: Matching Inteligente de Documentos
+
+> **DISEÑO:** Card con fondo blanco, borde sutil. Icono: 📊 o similar. Espaciado generoso.
+> 
+
+**Matching Inteligente de Documentos**
+
+IA para extracción de datos + Humano para validación de excepciones
+
+### El Problema
+
+Cliente procesa cientos de facturas por mes que debe asociar manualmente. Este proceso requiere un gran volumen de trabajo rutinario humano, potenciales errores en matching y retrasos en pagos a proveedores.
+
+### La Fricción Económica
+
+Cada factura mal conciliada puede generar disputa con proveedores, retraso en flujo de caja, pérdida de descuentos por pronto pago, y horas de staff administrativo apagando incendios.
+
+### Nuestra Solución
+
+Sistema de matching automático con IA que:
+
+- Extrae datos no estructurados de POs e invoices
+- Reconcilia automáticamente con alto porcentaje de precisión
+- **Escala casos ambiguos a revisión humana**
+- Aprende de correcciones humanas para mejorar continuamente
+
+### Resultado
+
+- **90% de reducción en trabajo mecánico** (120h → 8h/mes)
+- 100% de decisiones críticas validadas por humano
+- **Cero errores en producción** (supervisión humana en casos ambiguos)
+
+> **CTA:** Botón 'Solicitar Demo' que lleva a formulario o calendly
+> 
+
+*Esto no es 'IA mágica'. Es ingeniería de procesos con IA.*
+
+---
+
+## CASO 2: Gestión Inteligente de Comunidades
+
+> **DISEÑO:** Card similar al anterior. Icono: 🏢 o similar.
+> 
+
+**Gestión Inteligente de Comunidades**
+
+Sistema de gestión de condominios para reducir fricciones en la gestión de la información
+
+### El Problema
+
+Administradores gestionando edificios con: comunicación fragmentada (WhatsApp, email, llamadas), presupuestos en Excel compartidos por correo, sistemas de gestión complejos e incompletos que dificultan el seguimiento de los gastos de una comunidad. 
+
+### La Fricción Económica
+
+Desconfianza, morosidad, potenciales conflictos vecinales  y tiempo excesivo del administrador en tareas manuales repetitivas que dificultan su gestión. 
+
+### Nuestra Solución
+
+Plataforma que simplifica la gestión de una comunidad, el seguimiento y monitoreo de los gastos comunes, la comunicación y la rendición de cuentas para todas las partes involucradas a través de reportería automática basada en IA y de acceso en tiempo real.
+
+### Resultado
+
+- **70% menos tiempo administrativo** (tareas repetitivas automatizadas)
+- **100% transparencia** para residentes
+- **Reducción del 30% en morosidad** (mayor confianza = mejor pago)
+
+**Estado:** Beta con 3 comunidades. Validando modelo de escalamiento.
+
+> **CTA:** Botón 'Conocer la Plataforma' → Link a demo o landing específica del producto
+> 
+
+---
+
+## CASO 3: ¿Otro Desafío?
+
+> **DISEÑO:** Card más simple, puede ser con fondo diferente (gris claro) o con borde punteado. Icono: 💡
+> 
+
+**¿Tu Organización Tiene Otro Desafío?**
+
+Si tu empresa tiene procesos manuales repetitivos, datos que nadie puede usar para decidir, o fricción operativa que destruye valor... podemos evaluarlo.
+
+No todas las ineficiencias son automatizables. Pero cuando lo son, el retorno es significativo.
+
+> **CTA:** Botón 'Describir tu Caso' → Formulario o email directo
+> 
+
+---
+
+## SECCIÓN 6: LA BISAGRA (Filosofía)
+
+> **NOTA DE DISEÑO:** Fondo negro o gris muy oscuro. Texto en blanco/gris claro. Espaciado generoso. Esta sección debe sentirse diferente, más contemplativa. Es donde estableces tu 'por qué'.
+> 
+
+### H2 (Título de Sección - Texto Blanco)
+
+**No Somos una Startup Buscando ser el Próximo Unicornio.**
+
+*Somos una Bisagra.*
+
+### Contenido Principal
+
+Vemos dos problemas críticos en el mercado actual:
+
+### 1. Vende Humo Tecnológico
+
+Empresas que prometen 'IA revolucionaria' sin entender las limitaciones reales de la tecnología. Generan expectativas imposibles y desperdician recursos de clientes que necesitan soluciones, no fantasías.
+
+### 2. Desconexión entre Problema y Solución
+
+Por un lado, expertos de dominio (gerentes, administradores, operadores, abogados, médicos, emprendores) que conocen los problemas reales de su ámbtio pero desconfían —con razón— del hype tecnológico, o desconocen como aprovechar sus potenciales en su ámbito de acción.
+
+Por otro, tecnólogos brillantes creando soluciones para problemas que no existen o que nadie puede pagar.
+
+**QAI es el conector entre estos mundos.**
+
+Unimos esa expertise profunda en su ámbito de dominio con la tecnología que les permite ampliar sus capacidades, de manera responsable y honesta respecto a lo que funciona y lo que no.
+
+---
+
+> **DISEÑO:** Las siguientes tres columnas/boxes pueden ir en cards o como texto simple con iconos. Fondo puede ser ligeramente diferente (gris oscuro vs negro).
+> 
+
+### Columna 1: Human-in-the-Loop
+
+**Human-in-the-Loop**
+
+La IA genera, procesa y escala, pero el humano juzga, valida y dirige. sin el criterio humano, la IA es solo ruido generativo.
+
+### Columna 2: Transparencia Técnica
+
+**Transparencia Técnica**
+
+Te decimos qué hace la tecnología, sus limitaciones, y por qué elegimos cada herramienta. No ocultamos complejidad para parecer mágicos.
+
+### Columna 3: Resultados > Hype
+
+**Resultados > Hype**
+
+No vendemos 'transformación digital' ni 'disrupción'. Vendemos fricción reducida y valor económico medible.
+
+---
+
+### Lo que NO hacemos:
+
+✗ No prometemos "revolucionar tu industria"
+✗ No vendemos "IA que lo hace todo sola"
+✗ No ocultamos las limitaciones de la tecnología
+✗ No inflamos presupuestos con complejidad innecesaria
+✗ No vendemos antes de entender tu problema real
+
+### Lo que SÍ hacemos:
+
+Resolver problemas concretos con tecnología apropiada,
+supervisión humana y transparencia sobre qué funciona y qué no.
+
+*La tecnología es el medio. Tu problema resuelto es el fin. Si buscas un pitch de “nuestra IA mágica va a cambiar el mundo”, no somos tu laboratorio. Si buscas soluciones que funcionen hoy, con honestidad técnica y resultados medibles, hablemos.*
+
+---
+
+## SECCIÓN 7: CALL TO ACTION FINAL
+
+> **NOTA DE DISEÑO:** Puede ir en fondo oscuro (negro/gris) o en fondo claro según preferencia. Centrado. Espaciado generoso. CTA destacado.
+> 
+
+### H2 (Título)
+
+**¿Tu Organización Tiene Fricción Operativa?**
+
+### Contenido
+
+Ineficiencias que destruyen valor. Procesos manuales que consumen tiempo crítico. Datos que nadie puede usar para decidir.
+
+Agenda 30 minutos. Analizamos tu caso y te decimos —con honestidad— si podemos reducir esa fricción.
+
+**Sin costo. Sin compromiso. Solo rigor científico.**
+
+> **CTA:** Botón grande 'Agendar Diagnóstico' → Link a Calendly o formulario
+> 
+
+*O escribe a hola@qai.cl con una descripción de tu desafío.*
+
+---
+
+## Notas de Diseño Visual
+
+> **IMPORTANTE:** Estas son pautas generales para mantener la estética minimalista y profesional que ya tienes.
+> 
+
+### Paleta de Colores
+
+- **Negro/Gris Oscuro:** #1A1A1A o #2C2C2C (textos principales, fondos oscuros)
+- **Gris Medio:** #666666 (subtítulos, texto secundario)
+- **Gris Claro:** #999999 o #CCCCCC (textos terciarios)
+- **Azul Accent:** #2E75B6 (links, detalles, notas importantes)
+- **Blanco:** #FFFFFF (fondos claros, texto sobre fondos oscuros)
+
+### Tipografía
+
+- **Títulos H1/H2:** Serif (ej: Playfair Display, Merriweather) - Bold - Grande (48-64px H1, 36-48px H2)
+- **Subtítulos y Cuerpo:** Sans-serif (ej: Inter, Arial, Helvetica) - Regular o Light - Mediano (18-24px)
+- **Espaciado:** Generoso (line-height 1.6-1.8 para texto de cuerpo)
+
+### Espaciado y Layout
+
+- **Márgenes:** Generosos. No tengas miedo al espacio en blanco.
+- **Secciones:** Claramente diferenciadas (usar fondo alternado: blanco → gris claro → blanco)
+- **Cards:** Borde sutil (1px, #E0E0E0) o sombra muy ligera. Padding interno generoso.
+- **Ancho máximo de contenido:** ~1200px centrado para legibilidad
+
+### Botones (CTAs)
+
+- **Primary:** Fondo negro (#1A1A1A), texto blanco, padding generoso, border-radius sutil (4-8px)
+- **Secondary:** Fondo blanco, borde negro (2px), texto negro
+- **Hover:** Transición suave (0.3s), Primary invierte colores o se oscurece ligeramente
+
+### Iconos (Opcional)
+
+Si usas iconos, que sean minimalistas (line icons, no rellenos). Color: Negro o el azul accent.
+
+### Sección con Fondo Oscuro (La Bisagra)
+
+- **Fondo:** Negro (#000000) o Gris muy oscuro (#1A1A1A)
+- **Texto:** Blanco (#FFFFFF) o Gris claro (#E0E0E0)
+- **Padding vertical:** Más generoso que otras secciones para dar sensación de 'respiro'
+
+### Responsive
+
+Asegúrate de que todo se vea bien en mobile. Los títulos deben reducirse proporcionalmente. Los tres cards de 'Cómo Trabajamos' deben stackearse verticalmente en mobile.
+
+---
+
+
+---
+
+**Este landing vende sin vender humo.**
+
+**Es honesto, técnico y humano.**
+
+**Gary Marcus aprobaría.**
