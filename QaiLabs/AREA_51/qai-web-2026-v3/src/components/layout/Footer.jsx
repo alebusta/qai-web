@@ -17,7 +17,7 @@ const Footer = () => {
                     </p>
 
                     <a
-                        href="mailto:hola@theqai.co"
+                        href="mailto:hola@qai.cl"
                         className="btn-qai-primary inline-flex items-center px-8 py-4 rounded-full font-medium text-lg mb-8"
                     >
                         Agendar Diagnóstico
@@ -28,7 +28,7 @@ const Footer = () => {
                     </p>
 
                     <p className="text-sm text-gray-400 italic">
-                        O escribe a hola@theqai.co con una descripción de tu desafío.
+                        O escribe a hola@qai.cl con una descripción de tu desafío.
                     </p>
                 </div>
             </div>

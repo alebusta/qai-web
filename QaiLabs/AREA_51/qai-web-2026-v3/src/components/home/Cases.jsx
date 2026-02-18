@@ -227,7 +227,7 @@ const Cases = () => {
                 <div className="text-center mb-12">
                     <span className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-4 block font-bold">Casos de Uso</span>
                     <h2 className="text-3xl md:text-5xl font-serif font-bold text-qai-dark mb-4 leading-tight">
-                        Fricción Resuelta
+                        Problemas Resueltos
                     </h2>
                     <p className="text-lg text-gray-600 font-light italic">
                         Ineficiencias operativas convertidas en ventaja competitiva. No son soluciones mágicas, <br />es inteligencia artificial aplicada a casos del mundo real.
@@ -302,7 +302,7 @@ const Cases = () => {
                     </p>
                     <div className="flex flex-col items-center gap-6">
                         <a
-                            href="mailto:hola@theqai.co"
+                            href="mailto:hola@qai.cl"
                             className="btn-qai-primary group flex items-center gap-3 px-8 py-4 rounded-full font-medium text-sm"
                         >
                             Describir tu Caso

@@ -20,7 +20,7 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-sans font-light leading-relaxed">
+                    <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-sans font-light leading-relaxed">
                         Reducimos la fricción operativa en organizaciones que buscan eficiencia sin complejidad innecesaria. Convertimos datos caóticos en sistemas de inteligencia que amplifican capacidades y eliminan ineficiencias.
                     </p>
 
