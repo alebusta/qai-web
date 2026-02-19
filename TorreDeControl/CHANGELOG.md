@@ -8,6 +8,25 @@
 
 ### Febrero
 
+#### [19-Feb-2026] - Indexación de Comprobantes y Flujos de Recuperación (Finn)
+**Tipo**: Operativo / Finanzas / Memoria Institucional
+
+**Contexto**: Se requería un diseño que facilitara la recuperación de información ("¿dónde está la factura de X del mes Y?") y que los flujos de nueva factura en landing zone y de detalle de gastos con link al comprobante quedaran explícitos y operativos.
+
+**Decisión/Acción**:
+- [FINANZAS] **INDICE_COMPROBANTES.md**: Índice único por período y proveedor con link a Drive; búsqueda por Ctrl+F. Tabla poblada con ene/feb 2026.
+- [FINANZAS] **DISENO_RESPALDO_E_INDEXACION.md**: Estructura 01…05 por mes, reglas de ubicación, flujo al agregar comprobante, IDs de carpetas Drive, mantenimiento.
+- [PROTOCOLO] **Landing Zone obligatoria**: Borradores y archivos operativos de Finn deben crearse solo en `/TorreDeControl/temp_files/` (profile, system_prompt, f29_template).
+- [FINANZAS] **Flujos documentados**: "Nueva factura en landing zone" (leer → subir Drive → registrar sheet → índice → limpiar) y "Gastos mes X + ver comprobante" (listar desde sheet, link desde columna Comprobante o índice).
+- [FINANZAS] **Cursor enero**: PDF movido a 04-Operaciones_Extranjeras_Doc46 vía `gdrive.py --move`; link en Registro_Diario (columna Comprobante); índice actualizado.
+- [QAICORE] **gdrive.py**: Añadidos `move_file()` y CLI `--move` / `--to-folder` para mover archivos entre carpetas en Drive.
+- [TRIBUTARIO] **Doc. 46 retroactivo**: Documentado en playbook emitir_doc46_extranjero que se pueden emitir Facturas de Compra por meses ya pagados; el crédito va al F29 del mes de emisión.
+- [MEMORIA] **CONTROL_DIGITAL**: Sección "Recuperación de información" (comprobantes → índice; movimientos → Registro_Diario). Playbook registrar_gasto_ingreso: paso explícito para link + fila en índice.
+
+**Impacto**: Recuperación de comprobantes en segundos (humano o agente). Flujos 1 y 2 operativos y documentados. PCA (ADR-010) cumplido al cierre de sesión.
+
+---
+
 #### [17-Feb-2026] - Optimización Masiva de Rendimiento QaiCore y Mantenimiento HQ
 **Tipo**: Infraestructura / Operativo
 

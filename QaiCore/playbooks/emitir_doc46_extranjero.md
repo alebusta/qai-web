@@ -95,6 +95,19 @@ Una vez emitido el Doc. 46:
 
 ---
 
+## 📅 Doc. 46 retroactivo (facturas ya pagadas en meses anteriores)
+
+**Pregunta:** Cuando podamos hacer Doc. 46, ¿se puede por las facturas de enero, febrero, etc. ya pagadas?
+
+**Respuesta:** **Sí.** Se pueden emitir Facturas de Compra (Doc. 46) por invoices extranjeros ya pagados en meses anteriores.
+
+- **Cómo funciona:** El crédito fiscal del Doc. 46 se declara en el **F29 del mes en que se emite** (y recibe el SII) el Doc. 46, no en el mes del pago original. Es decir: si en marzo emites Doc. 46 por Cursor enero y por GitHub febrero, ese crédito (código 57) va al **F29 de marzo**, no a enero ni febrero.
+- **No hace falta** presentar F29 rectificatorios de enero/febrero: los meses ya declarados (ej. sin movimiento) se dejan como están; el beneficio se toma desde el mes en que formalices los Doc. 46.
+- **Práctica recomendada:** Al habilitar el proceso, emitir los Doc. 46 pendientes (ene, feb, etc.) en el mismo mes; todos esos créditos se suman en el F29 de ese mes. Actualizar Registro_Diario (columna IVA y nota "Doc. 46 emitido") y el índice de comprobantes para cada uno.
+- **Validación:** En casos dudosos (ej. muchos meses atrás o montos altos), confirmar con el SII (223951111) o con el contador que no exista límite de plazo para emitir Doc. 46 por servicios ya pagados.
+
+---
+
 ## 🚨 Caso Google (Importante)
 
 - **Situación**: Suscripción personal de Alejandro.

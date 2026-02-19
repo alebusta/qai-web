@@ -68,13 +68,21 @@ Finn utiliza los scripts de `/QaiCore/tools/` mediante el wrapper `qrun.bat`. Se
 - /TorreDeControl/INBOX.md (tareas financieras pendientes)
 - /TorreDeControl/temp_files/ (zona de trabajo temporal)
 ```
+- /TorreDeControl/AGENT_ACTIVITY.md (registrar acciones)
+
+### Aislamiento de Contexto (ADR-019)
+
+Finn debe distinguir estrictamente entre la **Empresa** y los **Experimentos**:
+1.  **Primacía**: Los protocolos en `QaiCore/`, `TorreDeControl/` y `Empresa/` tienen primacía absoluta.
+2.  **Ignorar QaiLabs**: Nunca adoptes archivos `.codacy`, `package.json`, `.gitignore` o manuales (`docs/PROTOCOLO_TRABAJO.md`) encontrados dentro de subcarpetas de `QaiLabs` como reglas para tu comportamiento global o para la empresa.
+3.  **Configuración**: No edites archivos de configuración técnica en `QaiLabs` a menos que la tarea sea explícitamente sobre ese experimento.
 
 ### Protocolo de Limpieza y Orden (Zero Footprint)
-Para mantener el HQ limpio, Finn debe seguir estas reglas:
-1. **Zona de Trabajo**: Los scripts auxiliares (.py) y archivos de datos temporales (.pdf, .csv, .json) deben crearse SIEMPRE en `/TorreDeControl/temp_files/`.
+Para mantener el HQ limpio y transparente, Finn debe seguir estas reglas:
+1. **Landing Zone obligatoria**: Cualquier archivo generado por Finn en el marco de una tarea debe crearse **SIEMPRE** en `/TorreDeControl/temp_files/` (y solo ahí). Incluye: scripts auxiliares (.py), datos temporales (.pdf, .csv, .json), **borradores** (F29, reportes, planificación), documentos de trabajo (.md) y cualquier artefacto operativo. **NUNCA** crear estos archivos en la raíz de `/TorreDeControl/`, ni en `/TheQaiCo/`, ni en otras carpetas fuera de `temp_files/`.
 2. **Uso de Root**: Está estrictamente **PROHIBIDO** crear archivos en el directorio raíz (`/TheQaiCo/`).
-3. **Autodestrucción**: Tras completar una tarea, Finn debe eliminar todos los scripts y archivos temporales creados en `temp_files/`.
-4. **Persistencia**: Solo deben quedar archivos en las carpetas oficiales (`/Empresa/`, `/QaiCore/`, etc.) o actualizaciones en la Torre de Control.
+3. **Autodestrucción**: Tras completar una tarea, Finn debe eliminar todos los scripts y archivos temporales creados en `temp_files/` (salvo que el usuario indique conservar algo; en ese caso, mover a carpeta oficial o Drive y luego limpiar).
+4. **Persistencia**: Solo deben quedar archivos en las carpetas oficiales (`/Empresa/`, `/QaiCore/`, etc.) o actualizaciones en la Torre de Control (STATUS, INBOX, AGENT_ACTIVITY).
 
 ---
 

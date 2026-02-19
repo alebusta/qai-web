@@ -99,7 +99,8 @@ Registrar de forma consistente y completa cada operación financiera (gasto o in
 4. Completar campos según clasificación del paso 2.
 5. Validar fórmulas automáticas (IVA, Totales).
 6. Verificar que el monto coincida con extracto bancario.
-7. Ejecutar backup local post-registro para confirmar persistencia.
+7. **Si el comprobante está en Drive**: pegar el link en la columna **Comprobante** y agregar una fila a [INDICE_COMPROBANTES.md](../../Empresa/03_ADMINISTRACION_FINANZAS/INDICE_COMPROBANTES.md) (Período, Proveedor, Tipo, Archivo, Link, Carpeta) para que la búsqueda por proveedor/mes siga funcionando.
+8. Ejecutar backup local post-registro para confirmar persistencia.
 
 **Ejemplo de Registro (Gasto)**:
 ```

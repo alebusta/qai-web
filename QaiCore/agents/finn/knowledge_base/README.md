@@ -49,6 +49,9 @@
 **Referencias**:
 - Todos los playbooks referencian el [Plan de Cuentas](contabilidad/plan_cuentas.md) para clasificación consistente
 
+**Búsqueda de comprobantes (Drive)**:
+- Para preguntas tipo *"¿dónde está la factura de [proveedor] de [mes]?"*: consultar primero el **Índice de comprobantes** en el HQ: `Empresa/03_ADMINISTRACION_FINANZAS/INDICE_COMPROBANTES.md` (búsqueda por proveedor o período). Si no hay fila, listar la carpeta Drive del mes (p. ej. `04-Operaciones_Extranjeras_Doc46`) y proponer agregar la fila al índice. Diseño completo: `Empresa/03_ADMINISTRACION_FINANZAS/DISENO_RESPALDO_E_INDEXACION.md`.
+
 ---
 
 ## 6. Templates

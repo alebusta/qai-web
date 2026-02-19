@@ -1,7 +1,7 @@
 # Registro de Actividad de Agentes
 
 > **Propósito**: Log de acciones importantes realizadas por agentes QAI  
-> **Última actualización**: 16-Feb-2026
+> **Última actualización**: 19-Feb-2026
 
 ---
 
@@ -43,7 +43,9 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
-| 17-Feb 18:55 | Nzero | **Mantenimiento HQ & Limpieza INBOX.md** | TorreDeControl/INBOX.md | ✅ Estructura reorganizada, corregida codificación UTF-8 (Mojibake fix) y sincronizado con últimas tareas. |
+| 19-Feb (sesión) | Finn | **Protocolo de cierre (PCA) + Indexación comprobantes** | INDICE_COMPROBANTES.md, DISENO_RESPALDO_E_INDEXACION.md, CONTROL_DIGITAL.md, Manual Tributario, Finn profile/system_prompt/README/changelog, playbooks emitir_doc46 + registrar_gasto_ingreso, gdrive.py, Registro_Diario (L6), TorreDeControl/INBOX, STATUS, CHANGELOG, AGENT_ACTIVITY | ✅ Indexación y diseño respaldo; flujos landing zone y recuperación; Doc. 46 retroactivo; Cursor enero movido a 04 y link en sheet; gdrive --move. PCA ejecutado (ADR-010). |
+| 19-Feb 10:15 | Nzero | **Mantenimiento Token GDrive** | .qai/gdrive/token.pickle | ✅ Token renovado exitosamente por el usuario. Sistema 100% operativo. |
+| 17-Feb 18:55 | Nzero | **Mantenimiento HQ & Limpieza INBOX.md** | TorreDeControl/INBOX.md | ✅ Estructura reorganizada, corregida codificación UTF-8 (Mojibake fix) and sincronizado con últimas tareas. |
 | 17-Feb 18:45 | Nzero | **Optimización Masiva de Rendimiento QaiCore** | QaiCore/tools/ (varios), .qai/google_discovery/ | ✅ Implementada caché local de Discovery APIs de Google (30s → <1s). Habilitado `--data-file` en GSheets para robustez en PowerShell. Refactorizados Lazy Imports en `tools/__init__.py`. |
 | 17-Feb 18:05 | Finn | **Procesamiento Contable Landing Zone** | Invoice-23T8JEF0-0003.pdf, cartola.xlsx → Drive, GSheets | ✅ Factura Cursor y Cartola procesadas. Asientos registrados en Runway Master. Backup generado y Landing Zone despejada. Email enviado a albus@hotmail.com. |
 

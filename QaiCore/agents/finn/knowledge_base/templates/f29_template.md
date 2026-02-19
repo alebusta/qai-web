@@ -241,7 +241,7 @@ TOTAL A PAGAR
 
 ### 2. Borrador (Día 15)
 ```markdown
-- Crear borrador de F29
+- Crear borrador de F29 en /TorreDeControl/temp_files/ (Landing Zone obligatoria; nunca en raíz de TorreDeControl).
 - Revisar cálculos
 - Verificar que no falten facturas
 - Calcular monto a pagar

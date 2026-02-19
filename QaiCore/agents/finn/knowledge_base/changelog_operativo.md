@@ -4,6 +4,36 @@
 
 ---
 
+## 19-Feb-2026 - Índice de comprobantes y diseño de respaldo Drive
+
+### ✅ Nuevos documentos (HQ)
+
+- **`Empresa/03_ADMINISTRACION_FINANZAS/INDICE_COMPROBANTES.md`**: Índice único de comprobantes en Drive. Tabla por período y proveedor con link directo; búsqueda por Ctrl+F (proveedor o período). Facilita respuestas a "¿dónde está la factura de Cursor de enero?".
+- **`Empresa/03_ADMINISTRACION_FINANZAS/DISENO_RESPALDO_E_INDEXACION.md`**: Diseño de respaldo e indexación: estructura de carpetas 01…05 por mes, reglas de ubicación, flujo al agregar comprobante, referencia de IDs de carpetas Drive, mantenimiento. Acción completada: Cursor enero (Invoice-23T8JEF0-0002.pdf) movido a 04-Operaciones_Extranjeras_Doc46 vía `gdrive.py --move`; índice y diseño actualizados.
+
+### ✅ Documentos actualizados
+
+- **Manual Tributario (sección 6)**: Enlace a INDICE_COMPROBANTES y DISENO_RESPALDO_E_INDEXACION.
+- **CONTROL_DIGITAL**: Enlace al índice y al diseño en sección Drive.
+- **Finn knowledge_base README**: Sección "Búsqueda de comprobantes (Drive)" con ruta al índice y al diseño.
+- **Finn system_prompt**: Protocolo "AL BUSCAR COMPROBANTES / FACTURAS EN DRIVE" (consultar índice primero, luego Drive si no hay fila).
+
+### Regla operativa para Finn
+
+Ante preguntas tipo "muéstrame la factura de [X] de [mes]" o "¿dónde está el comprobante de [proveedor]?", consultar primero INDICE_COMPROBANTES.md; si existe fila, devolver el link; si no, listar carpeta Drive correspondiente y proponer agregar fila al índice.
+
+---
+
+## 19-Feb-2026 - Protocolo Landing Zone para borradores y archivos operativos
+
+### ✅ Ajuste de protocolo (HQ limpio)
+
+- **Regla reforzada**: Cualquier archivo que Finn genere en una tarea (borradores F29, planificación, reportes, scripts, datos temporales, .md de trabajo) debe crearse **obligatoriamente** en `/TorreDeControl/temp_files/` (Landing Zone). **Nunca** en la raíz de TorreDeControl ni fuera de temp_files.
+- **Motivo**: Mantener el HQ limpio y transparente para todos; una sola zona de trabajo temporal evita archivos dispersos.
+- **Documentos actualizados**: `profile.md` (Protocolo Zero Footprint), `system_prompt.md` (Landing Zone), `templates/f29_template.md` (paso Borrador). Borrador F29 enero 2026 reubicado de `TorreDeControl/` a `TorreDeControl/temp_files/`.
+
+---
+
 ## 30-Dic-2025 - Sistema Completo: Gastos Deducibles y Boletas Honorarios
 
 ### ✅ Nuevos Documentos

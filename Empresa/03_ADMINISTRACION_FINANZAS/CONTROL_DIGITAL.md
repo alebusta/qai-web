@@ -21,10 +21,18 @@
 La documentación financiera se organiza por **Dominio y Tiempo** en la carpeta corporativa.
 
 ### Carpeta Madre: `03_ADMINISTRACION_FINANZAS`
-- `contabilidad/`: Facturas, Boletas, Cartolas bancarias.
+- `contabilidad/`: Facturas, Boletas, Cartolas bancarias (estructura mensual 01…05 en Drive).
 - `tributario/`: Declaraciones F29 (mensual) y F22 (anual).
 - `legal/`: Escrituras, RUT, Contratos de servicios (Docs Legales).
 - `reportes/`: Informes de gestión mensuales.
+
+**Índice de comprobantes (Drive)**: [INDICE_COMPROBANTES.md](INDICE_COMPROBANTES.md) — búsqueda por proveedor o período. Diseño: [DISENO_RESPALDO_E_INDEXACION.md](DISENO_RESPALDO_E_INDEXACION.md).
+
+### Recuperación de información (dónde buscar qué)
+| Necesito… | Dónde |
+|------------|--------|
+| Un comprobante / factura por **proveedor o mes** | [INDICE_COMPROBANTES.md](INDICE_COMPROBANTES.md) → Ctrl+F por proveedor o 2026-01, 2026-02… |
+| Movimientos por **fecha / monto / concepto** | [QAI_Finanzas_2026](https://docs.google.com/spreadsheets/d/1O7hENHvyLKcAOM9ynfvhibTX3pMynP2kFPMmGPxKNLw/edit) → pestaña `Registro_Diario`; columna **Comprobante** tiene el link al PDF cuando existe |
 
 ---
 

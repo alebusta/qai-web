@@ -143,5 +143,8 @@ Para facilitar auditorías (F22/F29), los respaldos de cada mes se organizan exc
 4.  **`04-Operaciones_Extranjeras_Doc46`**: Receipts originales (Amazon/Google/Cursor) + sus Doc 46. Mantener vinculados.
 5.  **`05-Bancos_Cartolas_y_Pagos`**: Cartolas bancarias oficiales y comprobantes TEF.
 
+**Búsqueda rápida de comprobantes**: [INDICE_COMPROBANTES.md](INDICE_COMPROBANTES.md) (por proveedor o período).  
+**Diseño completo (reglas, flujos, IDs)**: [DISENO_RESPALDO_E_INDEXACION.md](DISENO_RESPALDO_E_INDEXACION.md).
+
 ---
 *Para la visión estratégica y valuación, ver [ESTRATEGIA_MAESTRA_FINANCIERA.md](file:///c:/Users/abustamante/TheQaiCo/Empresa/03_ADMINISTRACION_FINANZAS/ESTRATEGIA_MAESTRA_FINANCIERA.md)*

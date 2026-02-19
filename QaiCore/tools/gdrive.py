@@ -121,6 +121,22 @@ class GDriveTool:
         
         return results.get('files', [])
     
+    def move_file(self, file_id, target_folder_id):
+        """
+        Mueve un archivo a otra carpeta (actualiza parents en Drive).
+        """
+        file = self.service.files().get(fileId=file_id, fields='parents').execute()
+        parents = file.get('parents', [])
+        if not parents:
+            raise ValueError(f"Archivo {file_id} no tiene carpeta padre")
+        self.service.files().update(
+            fileId=file_id,
+            addParents=target_folder_id,
+            removeParents=','.join(parents)
+        ).execute()
+        sys.stderr.write(f"[+] Archivo {file_id} movido a carpeta {target_folder_id}\n")
+        return {'id': file_id, 'parents': [target_folder_id]}
+
     def create_folder(self, name, parent_folder_id=None):
         """
         Crea carpeta en Drive.
@@ -225,6 +241,8 @@ if __name__ == "__main__":
     parser.add_argument('--create-folder', type=str, help='Nombre de la carpeta a crear')
     parser.add_argument('--parent', type=str, help='ID de la carpeta padre para el nuevo folder')
     parser.add_argument('--show-folders', action='store_true', help='Muestra el mapeo de nombres de carpeta a IDs')
+    parser.add_argument('--move', type=str, help='ID del archivo a mover')
+    parser.add_argument('--to-folder', type=str, help='ID de la carpeta destino (usar con --move)')
 
     args = parser.parse_args()
     
@@ -245,5 +263,8 @@ if __name__ == "__main__":
         print(json.dumps(res, indent=2))
     elif args.show_folders:
         print(json.dumps(gdrive_cli.folders, indent=2))
+    elif args.move and args.to_folder:
+        res = gdrive_cli.move_file(args.move, args.to_folder)
+        print(json.dumps(res, indent=2))
     else:
         parser.print_help()

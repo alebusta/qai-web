@@ -79,6 +79,7 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 
 ## ✅ COMPLETADO (Historial Reciente)
 
+- [x] **Protocolo de cierre + Indexación comprobantes (Finn)**: INDICE_COMPROBANTES.md y DISENO_RESPALDO_E_INDEXACION.md creados; Landing Zone obligatoria para borradores; flujos "nueva factura en landing zone" y "gastos mes X + link comprobante" documentados en Finn; link Cursor enero en Registro_Diario; Doc. 46 retroactivo en playbook; gdrive.py --move; recuperación de información en CONTROL_DIGITAL. PCA ejecutado. (19-Feb-2026)
 - [x] **Optimización de Ejecución (Nzero)**: Implementado `--data-file` en `gsheets.py`, caché de discovery para Google APIs (30s → 1s) y desacople de `render_email.py`. (17-Feb-2026)
 - [x] **Procesar Orden Namecheap (theqai.co)**: Dominio registrado en GSheets y Drive. (16-Feb-2026)
 - [x] **Refinamiento Web V3 (The Hinge)**: Estética anti-hype certificada. (15-Feb-2026)
@@ -95,6 +96,7 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 
 **REGLA DE ORO**: Si actualizas `STATUS.md`, DEBES marcar la tarea aquí en `INBOX.md`. La "Memoria Institucional" solo es válida si es consistente.
 
+- `19-Feb-2026`: **Cierre sesión Finn (PCA)**. Indexación comprobantes (INDICE + DISEÑO), flujos landing zone y recuperación, Doc. 46 retroactivo, Cursor enero movido a 04 y link en sheet. Sincronización STATUS/INBOX/CHANGELOG/AGENT_ACTIVITY.
 - `17-Feb-2026`: **Optimización Masiva QaiCore**. Se eliminó la latencia de 30s en APIs de Google mediante caché local de discovery. Se habilitó `--data-file` en GSheets para evitar errores con paréntesis en PowerShell. Se refactorizó `tools/__init__.py` con lazy imports para evitar deadlocks de dependencias pesadas. (Nzero)
 - `16-Feb-2026`: **Namecheap & Zero-Loss**. Corregido monto de Namecheap para match exacto con banco ($5.274 CLP). SSOT financiero actualizado. (Finn)
 - `13-Feb-2026`: **Misión Latinarq Finalizada**. Entrega de leads enriquecidos a Iliana. Proceso de cierre Zero-Footprint ejecutado. (Nzero)
