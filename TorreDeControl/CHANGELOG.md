@@ -24,6 +24,23 @@
 
 ---
 
+#### [19-Feb-2026] - Certificados F29 en Tributario y Procedimiento (Finn)
+**Tipo**: Operativo / Finanzas / Protocolo
+
+**Contexto**: Los certificados de declaración de IVA (F29) se habían archivado en Documentos Legales/Certificados; corresponden a **documentos tributarios**. Diciembre 2025 ya estaba correctamente en Tributario; había que unificar criterio, nombre de archivo y ruta.
+
+**Decisión/Acción**:
+- [TRIBUTARIO] **Ubicación**: Certificados F29 solo en Drive → **Tributario / AAAA / MM-mes** (nunca en Documentos Legales/Certificados).
+- [TRIBUTARIO] **Nombre de archivo**: Obligatorio **`YYYY-MM_F29_Declaracion_IVA.pdf`** (ej. `2026-01_F29_Declaracion_IVA.pdf`).
+- [FINANZAS] **Procedimiento**: Creado [PROCEDIMIENTO_CERTIFICADOS_F29_DECLARACION_IVA.md](Empresa/03_ADMINISTRACION_FINANZAS/tributario/PROCEDIMIENTO_CERTIFICADOS_F29_DECLARACION_IVA.md) (ruta, nombre, flujo Finn, IDs Drive).
+- [DRIVE] Enero 2026: PDF movido de Certificados a Tributario/2026/01-enero y renombrado. Diciembre: duplicado en Certificados enviado a papelera (original ya en Tributario/2025/12).
+- [QAICORE] **gdrive.py**: Añadidos `--rename`, `--name` y `--trash` para renombrar archivos y enviar a papelera.
+- [MEMORIA] DISENO_RESPALDO: sección Tributario con IDs. README tributario y _index_certificados_sii referencian el procedimiento.
+
+**Impacto**: Un solo lugar y un solo formato para certificados de declaración F29; recuperación y auditoría coherentes.
+
+---
+
 #### [19-Feb-2026] - Indexación de Comprobantes y Flujos de Recuperación (Finn)
 **Tipo**: Operativo / Finanzas / Memoria Institucional
 

@@ -208,8 +208,8 @@
 - **Integridad**: Protocolo **Zero-Loss Finance** (ADR-013) activo. Backups locales mandatorios via `backup_finance.py`.
 - **Estructura GDrive**: Modelo tributario de 5 carpetas implementado para 2026.
 - **Runway Estimado**: [X] meses (basado en balance de $[Y]).
-- **Último Hito**: F29 Dic 2025 (Sin Movimiento) presentado el 15-Ene.
-- **Próximo Hito**: Declaración F29 (IVA Enero) - Vence 20-Feb. Borrador listo: [F29_enero_2026_borrador.md](TorreDeControl/temp_files/F29_enero_2026_borrador.md) (Landing Zone) (sin movimiento; única factura en pesos = E-Cert, período feb).
+- **Último Hito**: F29 Enero 2026 declarado 19-Feb (sin movimiento; folio 8812812346). Borrador e índice en [tributario/2026/01-enero](Empresa/03_ADMINISTRACION_FINANZAS/tributario/2026/01-enero/).
+- **Próximo Hito**: Declaración F29 (IVA Febrero 2026) – incluir E-Cert (neto $15.990, IVA $3.038). Certificados F29 en Drive → Tributario; procedimiento: [PROCEDIMIENTO_CERTIFICADOS_F29](Empresa/03_ADMINISTRACION_FINANZAS/tributario/PROCEDIMIENTO_CERTIFICADOS_F29_DECLARACION_IVA.md).
 - **Suscripción Core**: Mantener Google One AI Pro + SMTP2GO (Confirmado 07-Feb). Prioridad: Agilidad y acceso a modelos avanzados.
 - **LinkedIn**: Pendiente iniciar "Building in Public" (post 1x/semana)
 
@@ -228,6 +228,7 @@
 **🤖 Para Agentes**: Si actualizaste información aquí, deja una nota abajo con fecha y qué cambiaste.
 
 ### Changelog Reciente
+- ✅ 19-Feb-2026: **Certificados F29 → Tributario + procedimiento**. Ubicación y nombre estándar (YYYY-MM_F29_Declaracion_IVA.pdf), PROCEDIMIENTO_CERTIFICADOS_F29, gdrive --rename/--trash, DISENO con IDs Tributario. PCA ejecutado.
 - ✅ 19-Feb-2026: **Indexación comprobantes y flujos Finn**. INDICE_COMPROBANTES + DISENO_RESPALDO_E_INDEXACION, Landing Zone obligatoria para borradores, flujos nueva factura/gastos mes + link, Doc. 46 retroactivo, gdrive --move, recuperación en CONTROL_DIGITAL. PCA ejecutado.
 - ✅ 19-Feb-2026: **Hardening de Infraestructura & Primacía Corporativa** 🛡️. Implementado sistema de **idempotencia local para Gmail** (sent_registry.json) que previene duplicados incluso tras reinicios de sesión. Consolidado el **ADR-019 (Primacía Corporativa)** y desplegado aviso de zona experimental en `QaiLabs` para evitar deriva de protocolos en agentes. Sincronizado Índice Maestro de Knowledge Base (44 archivos). (Nzero)
 - ✅ 19-Feb-2026: **F29 Enero 2026 – Planificación (corregido)**. Finn consolidó Registro_Diario: no se usa aún IVA facturas extranjeras (Doc. 46); única factura en pesos = E-Cert (feb). Borrador en `F29_enero_2026_borrador.md`. F29 enero = sin movimiento (todo 0). Vence 20-Feb.
