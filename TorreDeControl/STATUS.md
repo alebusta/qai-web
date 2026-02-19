@@ -1,7 +1,7 @@
 # STATUS - Estado Actual de QAI Company
 
-> **Última actualización**: 19 de Febrero 2026 (Hardening de Infraestructura y Contexto)
-> **Actualizado por**: Nzero (Architect Agent)
+> **Última actualización**: 19 de Febrero 2026 (Cierre sesión Lex)
+> **Actualizado por**: Lex (Agente Legal)
 
 ---
 
@@ -17,7 +17,7 @@
 | └─ Digipass Banco Chile | ✅ | 30-Dic-2025 | Activado. Capacidad de envío de transferencias: **HABILITADO**. |
 | Oficina Virtual / Domicilio | ✅ | Dic 2025 | Dirección comercial registrada |
 | Autorización Facturación Electrónica | 🟡 | Pendiente | Esperando primera OC (FedEx) |
-| Patente Municipal | 🟡 | En seguimiento | Solicitud #1126-2026 (Plazo 10 dias vencio 04-Feb). Seguimiento enviado, respuesta pendiente. |
+| Patente Municipal | 🟡 | **Re-presentar** | #3026 rechazada (19-Feb). Decisión: Opción 1 — nueva solicitud con dirección RL = Bucarest 17, Depto 58 (domicilio tributario). Plantilla en Lex KB. |
 | **Libro de Actas Digital** | ✅ | **09-Feb-2026** | **Acta N°1 firmada y respaldada**. Estructura completa operativa. [Ver índice](../Empresa/04_LEGAL/actas/INDICE.md) |
 | **Registro de Accionistas (RES)** | ✅ | **09-Feb-2026** | **Libro abierto oficialmente**. CVE: RA1UcsKaOvrD. Composición 50/50 registrada. [Ver comprobante](../Empresa/04_LEGAL/registros_oficiales/2026-02-09_APERTURA_REGISTRO_ACCIONISTAS_RES.md) |
 | **Repositorio Legal Digital** | ✅ | **10-Feb-2026** | Estructura completa con respaldo en Drive. Checklist operativo creado. [Ver README](../Empresa/04_LEGAL/README.md) |

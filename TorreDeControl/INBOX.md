@@ -34,7 +34,8 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 - [ ] Agendar próxima reunión con socios (definir fecha)
 
 ### Legal & Compliance
-- [ ] **Seguimiento Patente Municipal Nueva Solicitud #3026** - Enviada el 12-Feb-2026. Esperar confirmación de recepción y fecha de evaluación (plazo 10 días hábiles)
+- [ ] **Re-presentar Patente Municipal (Opción 1)** - Nueva solicitud con dirección del RL = Bucarest 17, Depto 58, Providencia (domicilio tributario). Usar plantilla en QaiCore/agents/lex/knowledge_base/plantillas_patente_municipal.md
+- [x] **Seguimiento Patente Municipal Nueva Solicitud #3026** - ✅ Respuesta 19-Feb: Rechazada. Decisión: re-presentar con dirección RL correcta (cierre sesión Lex 19-Feb).
 - [ ] **Junta Ordinaria 2025 (Expedita)** - Semana del 16-Feb. Aprobación EEFF sin movimiento + ratificación administradores.
 
 ---
@@ -96,6 +97,7 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 
 **REGLA DE ORO**: Si actualizas `STATUS.md`, DEBES marcar la tarea aquí en `INBOX.md`. La "Memoria Institucional" solo es válida si es consistente.
 
+- `19-Feb-2026`: **Cierre sesión Lex**. Patente #3026: revisión email municipalidad, asesoría Opción 1 (re-presentar con dirección RL = Bucarest 17). Nueva tarea INBOX "Re-presentar Patente Municipal". STATUS e INBOX sincronizados.
 - `19-Feb-2026`: **Cierre sesión Finn (PCA)**. Indexación comprobantes (INDICE + DISEÑO), flujos landing zone y recuperación, Doc. 46 retroactivo, Cursor enero movido a 04 y link en sheet. Sincronización STATUS/INBOX/CHANGELOG/AGENT_ACTIVITY.
 - `17-Feb-2026`: **Optimización Masiva QaiCore**. Se eliminó la latencia de 30s en APIs de Google mediante caché local de discovery. Se habilitó `--data-file` en GSheets para evitar errores con paréntesis en PowerShell. Se refactorizó `tools/__init__.py` con lazy imports para evitar deadlocks de dependencias pesadas. (Nzero)
 - `16-Feb-2026`: **Namecheap & Zero-Loss**. Corregido monto de Namecheap para match exacto con banco ($5.274 CLP). SSOT financiero actualizado. (Finn)
