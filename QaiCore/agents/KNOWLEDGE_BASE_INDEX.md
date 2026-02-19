@@ -1,8 +1,8 @@
 # Índice Maestro de Knowledge Bases - QAI
 
 > **Propósito**: Mapa centralizado del conocimiento distribuido entre agentes  
-> **Última actualización**: 19-Feb-2026 (ADR-019: Primacía Corporativa)
-> **Total de archivos**: 45 archivos de conocimiento
+> **Última actualización**: 19 de Febrero de 2026 (ADR-021: Búsqueda Híbrida QMD)
+> **Total de archivos**: 47 archivos de conocimiento
 
 ---
 
@@ -127,6 +127,8 @@
   - **ADR-017**: [Persistence Guardrails](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/017_persistence_guardrails.md)
   - **ADR-018**: [Protocolo de Comunicaciones Seguras](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/018_protocolo_comunicaciones_seguras.md)
   - **ADR-019**: [Primacía Corporativa y Aislamiento de Experimentos](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/019_primacia_corporativa_labs.md)
+  - **ADR-020**: [Repositorio Híbrido (README-only) en QaiLabs](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/020_repositorio_hibrido_readme_only.md)
+  - **ADR-021**: [Implementación de Búsqueda Híbrida (QMD)](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/021_busqueda_hibrida_qmd.md)
   - **Template**: [template.md](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/template.md)
 
 #### Sistema de Emails
@@ -239,6 +241,7 @@
 | **Gastos Deducibles** | Finn (`gastos_personales_uso_empresarial.md`) |
 | **Excel/CSV/PDF** | Finn/Lex/Nzero (Herramientas Core mejoradas Feb 2026) |
 | **Google Drive** | Finn/Lex/Nzero (Integración E2E certificada) |
+| **QMD / Búsqueda Híbrida** | Nzero (ADR-021 - Motor de búsqueda inteligente local) |
 
 ---
 
@@ -248,8 +251,8 @@
 |:---|:---:|:---|
 | **Finn** | 14 | Contabilidad (3), FinOps (3), Normativas (2), Proveedores (3), Otros (3) |
 | **Lex** | 3 | Tributario (2), Documentación (1) |
-| **Nzero** | 27 | Design Decisions (20), Company Analysis (2), Context (2), Lessons (2), Otros (1) |
-| **TOTAL** | **44** | **11 categorías** |
+| **Nzero** | 29 | Design Decisions (22), Company Analysis (2), Context (2), Lessons (2), Otros (1) |
+| **TOTAL** | **46** | **11 categorías** |
 
 ---
 

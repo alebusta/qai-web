@@ -228,6 +228,7 @@
 **🤖 Para Agentes**: Si actualizaste información aquí, deja una nota abajo con fecha y qué cambiaste.
 
 ### Changelog Reciente
+- ✅ 19-Feb-2026: **Búsqueda Híbrida QMD + Saneamiento QaiLabs** 🧠🧹. Implementado ADR-021 (Búsqueda vectorial local) y consolidado ADR-020. HQ ahora es más inteligente y liviano. (Nota: Performance monitoreada para posible reversión). (Nzero)
 - ✅ 19-Feb-2026: **Certificados F29 → Tributario + procedimiento**. Ubicación y nombre estándar (YYYY-MM_F29_Declaracion_IVA.pdf), PROCEDIMIENTO_CERTIFICADOS_F29, gdrive --rename/--trash, DISENO con IDs Tributario. PCA ejecutado.
 - ✅ 19-Feb-2026: **Indexación comprobantes y flujos Finn**. INDICE_COMPROBANTES + DISENO_RESPALDO_E_INDEXACION, Landing Zone obligatoria para borradores, flujos nueva factura/gastos mes + link, Doc. 46 retroactivo, gdrive --move, recuperación en CONTROL_DIGITAL. PCA ejecutado.
 - ✅ 19-Feb-2026: **Hardening de Infraestructura & Primacía Corporativa** 🛡️. Implementado sistema de **idempotencia local para Gmail** (sent_registry.json) que previene duplicados incluso tras reinicios de sesión. Consolidado el **ADR-019 (Primacía Corporativa)** y desplegado aviso de zona experimental en `QaiLabs` para evitar deriva de protocolos en agentes. Sincronizado Índice Maestro de Knowledge Base (44 archivos). (Nzero)
