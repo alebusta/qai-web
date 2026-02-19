@@ -632,6 +632,8 @@ class SIIClient:
                 confirm_element = self._wait_for_first(
                     selectors=[
                         (By.XPATH, "//*[contains(., 'Certificado de Recepción')]"),
+                        (By.XPATH, "//*[contains(., 'CERTIFICADO DECLARACIÓN')]"),
+                        (By.XPATH, "//*[contains(., 'Folio Declaración')]"),
                         (By.XPATH, "//*[contains(., 'Declaración ingresada')]"),
                         (By.XPATH, "//*[contains(., 'Número de control')]"),
                         (By.XPATH, "//*[contains(., 'existe una declaración vigente')]"),
