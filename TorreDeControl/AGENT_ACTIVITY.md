@@ -43,6 +43,7 @@
 
 | Fecha Hora | Agente | Acción | Archivos | Estado/Comentario |
 |:---:|:---:|:---|:---|:---|
+| 19-Feb 11:45 | Nzero | **Hardening de Infraestructura & ADR-019** | QaiCore/agents/nzero/kb/ (varios), QaiLabs/NOTICE, INDEX_KB | ✅ Consolidado registro local Gmail, implementado ADR-019 y aviso experimental en QaiLabs. Sincronizado Índice Maestro. |
 | 19-Feb (sesión) | Finn | **Protocolo de cierre (PCA) + Indexación comprobantes** | INDICE_COMPROBANTES.md, DISENO_RESPALDO_E_INDEXACION.md, CONTROL_DIGITAL.md, Manual Tributario, Finn profile/system_prompt/README/changelog, playbooks emitir_doc46 + registrar_gasto_ingreso, gdrive.py, Registro_Diario (L6), TorreDeControl/INBOX, STATUS, CHANGELOG, AGENT_ACTIVITY | ✅ Indexación y diseño respaldo; flujos landing zone y recuperación; Doc. 46 retroactivo; Cursor enero movido a 04 y link en sheet; gdrive --move. PCA ejecutado (ADR-010). |
 | 19-Feb 10:15 | Nzero | **Mantenimiento Token GDrive** | .qai/gdrive/token.pickle | ✅ Token renovado exitosamente por el usuario. Sistema 100% operativo. |
 | 17-Feb 18:55 | Nzero | **Mantenimiento HQ & Limpieza INBOX.md** | TorreDeControl/INBOX.md | ✅ Estructura reorganizada, corregida codificación UTF-8 (Mojibake fix) and sincronizado con últimas tareas. |

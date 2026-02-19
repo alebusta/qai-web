@@ -15,12 +15,18 @@ for _k in list(os.environ):
 import base64
 import pickle
 import time
+import hashlib
+import json
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+from pathlib import Path
+
+# Paths Oficiales
+LANDING_ZONE = r'c:\Users\abustamante\TheQaiCo\TorreDeControl\temp_files'
 
 # Scopes necesarios para enviar correos
 SCOPES = [
@@ -29,6 +35,7 @@ SCOPES = [
 ]
 
 TOKEN_PATH = r'c:\Users\abustamante\.qai\gmail\token_gmail.pickle'
+SENT_REGISTRY_PATH = r'c:\Users\abustamante\.qai\gmail\sent_registry.json'
 CREDENTIALS_PATH = r'c:\Users\abustamante\.qai\gdrive\credentials.json'
 
 class GmailTool:
@@ -205,7 +212,7 @@ class GmailTool:
                     attachments.extend(self._extract_attachments(part))
         return attachments
 
-    def download_attachment(self, message_id, attachment_id, filename, output_dir='temp_files'):
+    def download_attachment(self, message_id, attachment_id, filename, output_dir=LANDING_ZONE):
         """
         Descarga un adjunto específico.
         """
@@ -264,7 +271,7 @@ class GmailTool:
         # Idempotencia defensiva:
         # Evita duplicados cuando el operador reintenta por latencia de terminal.
         if not allow_duplicate and self._recent_sent_exists(
-            to, subject, window_minutes=dedupe_window_minutes
+            to, subject, body_html, window_minutes=dedupe_window_minutes
         ):
             raise RuntimeError(
                 f"Bloqueado envío duplicado: ya existe un correo reciente a '{to}' con asunto '{subject}'. "
@@ -315,29 +322,96 @@ class GmailTool:
                 userId='me',
                 body={'raw': raw_message}
             ).execute()
+            
+            # Registrar éxito localmente para evitar duplicidad futura
+            self._add_to_local_registry(to, subject, body_html)
             return sent_message
         except Exception as e:
             print(f"Error al enviar email: {e}")
             raise e
 
-    def _recent_sent_exists(self, to, subject, window_minutes=30):
+    def _recent_sent_exists(self, to, subject, body_html="", window_minutes=30):
         """
-        Revisa si existe un correo reciente en 'Sent' con mismo destinatario + asunto.
-        Sirve como guardrail anti-duplicado ante reintentos por incertidumbre.
+        Doble capa de verificación: API de Gmail + Registro Local.
         """
+        # 1. Verificar registro local primero (más rápido y resiliente a red)
+        if self._check_local_registry(to, subject, body_html, window_minutes):
+            return True
+
+        # 2. Verificar API de Gmail
         try:
             cutoff_epoch = int(time.time() - (window_minutes * 60))
-            query = f'to:{to} subject:"{subject}" after:{cutoff_epoch}'
+            # Escapar comillas en el asunto para la query de Gmail
+            safe_subject = subject.replace('"', '')
+            query = f'to:{to} subject:"{safe_subject}" after:{cutoff_epoch}'
             results = self.service.users().messages().list(
                 userId='me',
                 q=query,
                 maxResults=5,
                 labelIds=['SENT']
             ).execute()
-            return bool(results.get('messages', []))
-        except Exception:
-            # En caso de error de verificación, no bloqueamos envío.
+            
+            exists_in_api = bool(results.get('messages', []))
+            if exists_in_api:
+                # Si existe en la API pero no en el local, aprovechamos de registrarlo (curación)
+                self._add_to_local_registry(to, subject, body_html)
+            return exists_in_api
+        except Exception as e:
+            sys.stderr.write(f"[!] Advertencia: Error verificando duplicados via API ({e}). Confiando solo en registro local.\n")
+            # Si la API falla, confiamos en lo que diga el local
             return False
+
+    def _get_content_hash(self, to, subject, body_html):
+        """Genera un hash único basado en destinatario, asunto y contenido."""
+        content = f"{to}|{subject}|{body_html}"
+        return hashlib.sha256(content.encode('utf-8')).hexdigest()
+
+    def _add_to_local_registry(self, to, subject, body_html):
+        """Registra un envío exitoso en el archivo local."""
+        registry = {}
+        if os.path.exists(SENT_REGISTRY_PATH):
+            try:
+                with open(SENT_REGISTRY_PATH, 'r', encoding='utf-8') as f:
+                    registry = json.load(f)
+            except:
+                pass
+        
+        entry_hash = self._get_content_hash(to, subject, body_html)
+        registry[entry_hash] = {
+            'timestamp': time.time(),
+            'to': to,
+            'subject': subject,
+            'date': time.strftime('%Y-%m-%d %H:%M:%S')
+        }
+        
+        # Limpieza: eliminar registros de más de 24 horas para mantener el archivo pequeño
+        cutoff = time.time() - (24 * 3600)
+        registry = {k: v for k, v in registry.items() if v['timestamp'] > cutoff}
+        
+        try:
+            os.makedirs(os.path.dirname(SENT_REGISTRY_PATH), exist_ok=True)
+            with open(SENT_REGISTRY_PATH, 'w', encoding='utf-8') as f:
+                json.dump(registry, f, indent=2)
+        except Exception as e:
+            sys.stderr.write(f"[!] Error guardando registro local de correos: {e}\n")
+
+    def _check_local_registry(self, to, subject, body_html, window_minutes=30):
+        """Busca si el correo ya fue registrado localmente hoy."""
+        if not os.path.exists(SENT_REGISTRY_PATH):
+            return False
+            
+        try:
+            with open(SENT_REGISTRY_PATH, 'r', encoding='utf-8') as f:
+                registry = json.load(f)
+        except:
+            return False
+            
+        entry_hash = self._get_content_hash(to, subject, body_html)
+        if entry_hash in registry:
+            last_sent = registry[entry_hash]['timestamp']
+            if (time.time() - last_sent) < (window_minutes * 60):
+                return True
+        return False
 
     def create_draft(self, to, subject, body_html, logo_path=None, attachments=None):
         """
@@ -438,7 +512,7 @@ if __name__ == "__main__":
     download_parser.add_argument('--id', required=True, help='ID del mensaje')
     download_parser.add_argument('--att-id', required=True, help='ID del adjunto')
     download_parser.add_argument('--filename', required=True, help='Nombre del archivo de salida')
-    download_parser.add_argument('--dir', default='temp_files', help='Directorio de destino')
+    download_parser.add_argument('--dir', default=LANDING_ZONE, help='Directorio de destino (Default: Landing Zone)')
 
     args = parser.parse_args()
     gmail = GmailTool()

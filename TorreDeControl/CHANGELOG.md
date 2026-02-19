@@ -8,6 +8,22 @@
 
 ### Febrero
 
+#### [19-Feb-2026] - Hardening de Infraestructura & Primacía Corporativa (Nzero)
+**Tipo**: Infraestructura / Protocolo / Arquitectura
+
+**Contexto**: Se detectaron riesgos de duplicación de correos tras reinicios de sesión y desorden en la jerarquía de protocolos debido a la coexistencia de experimentos y normas corporativas.
+
+**Decisión/Acción**:
+- [QAICORE] **Idempotencia Local Gmail**: Implementación de `sent_registry.json` en `.qai/gmail/`. Las herramientas ahora verifican localmente antes de consultar la API, brindando protección instantánea y persistente.
+- [QAICORE] **Consolidación de Memoria**: Auditoría y migración de ADRs traspapelados (ADR-018). Sincronización del Índice Maestro de Knowledge Base (44 archivos).
+- [ARQUITECTURA] **ADR-019 (Primacía Corporativa)**: Establecida jerarquía suprema de la Torre de Control sobre experimentos en `QaiLabs`.
+- [PROTOCOL] **Experimental Zone Notice**: Desplegado aviso preventivo en `QaiLabs/EXPERIMENTAL_ZONE_NOTICE.md` para evitar que los agentes adopten reglas locales de prototipos como normas globales.
+- [INFRA] **Saneamiento Landing Zone**: Eliminación de carpetas temporales fuera de lugar y centralización de archivos operativos en la Landing Zone oficial.
+
+**Impacto**: Sistema blindado contra fallos de red y errores de contexto. La memoria institucional es coherente y los agentes tienen guardrails claros para no confundir prototipos con la empresa.
+
+---
+
 #### [19-Feb-2026] - Indexación de Comprobantes y Flujos de Recuperación (Finn)
 **Tipo**: Operativo / Finanzas / Memoria Institucional
 

@@ -1,6 +1,6 @@
 # INBOX - Buzón de Tareas Pendientes
  
-> **Última actualización**: 17 de Febrero de 2026 (Optimización de Ejecución QaiCore)  
+> **Última actualización**: 19 de Febrero de 2026 (Hardening de Infraestructura)  
 > **Propietario**: Alejandro Bustamante
 
 ---
@@ -43,13 +43,13 @@ Tu **inbox personal** para capturar tareas rápidamente sin perder el contexto. 
 
 ### FedEx - Operaciones Comerciales
 - [ ] **Seguimiento OC FedEx/Sempere**: Eduardo (FedEx) informa que Sempere debe emitir la OC a ellos primero. Se espera para esta semana. 🟡 (16-Feb)
-- [ ] **Enviar correo recordatorio a Eduardo (FedEx)**: Consultar si Sempere ya emitió la OC. 📅 **Jueves 19-Feb**.
+- [x] **Enviar correo recordatorio a Eduardo (FedEx)**: Consultar si Sempere ya emitió la OC. ✅ **Enviado el 19-Feb**. (Protegido con sistema de idempotencia local).
 - [ ] **Facturación y Compliance - Documento 46 (Declaración Enero)**:
   - [ ] Emitir Factura de Compra (Doc. 46) para **GitHub** (Neto: 9.250) → **BLOQUEADO** (Pendiente OC FedEx para habilitar facturación en SII)
   - [ ] Emitir Factura de Compra (Doc. 46) para **Cursor** (Neto: 18.200) → **BLOQUEADO** (Pendiente OC FedEx para habilitar facturación en SII)
 
 ### Infraestructura & QaiCore
-- [ ] **Auditoría de Alineación de Agentes**: Verificar que Lex y Finn estén usando el motor de templates HTML correctamente en sus próximas tareas.
+- [x] **Auditoría de Alineación de Agentes**: Implementado **ADR-019** y `EXPERIMENTAL_ZONE_NOTICE.md` para blindar protocolos corporativos. (19-Feb)
 - [ ] **Cloudflare**: Migrar cuenta a QAI (Tier Gratuito, migración técnica)
 - [ ] **Graduación**: Crear criterios claros de "Graduación Labs → Prod"
 

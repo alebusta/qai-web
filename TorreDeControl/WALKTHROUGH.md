@@ -349,6 +349,25 @@ Se integraron referencias a la Torre de Control en:
 
 ---
 
+## 🛡️ Sistemas de Protección (Hardening)
+
+### 1. Idempotencia Gmail (Previene Duplicados)
+**¿Qué es?** Un registro local (`.qai/gmail/sent_registry.json`) que evita que el sistema envíe el mismo correo dos veces, incluso si la sesión se reinicia o el agente "olvida" lo que hizo.
+- **Cómo funciona**: Genera un hash único (destinatario + asunto + cuerpo). Si el hash ya existe en las últimas 24h, bloquea el envío.
+- **Bypass**: Usar `--allow-duplicate` en la herramienta `gmail.py`.
+
+### 2. Primacía Corporativa (ADR-019)
+**¿Qué es?** Una regla de blindaje para evitar que los agentes confundan manuales de experimentos con protocolos de la empresa.
+- **Experimental Zone Notice**: En `/QaiLabs/` existe un aviso maestro que informa a los agentes que nada de lo que vean allí es "ley" corporativa.
+- **Jerarquía**: 
+  1. `TorreDeControl` (Voz de mando)
+  2. `QaiCore` (Herramientas y Playbooks)
+  3. `Empresa` (Estrategia)
+  4. `QaiLabs` (Solo datos/experimentos)
+
+---
+
 **Creado**: 26 de Diciembre de 2025  
-**Por**: Antigravity (en colaboración con Alejandro)  
-**Versión**: 1.0 (MVP)
+**Última gran actualización**: 19 de Febrero de 2026 (Infraestructura Blindada)
+**Por**: Nzero (Architect Agent)  
+**Versión**: 1.2 (Hardened)

@@ -1,7 +1,7 @@
 # STATUS - Estado Actual de QAI Company
 
-> **Última actualización**: 17 de Febrero 2026 (Procesamiento Contable Feb)
-> **Actualizado por**: Finn (Financial Agent)
+> **Última actualización**: 19 de Febrero 2026 (Hardening de Infraestructura y Contexto)
+> **Actualizado por**: Nzero (Architect Agent)
 
 ---
 
@@ -229,6 +229,7 @@
 
 ### Changelog Reciente
 - ✅ 19-Feb-2026: **Indexación comprobantes y flujos Finn**. INDICE_COMPROBANTES + DISENO_RESPALDO_E_INDEXACION, Landing Zone obligatoria para borradores, flujos nueva factura/gastos mes + link, Doc. 46 retroactivo, gdrive --move, recuperación en CONTROL_DIGITAL. PCA ejecutado.
+- ✅ 19-Feb-2026: **Hardening de Infraestructura & Primacía Corporativa** 🛡️. Implementado sistema de **idempotencia local para Gmail** (sent_registry.json) que previene duplicados incluso tras reinicios de sesión. Consolidado el **ADR-019 (Primacía Corporativa)** y desplegado aviso de zona experimental en `QaiLabs` para evitar deriva de protocolos en agentes. Sincronizado Índice Maestro de Knowledge Base (44 archivos). (Nzero)
 - ✅ 19-Feb-2026: **F29 Enero 2026 – Planificación (corregido)**. Finn consolidó Registro_Diario: no se usa aún IVA facturas extranjeras (Doc. 46); única factura en pesos = E-Cert (feb). Borrador en `F29_enero_2026_borrador.md`. F29 enero = sin movimiento (todo 0). Vence 20-Feb.
 - ✅ 17-Feb-2026: **Optimización Masiva QaiCore & Mantenimiento HQ** 🚀⚡. Implementado sistema de caché local para Discovery APIs (reducción de 30s a <1s). Refactorizado `tools/__init__.py` con Lazy Imports evitando deadlocks. Reparado `INBOX.md` de errores UTF-8 y robustecido `gsheets.py` con `--data-file` para PowerShell. (Nzero)
 - ✅ 12-Feb-2026: **Fase 3: Memoria Inter-Servicios & Ordinales Certificada** 🚀🧠.

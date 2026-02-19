@@ -1,8 +1,8 @@
 # Índice Maestro de Knowledge Bases - QAI
 
 > **Propósito**: Mapa centralizado del conocimiento distribuido entre agentes  
-> **Última actualización**: 17-Feb-2026 (Infraestructura de Extracción Blindada)
-> **Total de archivos**: 39 archivos de conocimiento
+> **Última actualización**: 19-Feb-2026 (ADR-019: Primacía Corporativa)
+> **Total de archivos**: 45 archivos de conocimiento
 
 ---
 
@@ -121,6 +121,12 @@
   - **ADR-011**: [Separation of Memory KB vs HQ](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/011_separation_of_memory_kb_hq.md)
   - **ADR-012**: [Sistema Comunicación Corporativa](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/012_sistema_comunicacion_corporativa.md)
   - **ADR-013**: [Financial Data Integrity (Zero-Loss Finance)](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/013_financial_data_integrity.md)
+  - **ADR-014**: [Scheduled Email Windows Bridge](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/014_scheduled_email_windows_bridge.md)
+  - **ADR-015**: [Premium Deliverables Engine](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/015_premium_deliverables_engine.md)
+  - **ADR-016**: [High Fidelity Email Workflow](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/016_high_fidelity_email_workflow.md)
+  - **ADR-017**: [Persistence Guardrails](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/017_persistence_guardrails.md)
+  - **ADR-018**: [Protocolo de Comunicaciones Seguras](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/018_protocolo_comunicaciones_seguras.md)
+  - **ADR-019**: [Primacía Corporativa y Aislamiento de Experimentos](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/019_primacia_corporativa_labs.md)
   - **Template**: [template.md](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/template.md)
 
 #### Sistema de Emails
@@ -194,10 +200,10 @@
 
 ---
 
-### Nzero (Arquitecto) - 20 archivos
+### Nzero (Arquitecto) - 27 archivos
 
-**Design Decisions** (14):
-- ADRs 001-013 + template (ver sección "Arquitectura y Diseño" arriba)
+**Design Decisions** (20):
+- ADRs 001-019 + template (ver sección "Arquitectura y Diseño" arriba)
 
 **Company Analysis** (2):
 - Análisis de fortalezas y debilidades
@@ -210,6 +216,7 @@
 
 **Otros** (2):
 - [012_sistema_comunicacion_corporativa.md](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/012_sistema_comunicacion_corporativa.md)
+- [018_protocolo_comunicaciones_seguras.md](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/design_decisions/018_protocolo_comunicaciones_seguras.md)
 - [README.md](file:///c:/Users/abustamante/TheQaiCo/QaiCore/agents/nzero/knowledge_base/README.md)
 
 ---
@@ -241,8 +248,8 @@
 |:---|:---:|:---|
 | **Finn** | 14 | Contabilidad (3), FinOps (3), Normativas (2), Proveedores (3), Otros (3) |
 | **Lex** | 3 | Tributario (2), Documentación (1) |
-| **Nzero** | 22 | Design Decisions (14), Company Analysis (2), Context (2), Lessons (2), Otros (2) |
-| **TOTAL** | **39** | **11 categorías** |
+| **Nzero** | 27 | Design Decisions (20), Company Analysis (2), Context (2), Lessons (2), Otros (1) |
+| **TOTAL** | **44** | **11 categorías** |
 
 ---
 
@@ -255,7 +262,7 @@
 2. Al mover/renombrar archivo → Actualizar links
 3. Al eliminar archivo → Remover del índice
 
-**Última actualización**: 10-Ene-2026
+**Última actualización**: 19-Feb-2026
 
 ---
 
