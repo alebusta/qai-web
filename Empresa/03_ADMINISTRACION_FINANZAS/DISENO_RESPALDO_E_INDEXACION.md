@@ -73,6 +73,8 @@ Cada año tiene carpeta `Contabilidad/AAAA/`. Dentro de cada mes (ej. `01-Enero`
 
 Para scripts o consultas por API (ej. `gdrive.py --list`):
 
+### Contabilidad (facturas, cartolas, comprobantes de gastos)
+
 | Ruta lógica | Folder ID |
 |-------------|-----------|
 | Contabilidad 2026 | `1Hw-fTHx6olO0s6ygqjs_kuZAu_4gukiM` |
@@ -82,6 +84,18 @@ Para scripts o consultas por API (ej. `gdrive.py --list`):
 | 2026/02-Febrero/04-Operaciones_Extranjeras_Doc46 | `1ruEi0TRy9dqKYH_YqDkD9-TuzLMv_az0` |
 
 *(Raíz Contabilidad en config: `contabilidad_id` en `.qai/config/gdrive_folders.json`.)*
+
+### Tributario (certificados de declaración F29, F22)
+
+Los **certificados de declaración de IVA (F29)** van en **Tributario**, no en Documentos Legales. Nombre de archivo obligatorio: `YYYY-MM_F29_Declaracion_IVA.pdf`. Procedimiento completo: [PROCEDIMIENTO_CERTIFICADOS_F29_DECLARACION_IVA.md](tributario/PROCEDIMIENTO_CERTIFICADOS_F29_DECLARACION_IVA.md).
+
+| Ruta lógica | Folder ID |
+|-------------|-----------|
+| Tributario (raíz) | `1EvcyiRbXRJcHj1soQq-st0SgGwXUuV-P` |
+| Tributario/2025 | `1BSdH4o_55ZPogXremu5LuDQSHddbQyYT` |
+| Tributario/2025/12-diciembre | `1_gJa2zRgyTz_rsoabqsgNX0D8jVECCX0` |
+| Tributario/2026 | `1SfW_Iix73XiVAmEgq1MNoGgaDUwTI8MO` |
+| Tributario/2026/01-enero | `15jFTaIipB03FwgEjPGlTTCMBbXb3beJK` |
 
 ---
 

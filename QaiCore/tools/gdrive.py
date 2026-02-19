@@ -160,6 +160,19 @@ class GDriveTool:
             'link': folder.get('webViewLink')
         }
     
+    def rename_file(self, file_id, new_name):
+        """
+        Renombra un archivo en Drive. Retorna el file actualizado.
+        """
+        sys.stderr.write(f"[-] Renombrando archivo {file_id} a '{new_name}'...\n")
+        file = self.service.files().update(
+            fileId=file_id,
+            body={'name': new_name},
+            fields='id, name, webViewLink'
+        ).execute()
+        sys.stderr.write(f"[+] Renombrado: {file.get('name')}\n")
+        return {'id': file.get('id'), 'name': file.get('name'), 'link': file.get('webViewLink')}
+
     def delete_file(self, file_id):
         """
         Mueve archivo a la papelera.
@@ -243,6 +256,9 @@ if __name__ == "__main__":
     parser.add_argument('--show-folders', action='store_true', help='Muestra el mapeo de nombres de carpeta a IDs')
     parser.add_argument('--move', type=str, help='ID del archivo a mover')
     parser.add_argument('--to-folder', type=str, help='ID de la carpeta destino (usar con --move)')
+    parser.add_argument('--rename', type=str, help='ID del archivo a renombrar')
+    parser.add_argument('--name', type=str, help='Nuevo nombre (usar con --rename)')
+    parser.add_argument('--trash', type=str, help='ID del archivo a enviar a la papelera')
 
     args = parser.parse_args()
     
@@ -266,5 +282,11 @@ if __name__ == "__main__":
     elif args.move and args.to_folder:
         res = gdrive_cli.move_file(args.move, args.to_folder)
         print(json.dumps(res, indent=2))
+    elif args.rename and args.name:
+        res = gdrive_cli.rename_file(args.rename, args.name)
+        print(json.dumps(res, indent=2))
+    elif args.trash:
+        gdrive_cli.delete_file(args.trash)
+        print('✅ Archivo enviado a la papelera')
     else:
         parser.print_help()

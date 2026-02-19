@@ -110,11 +110,11 @@ Codigo,Descripcion,Monto
 3. **Presentar borrador** a Alejandro
 4. **Al aprobar**:
    - Declarar en SII
-   - Descargar comprobante de declaración
-   - Subir PDF a Drive
+   - Descargar comprobante de declaración (certificado F29)
+   - **Subir PDF a Drive en Tributario** (carpeta del mes), con nombre **`YYYY-MM_F29_Declaracion_IVA.pdf`**. Ver [Procedimiento: Certificados F29](PROCEDIMIENTO_CERTIFICADOS_F29_DECLARACION_IVA.md).
    - Pagar
-   - Subir comprobante de pago a Drive
-   - Actualizar `_index_declaraciones.md`
+   - Subir comprobante de pago a Drive (según diseño contable)
+   - Actualizar `_index_declaraciones.md` del mes
 
 ### Al preparar F22 anual:
 
