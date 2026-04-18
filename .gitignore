@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Cursor (local IDE rules; not shared)
+.cursor/rules/codacy.mdc
